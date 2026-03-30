@@ -1,0 +1,402 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "meta": {
+    "name": "NAAS Portfolio Design System",
+    "version": "1.1.0",
+    "description": "3-tier hierarchical design tokens: primitive → semantic → component. 8px grid, 12-col desktop / 2-col mobile.",
+    "hierarchy": {
+      "primitive": "Raw values — the base palette, type scale, and spacing scale. Never used directly in components.",
+      "semantic": "Purpose-driven aliases that reference primitives. Used in layouts and general styling.",
+      "component": "Specific overrides per component. Reference semantic tokens. Used in component CSS."
+    }
+  },
+
+  "primitive": {
+    "$description": "Tier 1 — Raw values. These are the atoms of the system. Never reference these directly in views.",
+
+    "color": {
+      "neutral": {
+        "0":    { "$value": "#FFFFFF" },
+        "50":   { "$value": "#F7F7F8" },
+        "100":  { "$value": "#F0F0F3" },
+        "150":  { "$value": "#EEEFF3" },
+        "200":  { "$value": "#E2E3E8" },
+        "400":  { "$value": "#8C8F94" },
+        "500":  { "$value": "#5F6368" },
+        "800":  { "$value": "#333333" },
+        "900":  { "$value": "#1A1A1A" }
+      },
+      "red": {
+        "50":   { "$value": "#FFEBEE" },
+        "600":  { "$value": "#E53935" }
+      },
+      "green": {
+        "50":   { "$value": "#E8F5E9" },
+        "700":  { "$value": "#2E7D32" }
+      }
+    },
+
+    "font": {
+      "family": {
+        "sans":  { "$value": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" },
+        "mono":  { "$value": "'JetBrains Mono', 'SF Mono', 'Fira Code', monospace" }
+      },
+      "weight": {
+        "regular":  { "$value": 400 },
+        "medium":   { "$value": 500 },
+        "semibold": { "$value": 600 },
+        "bold":     { "$value": 700 },
+        "black":    { "$value": 900 }
+      },
+      "size": {
+        "100": { "$value": "0.75rem",   "$description": "12px — captions, overlines" },
+        "200": { "$value": "0.875rem",  "$description": "14px — small body, labels" },
+        "300": { "$value": "1rem",      "$description": "16px — base body" },
+        "400": { "$value": "1.125rem",  "$description": "18px — large body" },
+        "500": { "$value": "1.25rem",   "$description": "20px — h5" },
+        "600": { "$value": "1.5rem",    "$description": "24px — h4" },
+        "700": { "$value": "clamp(1.75rem, 2vw + 0.5rem, 2rem)",     "$description": "28-32px fluid — h3" },
+        "800": { "$value": "clamp(2rem, 2.5vw + 0.5rem, 2.5rem)",    "$description": "32-40px fluid — h2" },
+        "900": { "$value": "clamp(2.5rem, 3vw + 0.5rem, 3.5rem)",    "$description": "40-56px fluid — h1" },
+        "1000": { "$value": "clamp(3rem, 5vw + 1rem, 5rem)",         "$description": "48-80px fluid — display" }
+      },
+      "lineHeight": {
+        "tight":  { "$value": 1.2 },
+        "snug":   { "$value": 1.35 },
+        "normal": { "$value": 1.6 },
+        "loose":  { "$value": 1.8 }
+      },
+      "letterSpacing": {
+        "tight":  { "$value": "-0.02em" },
+        "normal": { "$value": "0" },
+        "wide":   { "$value": "0.05em" },
+        "caps":   { "$value": "0.1em" }
+      }
+    },
+
+    "space": {
+      "$description": "8px base unit. Scale: n × 8px.",
+      "1":  { "$value": "8px" },
+      "2":  { "$value": "16px" },
+      "3":  { "$value": "24px" },
+      "4":  { "$value": "32px" },
+      "5":  { "$value": "40px" },
+      "6":  { "$value": "48px" },
+      "8":  { "$value": "64px" },
+      "10": { "$value": "80px" },
+      "12": { "$value": "96px" },
+      "16": { "$value": "128px" },
+      "20": { "$value": "160px" }
+    },
+
+    "radius": {
+      "sm":   { "$value": "4px" },
+      "md":   { "$value": "8px" },
+      "lg":   { "$value": "12px" },
+      "xl":   { "$value": "16px" },
+      "2xl":  { "$value": "24px" },
+      "pill": { "$value": "999px" }
+    },
+
+    "shadow": {
+      "sm": { "$value": "0 1px 2px rgba(0, 0, 0, 0.05)" },
+      "md": { "$value": "0 4px 12px rgba(0, 0, 0, 0.08)" },
+      "lg": { "$value": "0 8px 24px rgba(0, 0, 0, 0.10)" },
+      "xl": { "$value": "0 16px 48px rgba(0, 0, 0, 0.12)" }
+    },
+
+    "motion": {
+      "ease":     { "$value": "cubic-bezier(0.25, 0.1, 0.25, 1)" },
+      "duration": {
+        "fast":   { "$value": "150ms" },
+        "normal": { "$value": "250ms" },
+        "slow":   { "$value": "400ms" }
+      }
+    },
+
+    "breakpoint": {
+      "mobileSmall": { "$value": "320px" },
+      "mobile":      { "$value": "420px" },
+      "tablet":      { "$value": "640px" },
+      "desktop":     { "$value": "1024px" },
+      "wide":        { "$value": "1600px" }
+    }
+  },
+
+  "semantic": {
+    "$description": "Tier 2 — Purpose-driven tokens that alias primitives. Use these in layouts and general styling.",
+
+    "color": {
+      "bg": {
+        "default":    { "$value": "{primitive.color.neutral.0}",   "$description": "Page background" },
+        "alt":        { "$value": "{primitive.color.neutral.50}",  "$description": "Alternating section bg" },
+        "surface":    { "$value": "{primitive.color.neutral.150}", "$description": "Elevated surface / placeholder" },
+        "overlay":    { "$value": "rgba(0, 0, 0, 0.5)",           "$description": "Modal overlay" }
+      },
+      "fg": {
+        "default":    { "$value": "{primitive.color.neutral.900}", "$description": "Primary text" },
+        "muted":      { "$value": "{primitive.color.neutral.500}", "$description": "Secondary text" },
+        "subtle":     { "$value": "{primitive.color.neutral.400}", "$description": "Tertiary / placeholder text" },
+        "inverse":    { "$value": "{primitive.color.neutral.0}",   "$description": "Text on dark bg" }
+      },
+      "border": {
+        "default":    { "$value": "{primitive.color.neutral.200}", "$description": "Standard border" },
+        "light":      { "$value": "{primitive.color.neutral.100}", "$description": "Subtle border" }
+      },
+      "accent": {
+        "default":    { "$value": "{primitive.color.neutral.900}", "$description": "Primary accent / CTA" },
+        "hover":      { "$value": "{primitive.color.neutral.800}", "$description": "Accent hover" }
+      },
+      "feedback": {
+        "error":          { "$value": "{primitive.color.red.600}" },
+        "errorBg":        { "$value": "{primitive.color.red.50}" },
+        "success":        { "$value": "{primitive.color.green.700}" },
+        "successBg":      { "$value": "{primitive.color.green.50}" }
+      }
+    },
+
+    "font": {
+      "family": {
+        "body":     { "$value": "{primitive.font.family.sans}" },
+        "heading":  { "$value": "{primitive.font.family.sans}" },
+        "code":     { "$value": "{primitive.font.family.mono}" }
+      },
+      "size": {
+        "caption":  { "$value": "{primitive.font.size.100}" },
+        "label":    { "$value": "{primitive.font.size.200}" },
+        "body":     { "$value": "{primitive.font.size.300}" },
+        "bodyLg":   { "$value": "{primitive.font.size.400}" },
+        "h5":       { "$value": "{primitive.font.size.500}" },
+        "h4":       { "$value": "{primitive.font.size.600}" },
+        "h3":       { "$value": "{primitive.font.size.700}" },
+        "h2":       { "$value": "{primitive.font.size.800}" },
+        "h1":       { "$value": "{primitive.font.size.900}" },
+        "display":  { "$value": "{primitive.font.size.1000}" }
+      },
+      "weight": {
+        "body":     { "$value": "{primitive.font.weight.regular}" },
+        "emphasis": { "$value": "{primitive.font.weight.medium}" },
+        "heading":  { "$value": "{primitive.font.weight.bold}" },
+        "display":  { "$value": "{primitive.font.weight.black}" }
+      },
+      "leading": {
+        "heading":  { "$value": "{primitive.font.lineHeight.tight}" },
+        "subhead":  { "$value": "{primitive.font.lineHeight.snug}" },
+        "body":     { "$value": "{primitive.font.lineHeight.normal}" },
+        "prose":    { "$value": "{primitive.font.lineHeight.loose}" }
+      },
+      "tracking": {
+        "heading":  { "$value": "{primitive.font.letterSpacing.tight}" },
+        "body":     { "$value": "{primitive.font.letterSpacing.normal}" },
+        "wide":     { "$value": "{primitive.font.letterSpacing.wide}" },
+        "overline": { "$value": "{primitive.font.letterSpacing.caps}" }
+      }
+    },
+
+    "space": {
+      "$description": "Responsive spacing — references primitives but scales per breakpoint via CSS media queries.",
+      "xs":       { "$value": "{primitive.space.1}",  "$description": "Tight gaps (icon-to-label)" },
+      "sm":       { "$value": "{primitive.space.2}",  "$description": "Small padding" },
+      "md":       { "$value": "{primitive.space.3}",  "$description": "Medium / card internal" },
+      "lg":       { "$value": "{primitive.space.4}",  "$description": "Section padding" },
+      "xl":       { "$value": "{primitive.space.5}",  "$description": "Between subsections" },
+      "2xl":      { "$value": "{primitive.space.6}",  "$description": "Between major sections" },
+      "3xl":      { "$value": "{primitive.space.8}",  "$description": "Large gaps" },
+      "4xl":      { "$value": "{primitive.space.10}", "$description": "Section-level" },
+      "5xl":      { "$value": "{primitive.space.12}", "$description": "Major section breaks" },
+      "6xl":      { "$value": "{primitive.space.16}", "$description": "Page-level vertical rhythm" },
+      "7xl":      { "$value": "{primitive.space.20}", "$description": "Hero / max vertical" }
+    },
+
+    "layout": {
+      "maxWidth":     { "$value": "{primitive.breakpoint.wide}" },
+      "gridColumns":  {
+        "desktop": { "$value": 12 },
+        "mobile":  { "$value": 2 }
+      },
+      "gridGutter": {
+        "desktop":  { "$value": "{primitive.space.3}" },
+        "tablet":   { "$value": "20px" },
+        "mobile":   { "$value": "{primitive.space.2}" }
+      },
+      "gridMargin": {
+        "desktop":      { "$value": "{primitive.space.8}" },
+        "tablet":       { "$value": "{primitive.space.5}" },
+        "mobile":       { "$value": "20px" },
+        "mobileSmall":  { "$value": "{primitive.space.2}" }
+      }
+    },
+
+    "radius": {
+      "input":    { "$value": "{primitive.radius.md}" },
+      "card":     { "$value": "{primitive.radius.xl}" },
+      "panel":    { "$value": "{primitive.radius.lg}" },
+      "pill":     { "$value": "{primitive.radius.pill}" }
+    },
+
+    "shadow": {
+      "card":     { "$value": "{primitive.shadow.md}" },
+      "cardHover":{ "$value": "{primitive.shadow.lg}" },
+      "dropdown": { "$value": "{primitive.shadow.lg}" },
+      "modal":    { "$value": "{primitive.shadow.xl}" }
+    }
+  },
+
+  "component": {
+    "$description": "Tier 3 — Component-specific tokens. Reference semantic tokens. Used directly in component CSS.",
+
+    "nav": {
+      "height":           { "$value": "72px" },
+      "heightMobile":     { "$value": "56px" },
+      "bg":               { "$value": "rgba(255, 255, 255, 0.95)" },
+      "borderColor":      { "$value": "{semantic.color.border.light}" },
+      "logoSize":         { "$value": "{semantic.font.size.bodyLg}" },
+      "logoWeight":       { "$value": "{semantic.font.weight.heading}" },
+      "linkSize":         { "$value": "{semantic.font.size.label}" },
+      "linkWeight":       { "$value": "{semantic.font.weight.emphasis}" },
+      "linkColor":        { "$value": "{semantic.color.fg.muted}" },
+      "linkColorActive":  { "$value": "{semantic.color.fg.default}" },
+      "linkGap":          { "$value": "{semantic.space.xl}" }
+    },
+
+    "hero": {
+      "paddingTop":       { "$value": "calc(72px + {semantic.space.6xl})" },
+      "paddingBottom":    { "$value": "{semantic.space.6xl}" },
+      "minHeight":        { "$value": "80vh" },
+      "minHeightHome":    { "$value": "100vh" },
+      "minHeightProject": { "$value": "70vh" },
+      "eyebrowSize":      { "$value": "{semantic.font.size.label}" },
+      "eyebrowWeight":    { "$value": "{semantic.font.weight.emphasis}" },
+      "eyebrowTracking":  { "$value": "{semantic.font.tracking.overline}" },
+      "eyebrowColor":     { "$value": "{semantic.color.fg.muted}" },
+      "titleSize":        { "$value": "{semantic.font.size.display}" },
+      "titleWeight":      { "$value": "{semantic.font.weight.display}" },
+      "subtitleSize":     { "$value": "{semantic.font.size.h5}" },
+      "subtitleColor":    { "$value": "{semantic.color.fg.muted}" },
+      "bgHome":           { "$value": "{semantic.color.bg.alt}" },
+      "bgProject":        { "$value": "{semantic.color.bg.surface}" }
+    },
+
+    "button": {
+      "paddingX":         { "$value": "{semantic.space.lg}" },
+      "paddingY":         { "$value": "{semantic.space.sm}" },
+      "paddingXLg":       { "$value": "{semantic.space.xl}" },
+      "fontSize":         { "$value": "{semantic.font.size.label}" },
+      "fontSizeLg":       { "$value": "{semantic.font.size.body}" },
+      "fontWeight":       { "$value": "{semantic.font.weight.emphasis}" },
+      "radius":           { "$value": "{semantic.radius.input}" },
+      "radiusLg":         { "$value": "{primitive.radius.lg}" },
+      "primaryBg":        { "$value": "{semantic.color.accent.default}" },
+      "primaryBgHover":   { "$value": "{semantic.color.accent.hover}" },
+      "primaryFg":        { "$value": "{semantic.color.fg.inverse}" },
+      "secondaryBorder":  { "$value": "{semantic.color.border.default}" },
+      "secondaryBorderHover": { "$value": "{semantic.color.fg.default}" }
+    },
+
+    "projectCard": {
+      "radius":           { "$value": "{semantic.radius.card}" },
+      "bg":               { "$value": "{semantic.color.bg.default}" },
+      "borderColor":      { "$value": "{semantic.color.border.light}" },
+      "imageRatio":       { "$value": "16 / 10" },
+      "contentPadding":   { "$value": "{semantic.space.lg}" },
+      "tagSize":          { "$value": "{semantic.font.size.caption}" },
+      "tagWeight":        { "$value": "{semantic.font.weight.emphasis}" },
+      "tagColor":         { "$value": "{semantic.color.fg.subtle}" },
+      "titleSize":        { "$value": "{semantic.font.size.h5}" },
+      "titleWeight":      { "$value": "{semantic.font.weight.heading}" },
+      "descSize":         { "$value": "{semantic.font.size.label}" },
+      "descColor":        { "$value": "{semantic.color.fg.muted}" },
+      "hoverShadow":      { "$value": "{semantic.shadow.cardHover}" },
+      "hoverTranslateY":  { "$value": "-4px" }
+    },
+
+    "nextProject": {
+      "paddingY":         { "$value": "{semantic.space.4xl}" },
+      "borderColor":      { "$value": "{semantic.color.border.default}" },
+      "labelSize":        { "$value": "{semantic.font.size.caption}" },
+      "labelColor":       { "$value": "{semantic.color.fg.subtle}" },
+      "titleSize":        { "$value": "{semantic.font.size.h3}" },
+      "titleWeight":      { "$value": "{semantic.font.weight.heading}" },
+      "arrowSize":        { "$value": "{semantic.font.size.h2}" },
+      "arrowColor":       { "$value": "{semantic.color.fg.subtle}" },
+      "arrowColorHover":  { "$value": "{semantic.color.fg.default}" }
+    },
+
+    "form": {
+      "labelSize":        { "$value": "{semantic.font.size.label}" },
+      "labelWeight":      { "$value": "{semantic.font.weight.emphasis}" },
+      "labelColor":       { "$value": "{semantic.color.fg.muted}" },
+      "inputPaddingX":    { "$value": "{semantic.space.md}" },
+      "inputPaddingY":    { "$value": "{semantic.space.sm}" },
+      "inputFontSize":    { "$value": "{semantic.font.size.body}" },
+      "inputBorder":      { "$value": "{semantic.color.border.default}" },
+      "inputBorderFocus": { "$value": "{semantic.color.accent.default}" },
+      "inputRadius":      { "$value": "{semantic.radius.input}" },
+      "inputBg":          { "$value": "{semantic.color.bg.default}" },
+      "placeholderColor": { "$value": "{semantic.color.fg.subtle}" },
+      "textareaMinHeight":{ "$value": "160px" },
+      "gap":              { "$value": "{semantic.space.md}" },
+      "rowGap":           { "$value": "{semantic.space.md}" }
+    },
+
+    "footer": {
+      "paddingY":         { "$value": "{semantic.space.3xl}" },
+      "borderColor":      { "$value": "{semantic.color.border.default}" },
+      "nameSize":         { "$value": "{semantic.font.size.body}" },
+      "nameWeight":       { "$value": "{semantic.font.weight.heading}" },
+      "metaSize":         { "$value": "{semantic.font.size.label}" },
+      "metaColor":        { "$value": "{semantic.color.fg.subtle}" },
+      "linkColor":        { "$value": "{semantic.color.fg.muted}" },
+      "linkColorHover":   { "$value": "{semantic.color.fg.default}" }
+    },
+
+    "section": {
+      "paddingY":         { "$value": "{semantic.space.6xl}" },
+      "paddingYMobile":   { "$value": "{semantic.space.4xl}" },
+      "headerMarginBottom": { "$value": "{semantic.space.3xl}" },
+      "eyebrowSize":      { "$value": "{semantic.font.size.caption}" },
+      "eyebrowWeight":    { "$value": "{semantic.font.weight.emphasis}" },
+      "eyebrowColor":     { "$value": "{semantic.color.fg.subtle}" },
+      "titleSize":        { "$value": "{semantic.font.size.h2}" },
+      "titleWeight":      { "$value": "{semantic.font.weight.heading}" },
+      "subtitleSize":     { "$value": "{semantic.font.size.bodyLg}" },
+      "subtitleColor":    { "$value": "{semantic.color.fg.muted}" }
+    },
+
+    "prose": {
+      "maxWidth":         { "$value": "720px" },
+      "bodyColor":        { "$value": "{semantic.color.fg.muted}" },
+      "bodyLeading":      { "$value": "{semantic.font.leading.prose}" },
+      "h2Size":           { "$value": "{semantic.font.size.h3}" },
+      "h3Size":           { "$value": "{semantic.font.size.h5}" },
+      "headingColor":     { "$value": "{semantic.color.fg.default}" },
+      "blockquoteBorder": { "$value": "{semantic.color.accent.default}" }
+    }
+  },
+
+  "responsive": {
+    "$description": "Breakpoint-specific overrides for spacing tokens. Applied via CSS media queries.",
+    "tablet": {
+      "$description": "640px–1024px",
+      "space": {
+        "1": "8px", "2": "16px", "3": "20px", "4": "24px", "5": "32px",
+        "6": "40px", "8": "48px", "10": "56px", "12": "64px", "16": "80px", "20": "96px"
+      },
+      "gridGutter": "20px",
+      "gridMargin": "40px"
+    },
+    "mobile": {
+      "$description": "≤640px",
+      "space": {
+        "1": "4px", "2": "8px", "3": "16px", "4": "16px", "5": "24px",
+        "6": "32px", "8": "40px", "10": "48px", "12": "56px", "16": "64px", "20": "80px"
+      },
+      "gridGutter": "16px",
+      "gridMargin": "20px"
+    },
+    "mobileSmall": {
+      "$description": "≤420px",
+      "gridMargin": "16px"
+    }
+  }
+}

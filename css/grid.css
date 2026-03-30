@@ -1,0 +1,113 @@
+/* ==========================================================================
+   Responsive Grid System — 12 col desktop, 2 col mobile
+   ========================================================================== */
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--grid-margin);
+  padding-right: var(--grid-margin);
+}
+
+.container--fluid {
+  max-width: none;
+}
+
+.container--narrow {
+  max-width: 960px;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--grid-gutter);
+}
+
+/* Wider column gap for prose-heavy layouts */
+.grid--loose {
+  column-gap: var(--space-2xl); /* 48px desktop → 32px tablet → 32px mobile */
+}
+
+/* Column spans — desktop (12 col)
+   Uses grid-column-end so col-start-* can set the start independently.
+   grid-column shorthand would clobber col-start-* because it resets
+   grid-column-start, leaving grid-column-end: auto (= span 1). */
+.col-1  { grid-column-end: span 1; }
+.col-2  { grid-column-end: span 2; }
+.col-3  { grid-column-end: span 3; }
+.col-4  { grid-column-end: span 4; }
+.col-5  { grid-column-end: span 5; }
+.col-6  { grid-column-end: span 6; }
+.col-7  { grid-column-end: span 7; }
+.col-8  { grid-column-end: span 8; }
+.col-9  { grid-column-end: span 9; }
+.col-10 { grid-column-end: span 10; }
+.col-11 { grid-column-end: span 11; }
+.col-12 { grid-column-end: span 12; }
+
+/* Column offsets */
+.col-start-1  { grid-column-start: 1; }
+.col-start-2  { grid-column-start: 2; }
+.col-start-3  { grid-column-start: 3; }
+.col-start-4  { grid-column-start: 4; }
+.col-start-5  { grid-column-start: 5; }
+.col-start-6  { grid-column-start: 6; }
+.col-start-7  { grid-column-start: 7; }
+
+/* ---- Tablet ---- */
+@media (max-width: 1024px) {
+  /* Reset column offsets FIRST — col-start-* only valid on desktop.
+     Must come before tab-col-* so the shorthand can override start. */
+  .col-start-1, .col-start-2, .col-start-3, .col-start-4,
+  .col-start-5, .col-start-6, .col-start-7 {
+    grid-column-start: auto;
+  }
+
+  /* Tablet column spans — shorthand resets both start + end,
+     overriding the desktop grid-column-end longhands above. */
+  .tab-col-1  { grid-column: span 1; }
+  .tab-col-2  { grid-column: span 2; }
+  .tab-col-3  { grid-column: span 3; }
+  .tab-col-4  { grid-column: span 4; }
+  .tab-col-6  { grid-column: span 6; }
+  .tab-col-8  { grid-column: span 8; }
+  .tab-col-12 { grid-column: span 12; }
+}
+
+/* ---- Mobile: 2-col grid ---- */
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mob-col-1 { grid-column: span 1; }
+  .mob-col-2 { grid-column: span 2; }
+
+  /* By default, most elements span full width on mobile */
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+  .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    grid-column: span 2;
+  }
+}
+
+/* ---- Layout Utilities ---- */
+.flex          { display: flex; }
+.flex-col      { flex-direction: column; }
+.flex-row      { flex-direction: row; }
+.flex-wrap     { flex-wrap: wrap; }
+.items-center  { align-items: center; }
+.items-start   { align-items: flex-start; }
+.items-end     { align-items: flex-end; }
+.justify-center    { justify-content: center; }
+.justify-between   { justify-content: space-between; }
+.justify-end       { justify-content: flex-end; }
+.gap-1   { gap: var(--space-xs); }
+.gap-2   { gap: var(--space-sm); }
+.gap-3   { gap: var(--space-md); }
+.gap-4   { gap: var(--space-lg); }
+.gap-6   { gap: var(--space-2xl); }
+.gap-8   { gap: var(--space-3xl); }

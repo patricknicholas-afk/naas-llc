@@ -1,0 +1,457 @@
+/* ==========================================================================
+   Design Tokens — 3-Tier Hierarchy
+   Source of truth: design-tokens.json
+   Tier 1: Primitive   → raw values (--p-*)
+   Tier 2: Semantic    → purpose-driven aliases (--color-*, --text-*, --space-*, etc.)
+   Tier 3: Component   → per-component overrides (--nav-*, --hero-*, --btn-*, etc.)
+   ========================================================================== */
+
+:root {
+
+  /* ================================================================
+     TIER 1 — PRIMITIVES
+     Raw palette, type scale, spacing scale. Not used directly in views.
+     ================================================================ */
+
+  /* Color Palette — Neutral (refined for FAANG-level readability) */
+  --p-neutral-0:     #FFFFFF;
+  --p-neutral-25:    #FAFAFA;
+  --p-neutral-50:    #F5F5F5;
+  --p-neutral-100:   #EEEEEE;
+  --p-neutral-150:   #E8E8E8;
+  --p-neutral-200:   #E2E3E8;
+  --p-neutral-300:   #B0B0B0;
+  --p-neutral-400:   #8C8F94;
+  --p-neutral-500:   #6B6B6B;
+  --p-neutral-700:   #404040;
+  --p-neutral-800:   #333333;
+  --p-neutral-900:   #1A1A1A;
+  --p-neutral-950:   #111111;
+
+  /* Color Palette — Accent (signature blue) */
+  --p-accent-50:     #EFF6FF;
+  --p-accent-500:    #2563EB;
+  --p-accent-600:    #1D4ED8;
+
+  /* Color Palette — Feedback */
+  --p-red-50:        #FFEBEE;
+  --p-red-600:       #E53935;
+  --p-green-50:      #E8F5E9;
+  --p-green-700:     #2E7D32;
+
+  /* Color Palette — Project Hero Tints (dark mode) */
+  --p-hero-light:    #1A1C1E;
+  --p-hero-dark:     #18181B;
+  --p-hero-warm:     #1E1B18;
+
+  /* Font Family */
+  --p-font-sans:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --p-font-serif:    'Roboto Slab', Georgia, 'Times New Roman', serif;
+  --p-font-mono:     'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+
+  /* Font Weight */
+  --p-fw-regular:    400;
+  --p-fw-medium:     500;
+  --p-fw-semibold:   600;
+  --p-fw-bold:       700;
+  --p-fw-black:      900;
+
+  /* Font Size Scale (100–1000) */
+  --p-fs-100:        0.75rem;     /* 12px */
+  --p-fs-200:        0.875rem;    /* 14px */
+  --p-fs-300:        1rem;        /* 16px */
+  --p-fs-400:        1.125rem;    /* 18px */
+  --p-fs-500:        1.25rem;     /* 20px */
+  --p-fs-600:        1.5rem;      /* 24px */
+  --p-fs-700:        clamp(1.75rem, 2vw + 0.5rem, 2rem);     /* 28-32 fluid */
+  --p-fs-800:        clamp(2rem, 2.5vw + 0.5rem, 2.5rem);    /* 32-40 fluid */
+  --p-fs-900:        clamp(2.5rem, 3vw + 0.5rem, 3.5rem);    /* 40-56 fluid */
+  --p-fs-1000:       clamp(3rem, 5vw + 1rem, 5rem);           /* 48-80 fluid */
+
+  /* Line Height */
+  --p-lh-display:    1.0;
+  --p-lh-tight:      1.2;
+  --p-lh-snug:       1.35;
+  --p-lh-normal:     1.6;
+  --p-lh-loose:      1.8;
+
+  /* Letter Spacing */
+  --p-ls-tight:      -0.02em;
+  --p-ls-normal:     0;
+  --p-ls-wide:       0.05em;
+  --p-ls-caps:       0.1em;
+
+  /* 8px Spacing Scale */
+  --p-space-1:       8px;
+  --p-space-2:       16px;
+  --p-space-3:       24px;
+  --p-space-4:       32px;
+  --p-space-5:       40px;
+  --p-space-6:       48px;
+  --p-space-8:       64px;
+  --p-space-10:      80px;
+  --p-space-12:      96px;
+  --p-space-16:      128px;
+  --p-space-20:      160px;
+
+  /* Radius */
+  --p-radius-sm:     4px;
+  --p-radius-md:     8px;
+  --p-radius-lg:     12px;
+  --p-radius-xl:     16px;
+  --p-radius-2xl:    24px;
+  --p-radius-pill:   999px;
+
+  /* Shadow */
+  --p-shadow-sm:     0 1px 2px rgba(0, 0, 0, 0.05);
+  --p-shadow-md:     0 4px 12px rgba(0, 0, 0, 0.08);
+  --p-shadow-lg:     0 8px 24px rgba(0, 0, 0, 0.10);
+  --p-shadow-xl:     0 16px 48px rgba(0, 0, 0, 0.12);
+
+  /* Motion */
+  --p-ease:          cubic-bezier(0.25, 0.1, 0.25, 1);
+  --p-duration-fast: 150ms;
+  --p-duration-norm: 250ms;
+  --p-duration-slow: 400ms;
+
+
+  /* ================================================================
+     TIER 2 — SEMANTIC
+     Purpose-driven aliases. Use these in layouts and general styling.
+     ================================================================ */
+
+  /* -- Color: Background -- */
+  --color-bg:             var(--p-neutral-950);
+  --color-bg-alt:         var(--p-neutral-900);
+  --color-surface:        var(--p-neutral-800);
+  --color-card:           var(--p-neutral-800);
+  --color-overlay:        rgba(0, 0, 0, 0.7);
+
+  /* -- Color: Foreground / Text -- */
+  --color-text-primary:   var(--p-neutral-50);
+  --color-text-secondary: var(--p-neutral-300);
+  --color-text-tertiary:  var(--p-neutral-400);
+  --color-text-inverse:   var(--p-neutral-900);
+  --color-text-inverse-secondary: rgba(26, 26, 26, 0.7);
+  --color-text-inverse-tertiary:  rgba(26, 26, 26, 0.4);
+
+  /* -- Color: Border -- */
+  --color-border:         rgba(255, 255, 255, 0.10);
+  --color-border-light:   rgba(255, 255, 255, 0.06);
+
+  /* -- Color: Accent — white primary for dark mode, blue interactive */
+  --color-accent:         var(--p-neutral-0);
+  --color-accent-hover:   var(--p-neutral-100);
+  --color-link:           var(--p-accent-500);
+  --color-link-hover:     var(--p-accent-600);
+  --color-focus-ring:     var(--p-accent-500);
+  --color-accent-bg:      rgba(37, 99, 235, 0.15);
+
+  /* -- Color: Feedback -- */
+  --color-error:          var(--p-red-600);
+  --color-error-bg:       var(--p-red-50);
+  --color-success:        var(--p-green-700);
+  --color-success-bg:     var(--p-green-50);
+
+  /* -- Typography: Family — serif display, sans body, mono data */
+  --font-body:            var(--p-font-sans);
+  --font-heading:         var(--p-font-serif);
+  --font-ui:              var(--p-font-sans);
+  --font-code:            var(--p-font-mono);
+
+  /* -- Typography: Size (semantic names) -- */
+  --text-caption:         var(--p-fs-100);
+  --text-label:           var(--p-fs-200);
+  --text-body:            var(--p-fs-300);
+  --text-body-lg:         var(--p-fs-400);
+  --text-h5:              var(--p-fs-500);
+  --text-h4:              var(--p-fs-600);
+  --text-h3:              var(--p-fs-700);
+  --text-h2:              var(--p-fs-800);
+  --text-h1:              var(--p-fs-900);
+  --text-display:         var(--p-fs-1000);
+
+  /* -- Typography: Weight (semantic roles) -- */
+  --fw-body:              var(--p-fw-regular);
+  --fw-emphasis:          var(--p-fw-medium);
+  --fw-heading:           var(--p-fw-bold);
+  --fw-display:           var(--p-fw-black);
+
+  /* -- Typography: Leading (semantic roles) -- */
+  --leading-display:      var(--p-lh-display);
+  --leading-heading:      var(--p-lh-tight);
+  --leading-subhead:      var(--p-lh-snug);
+  --leading-body:         var(--p-lh-normal);
+  --leading-prose:        1.75;
+
+  /* -- Typography: Tracking (semantic roles) -- */
+  --tracking-heading:     var(--p-ls-tight);
+  --tracking-body:        var(--p-ls-normal);
+  --tracking-wide:        var(--p-ls-wide);
+  --tracking-overline:    var(--p-ls-caps);
+
+  /* -- Spacing (semantic scale: xs → 7xl) -- */
+  --space-xs:             var(--p-space-1);    /* 8px  → 4px mobile */
+  --space-sm:             var(--p-space-2);    /* 16px → 8px mobile */
+  --space-md:             var(--p-space-3);    /* 24px → 16px mobile */
+  --space-lg:             var(--p-space-4);    /* 32px → 16px mobile */
+  --space-xl:             var(--p-space-5);    /* 40px → 24px mobile */
+  --space-2xl:            var(--p-space-6);    /* 48px → 32px mobile */
+  --space-3xl:            var(--p-space-8);    /* 64px → 40px mobile */
+  --space-4xl:            var(--p-space-10);   /* 80px → 48px mobile */
+  --space-5xl:            var(--p-space-12);   /* 96px → 56px mobile */
+  --space-6xl:            var(--p-space-16);   /* 128px → 64px mobile */
+  --space-7xl:            var(--p-space-20);   /* 160px → 80px mobile */
+
+  /* -- Layout -- */
+  --max-width:            1600px;
+  --grid-columns:         12;
+  --grid-gutter:          var(--p-space-3);
+  --grid-margin:          var(--p-space-8);
+
+  /* -- Radius (semantic) -- */
+  --radius-input:         var(--p-radius-md);
+  --radius-card:          var(--p-radius-xl);
+  --radius-panel:         var(--p-radius-lg);
+  --radius-pill:          var(--p-radius-pill);
+
+  /* -- Shadow (semantic) -- */
+  --shadow-card:          var(--p-shadow-md);
+  --shadow-card-hover:    var(--p-shadow-lg);
+  --shadow-dropdown:      var(--p-shadow-lg);
+  --shadow-modal:         var(--p-shadow-xl);
+
+  /* -- Motion -- */
+  --ease-default:         var(--p-ease);
+  --duration-fast:        var(--p-duration-fast);
+  --duration-normal:      var(--p-duration-norm);
+  --duration-slow:        var(--p-duration-slow);
+  --duration-theme:       1.4s;
+
+
+  /* ================================================================
+     TIER 3 — COMPONENT
+     Per-component tokens. Used directly in component CSS.
+     ================================================================ */
+
+  /* -- Nav -- */
+  --nav-height:           72px;
+  --nav-height-mobile:    56px;
+  --nav-bg:               rgba(17, 17, 17, 0.90);
+  --nav-border:           var(--color-border-light);
+  --nav-logo-size:        var(--text-body-lg);
+  --nav-logo-weight:      var(--fw-heading);
+  --nav-link-size:        var(--text-label);
+  --nav-link-weight:      var(--fw-emphasis);
+  --nav-link-color:       var(--color-text-secondary);
+  --nav-link-color-active:var(--color-text-primary);
+  --nav-link-gap:         var(--space-xl);
+  --nav-link-px:          24px;
+  --nav-link-py:          6px;
+
+  /* -- Hero -- */
+  --hero-pt:              calc(var(--nav-height) + var(--space-xl));
+  --hero-pb:              var(--space-xl);
+  --hero-min-h:           100vh;
+  --hero-min-h-home:      100vh;
+  --hero-min-h-project:   100vh;
+  --hero-eyebrow-size:    var(--text-label);
+  --hero-eyebrow-weight:  var(--fw-emphasis);
+  --hero-eyebrow-tracking:var(--tracking-overline);
+  --hero-eyebrow-color:   var(--color-text-secondary);
+  --hero-title-size:      var(--text-display);
+  --hero-title-weight:    700;
+  --hero-subtitle-size:   var(--text-h5);
+  --hero-subtitle-color:  var(--color-text-secondary);
+  --hero-bg-home:         var(--color-bg-alt);
+  --hero-bg-project:      var(--p-hero-light);
+  --hero-bg-project-dark: var(--p-hero-dark);
+  --hero-bg-project-warm: var(--p-hero-warm);
+  --hero-bg-project-cool: var(--p-neutral-800);
+
+  /* -- Resume Role -- */
+  --role-border:          var(--color-border);
+  --role-padding-bottom:  var(--space-2xl);
+  --role-header-gap:      var(--space-xs);
+
+  /* -- Button -- */
+  --btn-px:               var(--space-md);
+  --btn-py:               var(--space-xs);
+  --btn-px-lg:            var(--space-lg);
+  --btn-font-size:        var(--text-label);
+  --btn-font-size-lg:     var(--text-body);
+  --btn-font-weight:      var(--fw-emphasis);
+  --btn-radius:           var(--radius-pill);
+  --btn-radius-lg:        var(--radius-pill);
+  --btn-primary-bg:       var(--color-accent);
+  --btn-primary-bg-hover: var(--color-accent-hover);
+  --btn-primary-fg:       var(--color-text-inverse);
+  --btn-secondary-border: var(--color-border);
+  --btn-secondary-border-hover: var(--color-text-primary);
+
+  /* -- Project Card -- */
+  --card-radius:          var(--radius-card);
+  --card-bg:              var(--color-card);
+  --card-border:          var(--color-border-light);
+  --card-img-ratio:       4 / 3;
+  --card-padding:         var(--space-lg);
+  --card-tag-size:        var(--text-caption);
+  --card-tag-weight:      var(--fw-emphasis);
+  --card-tag-color:       var(--color-text-tertiary);
+  --card-title-size:      var(--text-h5);
+  --card-title-weight:    var(--fw-heading);
+  --card-desc-size:       var(--text-label);
+  --card-desc-color:      var(--color-text-secondary);
+  --card-hover-shadow:    var(--shadow-card-hover);
+  --card-hover-y:         -4px;
+
+  /* -- Next Project -- */
+  --next-py:              var(--space-4xl);
+  --next-border:          var(--color-border);
+  --next-label-size:      var(--text-caption);
+  --next-label-color:     var(--color-text-tertiary);
+  --next-title-size:      var(--text-h3);
+  --next-title-weight:    var(--fw-heading);
+  --next-arrow-size:      var(--text-h2);
+  --next-arrow-color:     var(--color-text-tertiary);
+  --next-arrow-color-hover: var(--color-text-primary);
+
+  /* -- Form -- */
+  --form-label-size:      var(--text-label);
+  --form-label-weight:    var(--fw-emphasis);
+  --form-label-color:     var(--p-neutral-50);
+  --form-input-px:        var(--space-md);
+  --form-input-py:        var(--space-sm);
+  --form-input-size:      var(--text-body);
+  --form-input-border:    rgba(0, 0, 0, 0.12);
+  --form-input-focus:     var(--p-neutral-900);
+  --form-input-radius:    var(--radius-input);
+  --form-input-bg:        var(--p-neutral-0);
+  --form-input-color:     var(--p-neutral-900);
+  --form-placeholder:     var(--p-neutral-400);
+  --form-textarea-min-h:  160px;
+  --form-gap:             var(--space-md);
+
+  /* -- Footer — always dark regardless of page theme -- */
+  --footer-py:            var(--space-3xl);
+  --footer-bg:            var(--p-neutral-950);
+  --footer-border:        transparent;
+  --footer-name-size:     var(--text-body);
+  --footer-name-weight:   var(--fw-heading);
+  --footer-meta-size:     var(--text-label);
+  --footer-meta-color:    var(--p-neutral-500);
+  --footer-link-color:    var(--p-neutral-300);
+  --footer-link-hover:    var(--p-neutral-0);
+
+  /* -- Section -- */
+  --section-py:           var(--space-6xl);
+  --section-header-mb:    var(--space-3xl);
+  --section-eyebrow-size: var(--text-caption);
+  --section-eyebrow-wt:   var(--fw-emphasis);
+  --section-eyebrow-color:var(--color-text-tertiary);
+  --section-title-size:   var(--text-h2);
+  --section-title-wt:     var(--fw-heading);
+  --section-sub-size:     var(--text-body-lg);
+  --section-sub-color:    var(--color-text-secondary);
+
+  /* -- Prose -- */
+  --prose-max-w:          720px;
+  --prose-color:          var(--p-neutral-700);
+  --prose-leading:        var(--leading-prose);
+  --prose-h2-size:        var(--text-h3);
+  --prose-h3-size:        var(--text-h5);
+  --prose-heading-color:  var(--color-text-primary);
+  --prose-bq-border:      var(--color-accent);
+}
+
+/* ================================================================
+   LIGHT THEME — Project pages
+   Toggled via body.theme--light when hero scrolls out of view.
+   All semantic tokens flip; every token-based component updates
+   automatically with no additional class changes needed.
+   ================================================================ */
+body.theme--light {
+  /* Backgrounds */
+  --color-bg:             var(--p-neutral-0);
+  --color-bg-alt:         var(--p-neutral-50);
+  --color-surface:        var(--p-neutral-100);
+  --color-card:           var(--p-neutral-0);
+  --color-overlay:        rgba(255, 255, 255, 0.7);
+
+  /* Text */
+  --color-text-primary:   var(--p-neutral-900);
+  --color-text-secondary: var(--p-neutral-500);
+  --color-text-tertiary:  var(--p-neutral-400);
+  --color-text-inverse:   var(--p-neutral-0);
+  --color-text-inverse-secondary: rgba(255, 255, 255, 0.7);
+  --color-text-inverse-tertiary:  rgba(255, 255, 255, 0.4);
+
+  /* Borders */
+  --color-border:         rgba(0, 0, 0, 0.08);
+  --color-border-light:   rgba(0, 0, 0, 0.05);
+
+  /* Accent — dark on light */
+  --color-accent:         var(--p-neutral-900);
+  --color-accent-hover:   var(--p-neutral-700);
+
+  /* Prose */
+  --prose-color:          var(--p-neutral-500);
+  --prose-heading-color:  var(--p-neutral-900);
+}
+
+/* ================================================================
+   RESPONSIVE OVERRIDES — Primitive spacing scales down per breakpoint
+   ================================================================ */
+
+/* ---- Tablet: 640px–1024px ---- */
+@media (max-width: 1024px) {
+  :root {
+    --p-space-1:   8px;
+    --p-space-2:   16px;
+    --p-space-3:   20px;
+    --p-space-4:   24px;
+    --p-space-5:   32px;
+    --p-space-6:   40px;
+    --p-space-8:   48px;
+    --p-space-10:  56px;
+    --p-space-12:  64px;
+    --p-space-16:  80px;
+    --p-space-20:  96px;
+
+    --grid-gutter: 20px;
+    --grid-margin: 40px;
+  }
+}
+
+/* ---- Mobile: ≤ 640px ---- */
+@media (max-width: 640px) {
+  :root {
+    --p-space-1:   4px;
+    --p-space-2:   8px;
+    --p-space-3:   16px;
+    --p-space-4:   16px;
+    --p-space-5:   24px;
+    --p-space-6:   32px;
+    --p-space-8:   40px;
+    --p-space-10:  48px;
+    --p-space-12:  56px;
+    --p-space-16:  64px;
+    --p-space-20:  80px;
+
+    --grid-columns: 2;
+    --grid-gutter:  16px;
+    --grid-margin:  20px;
+
+    --nav-height:  56px;
+    --hero-pt:     calc(var(--nav-height) + var(--space-xl));
+    --hero-pb:     var(--space-xl);
+    --section-py:  var(--space-4xl);
+  }
+}
+
+/* ---- Small Mobile: ≤ 420px ---- */
+@media (max-width: 420px) {
+  :root {
+    --grid-margin: 16px;
+  }
+}

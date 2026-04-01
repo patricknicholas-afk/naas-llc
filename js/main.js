@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initProjectThemeScroll();
   initViewToggle();
   initCardCarousels();
+  initStatCounters();
+  initParallax();
 });
 
 /* ---- Mobile Navigation Toggle ---- */
@@ -206,7 +208,14 @@ function initScrollReveal() {
     '.image-grid__item', '.hero__image',
     '.section__header', '.section__eyebrow', '.section__title', '.section__subtitle',
     '.project-card', '.next-project',
-    '.contact'
+    '.contact',
+    // Case study components
+    '.cs-chapter', '.cs-statement__text',
+    '.cs-intro__overview-label', '.cs-intro__text', '.cs-intro__meta-item',
+    '.cs-split__eyebrow', '.cs-split__heading', '.cs-split__body', '.cs-split__image',
+    '.cs-stat', '.cs-full-bleed__frame',
+    '.cs-pull-quote__text', '.cs-pull-quote__attribution',
+    '.cs-img-item'
   ];
 
   const elements = document.querySelectorAll(selectors.join(', '));
@@ -283,6 +292,70 @@ function initViewToggle() {
   // Run on load and on every resize
   syncMobileState();
   window.addEventListener('resize', syncMobileState);
+}
+
+/* ---- Stat Counter Animation ---- */
+function initStatCounters() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const stats = document.querySelectorAll('.cs-stat__number[data-count]');
+  if (!stats.length) return;
+
+  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+  function animateCount(el) {
+    const raw = el.getAttribute('data-count');
+    const isFloat = raw.includes('.');
+    const target = parseFloat(raw);
+    const prefix = el.getAttribute('data-prefix') || '';
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = 1200;
+    const start = performance.now();
+
+    function tick(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const value = easeOut(progress) * target;
+      el.textContent = prefix + (isFloat ? value.toFixed(1) : Math.round(value).toLocaleString()) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCount(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  stats.forEach(el => observer.observe(el));
+}
+
+/* ---- Subtle Parallax on Full-Bleed Images ---- */
+function initParallax() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const frames = document.querySelectorAll('.cs-full-bleed__frame img');
+  if (!frames.length) return;
+
+  function applyParallax() {
+    frames.forEach(img => {
+      const rect = img.closest('.cs-full-bleed__frame').getBoundingClientRect();
+      const winH = window.innerHeight;
+      // Only apply when visible
+      if (rect.bottom < 0 || rect.top > winH) return;
+      const center = rect.top + rect.height / 2;
+      const offset = (center - winH / 2) / winH;
+      img.style.transform = `translateY(${offset * 30}px) scale(1.06)`;
+    });
+  }
+
+  window.addEventListener('scroll', applyParallax, { passive: true });
+  applyParallax();
 }
 
 /* ---- Card Image Carousel ---- */

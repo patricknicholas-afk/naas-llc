@@ -9,12 +9,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/case-study.css">
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <!-- Navigation -->
   <nav class="nav">
     <div class="container nav__inner">
       <a href="../index.html" class="nav__logo" aria-label="NAAS, LLC — Home">
@@ -26,395 +26,420 @@
         <a href="../resume.html" class="nav__link">Resume</a>
       </div>
       <button class="nav__toggle" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <main id="main-content">
+  <main id="main-content" style="--cs-accent: #4580FF;">
 
-  <!-- ============================================================
-       1. HOOK — Hero
-       ============================================================ -->
-  <section class="hero hero--project">
-    <div class="container grid">
-      <div class="col-8 tab-col-12">
-        <p class="hero__eyebrow">Case Study</p>
-        <h1 class="hero__title">DubClub</h1>
-        <p class="hero__subtitle">
-          Building a 0-to-1 social audio product from concept to 2M+ users —
-          defining the product vision, design language, and end-to-end experience
-          for a new category of sports media.
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero hero--project">
+      <div class="container grid">
+        <div class="col-8 tab-col-12">
+          <p class="hero__eyebrow">Case Study</p>
+          <h1 class="hero__title">DubClub</h1>
+          <p class="hero__subtitle">
+            Building a 0-to-1 social audio product from concept to 2M+ users —
+            defining the product vision, design language, and end-to-end experience
+            for a new category of sports media.
+          </p>
+          <div class="hero__meta">
+            <div class="hero__meta-item">
+              <span class="hero__meta-label">Role</span>
+              <span class="hero__meta-value">Founding Product Designer</span>
+            </div>
+            <div class="hero__meta-item">
+              <span class="hero__meta-label">Timeline</span>
+              <span class="hero__meta-value">18 Months</span>
+            </div>
+            <div class="hero__meta-item">
+              <span class="hero__meta-label">Platform</span>
+              <span class="hero__meta-value">iOS &amp; Android</span>
+            </div>
+            <div class="hero__meta-item">
+              <span class="hero__meta-label">Impact</span>
+              <span class="hero__meta-value">2M+ Users</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         INTRO — overview + meta
+         ============================================================ -->
+    <section class="cs-intro">
+      <div class="container">
+        <div class="cs-intro__inner">
+          <div class="cs-intro__overview">
+            <p class="cs-intro__overview-label">Overview</p>
+            <p class="cs-intro__text">
+              Sports fans wanted to engage with live games beyond passive viewing — reacting
+              in real-time, hearing hot takes from people they trust, and feeling the energy
+              of a crowd without being in the stadium. As the founding designer, I owned the
+              entire product experience from scratch: brand, design system, and every
+              user-facing surface across iOS and Android.
+            </p>
+          </div>
+          <div class="cs-intro__meta">
+            <div class="cs-intro__meta-item">
+              <p class="cs-intro__meta-label">Deliverables</p>
+              <p class="cs-intro__meta-value">Product Vision, Design System, iOS &amp; Android App</p>
+            </div>
+            <div class="cs-intro__meta-item">
+              <p class="cs-intro__meta-label">Methods</p>
+              <p class="cs-intro__meta-value">User Interviews, Competitive Analysis, Rapid Prototyping</p>
+            </div>
+            <div class="cs-intro__meta-item">
+              <p class="cs-intro__meta-label">Team</p>
+              <p class="cs-intro__meta-value">Solo designer, 4 engineers, 1 PM</p>
+            </div>
+            <div class="cs-intro__meta-item">
+              <p class="cs-intro__meta-label">Outcome</p>
+              <p class="cs-intro__meta-value">2M+ users, 4.7★ App Store, 45-min avg session</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Opening Statement -->
+    <section class="cs-statement">
+      <div class="container">
+        <p class="cs-statement__text">
+          No existing product combined real-time audio with sports-specific context and discovery.
+          <em>The gap was obvious. The execution was everything.</em>
         </p>
-        <div class="hero__meta">
-          <div class="hero__meta-item">
-            <span class="hero__meta-label">Role</span>
-            <span class="hero__meta-value">Founding Product Designer</span>
-          </div>
-          <div class="hero__meta-item">
-            <span class="hero__meta-label">Timeline</span>
-            <span class="hero__meta-value">18 Months</span>
-          </div>
-          <div class="hero__meta-item">
-            <span class="hero__meta-label">Platform</span>
-            <span class="hero__meta-value">iOS & Android</span>
-          </div>
-          <div class="hero__meta-item">
-            <span class="hero__meta-label">Impact</span>
-            <span class="hero__meta-value">2M+ Users</span>
-          </div>
-        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============================================================
-       2. PROBLEM — Business Context & User Pain Points
-       ============================================================ -->
-  <section class="section">
-    <div class="container grid">
-      <div class="col-8 tab-col-12">
-        <div class="prose">
-          <h2>The Problem</h2>
-          <p>
-            Sports fans wanted to engage with live games beyond passive viewing — reacting
-            in real-time, hearing hot takes from people they trust, and feeling the energy
-            of a crowd without being in the stadium. Existing platforms forced fans into
-            text-based threads or generic social feeds that couldn't capture the spontaneity
-            and emotion of live sports.
-          </p>
-          <p>
-            The opportunity was clear: build a social audio experience purpose-built for
-            live sports — where fans could host and join real-time audio rooms during games,
-            creating the digital equivalent of watching with friends.
-          </p>
-          <p>
-            As the founding designer, I was responsible for defining the entire product
-            experience from scratch — no existing brand, no design system, no prior
-            art in this specific vertical.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       3. RESEARCH — Methodology & Key Findings
-       ============================================================ -->
-  <section class="section section--alt">
-    <div class="container grid">
-      <div class="col-8 tab-col-12">
-        <div class="prose">
-          <h2>Research & Discovery</h2>
-          <p>
-            I led a discovery sprint that combined competitive analysis, user interviews,
-            and behavioral research to ground the product direction in real user needs
-            rather than assumptions.
-          </p>
-
-          <h3>Competitive Landscape</h3>
-          <p>
-            I mapped the competitive space across social audio (Clubhouse, Twitter Spaces),
-            sports media (ESPN, Bleacher Report), and fan community platforms (Discord,
-            Reddit game threads). The gap was consistent: no product combined real-time
-            audio with sports-specific context and discovery.
-          </p>
-
-          <h3>User Interviews</h3>
-          <p>
-            I conducted 30+ interviews with sports fans across different engagement levels —
-            from casual viewers to fantasy league organizers. Key patterns emerged:
-          </p>
-          <ul>
-            <li>Fans crave real-time social connection during live games, not post-game recaps</li>
-            <li>Audio is preferred over video for multitasking — fans want to watch the game simultaneously</li>
-            <li>Trust and credibility of hosts matters more than production quality</li>
-            <li>Discovery is broken — fans can't find rooms for their specific team or game</li>
-            <li>The "cold start" problem is real — joining a silent room feels awkward</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Research Image Grid -->
-  <section style="padding-bottom: var(--space-10);">
+    <!-- Hero full-bleed image -->
     <div class="container">
-      <div class="image-grid image-grid--2">
-        <div class="image-grid__item">
-          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:var(--text-sm);">Competitive Analysis Map</div>
-        </div>
-        <div class="image-grid__item">
-          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:var(--text-sm);">User Interview Synthesis</div>
+      <div class="cs-full-bleed">
+        <div class="cs-full-bleed__frame">
+          <img src="../assets/images/dubclub-1.png" alt="DubClub — product overview">
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ============================================================
-       4. PROCESS — Design Exploration & Iteration
-       ============================================================ -->
-  <section class="section">
-    <div class="container grid">
-      <div class="col-8 tab-col-12">
-        <div class="prose">
-          <h2>Design Process</h2>
-          <p>
-            With research insights in hand, I moved through three phases of design
-            exploration — each one tightening the product definition based on testing
-            and stakeholder feedback.
-          </p>
 
-          <h3>Phase 1: Information Architecture</h3>
-          <p>
-            The core IA challenge was balancing two competing user needs: scheduled
-            rooms (pre-game shows, recurring podcasts) and spontaneous rooms (live
-            reactions during games). I designed a dual-feed architecture — a
-            "Live Now" tab for in-progress rooms and a "Schedule" tab for upcoming
-            events, unified by a game-centric navigation model.
-          </p>
-
-          <h3>Phase 2: Rapid Prototyping</h3>
-          <p>
-            I explored 4 distinct design directions ranging from minimal (audio-first,
-            no visual chrome) to immersive (live stats overlays, animated reactions).
-            Paper prototypes and low-fi Figma flows were tested with 12 participants
-            across two rounds.
-          </p>
-          <p>
-            The winning direction was "contextual simplicity" — a clean, dark-themed
-            interface that surfaced just enough game context (score, time, key stats)
-            without competing with the audio experience.
-          </p>
-
-          <h3>Phase 3: Design System Foundation</h3>
-          <p>
-            I built the design system from scratch — defining a token-based architecture
-            with a dark-first color palette, sport-specific accent colors, and a
-            typography scale optimized for glanceable information during live events.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Process Image Grid -->
-  <div class="container">
-    <div class="image-grid image-grid--3">
-      <div class="image-grid__item">
-        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:var(--text-sm);">IA Exploration</div>
-      </div>
-      <div class="image-grid__item">
-        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:var(--text-sm);">Wireframe Iterations</div>
-      </div>
-      <div class="image-grid__item">
-        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:var(--text-sm);">Design System Tokens</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================================================
-       5. SOLUTION — Final Designs & Rationale
-       ============================================================ -->
-  <section class="section section--alt">
-    <div class="container grid">
-      <div class="col-8 tab-col-12">
-        <div class="prose">
-          <h2>The Solution</h2>
-          <p>
-            The final product centered on three core experiences, each designed to
-            reduce friction at the moment of highest intent.
-          </p>
-
-          <h3>Game-Centric Discovery</h3>
-          <p>
-            Instead of browsing generic room lists, users see a feed organized by
-            live and upcoming games. Each game card shows active rooms, listener
-            counts, and featured hosts — letting fans find their community in
-            under 3 seconds.
-          </p>
-
-          <h3>Frictionless Room Experience</h3>
-          <p>
-            The room UI was designed for ambient listening with easy escalation.
-            Users enter muted by default, see a minimal speaker layout with
-            real-time game context, and can request to speak with a single tap.
-            The "raise hand" mechanic was specifically designed to lower the
-            social anxiety barrier identified in research.
-          </p>
-
-          <h3>Host Tools & Scheduling</h3>
-          <p>
-            For creators, I designed a streamlined room creation flow that ties
-            directly to the sports calendar. Hosts can schedule rooms for specific
-            games, set recurring shows, and build an audience through follow
-            notifications — turning one-time listeners into regulars.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Solution Full-Width Image -->
-  <section style="padding-bottom: var(--space-10);">
+    <!-- ============================================================
+         CHAPTER 01 — RESEARCH
+         ============================================================ -->
     <div class="container">
-      <div class="hero__image" style="aspect-ratio: 16/9;">
-        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:var(--text-sm);">Final Design — Key Screens Showcase</div>
+      <div class="cs-chapter">
+        <span class="cs-chapter__number">01</span>
+        <h2 class="cs-chapter__label">Research &amp; Discovery</h2>
       </div>
     </div>
-  </section>
 
-  <!-- ============================================================
-       6. VALIDATION — Testing & Iteration
-       ============================================================ -->
-  <section class="section">
-    <div class="container grid">
-      <div class="col-8 tab-col-12">
-        <div class="prose">
-          <h2>Validation</h2>
-          <p>
-            Before and after launch, I ran structured validation cycles to
-            ensure the product met real user needs — not just stakeholder
-            assumptions.
-          </p>
-
-          <h3>Pre-Launch Beta</h3>
-          <p>
-            A 4-week closed beta with 500 sports fans validated core hypotheses.
-            Room join rates exceeded targets, but we discovered that users
-            struggled with room discovery during off-peak hours. This led to
-            the addition of "Replays" — allowing fans to listen to highlights
-            from rooms they missed.
-          </p>
-
-          <h3>Usability Testing</h3>
-          <p>
-            I ran moderated usability sessions focused on three critical flows:
-            first-time onboarding, joining a live room, and creating a scheduled
-            room. Task completion rates improved from 72% to 94% across two
-            iteration cycles.
-          </p>
-
-          <h3>Post-Launch Iteration</h3>
-          <p>
-            After launch, I established a continuous feedback loop — analyzing
-            session recordings, support tickets, and in-app surveys to prioritize
-            the backlog. The top three post-launch improvements (notification
-            tuning, room search, and speaker queue management) were all
-            identified through this process.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       7. IMPACT — Quantitative Results
-       ============================================================ -->
-  <section class="section section--alt">
-    <div class="container grid">
-      <div class="col-8 tab-col-12">
-        <div class="prose">
-          <h2>Impact</h2>
-          <p>
-            DubClub launched on iOS and Android and scaled rapidly through
-            organic growth and strategic sports media partnerships.
-          </p>
-          <ul>
-            <li><strong>2M+ users</strong> within the first year of launch</li>
-            <li><strong>94% task completion rate</strong> for core user flows (up from 72% in beta)</li>
-            <li><strong>3.2x higher retention</strong> for users who joined a room in their first session</li>
-            <li><strong>45-minute average session length</strong> during live games</li>
-            <li><strong>4.7-star App Store rating</strong> with consistent praise for ease of use</li>
-          </ul>
-          <p>
-            The design system I built scaled across 40+ screens and was adopted
-            by the growing design team without significant deviation — validating
-            the token-based architecture decisions made in the early stages.
-          </p>
-
-          <h3>What I Learned</h3>
-          <p>
-            Building 0-to-1 taught me that the hardest design problems aren't
-            visual — they're structural. Getting the information architecture
-            right (game-centric vs. room-centric) had 10x more impact on
-            retention than any UI polish. The biggest lever for growth was
-            reducing the time from "I want to talk about this game" to
-            "I'm in a room talking about this game" — and that's a design
-            problem, not a marketing one.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Next Project -->
-  <section class="section">
-    <div class="container">
-      <a href="project-2.html" class="next-project">
-        <div class="next-project__inner">
-          <div class="next-project__image">
-            <img src="../assets/images/audible-logo.png" alt="Audible">
+    <!-- Split: findings -->
+    <section class="cs-split">
+      <div class="container" style="display:contents;">
+        <div class="cs-split__text">
+          <p class="cs-split__eyebrow">Competitive Landscape</p>
+          <h3 class="cs-split__heading">The gap nobody had filled</h3>
+          <div class="cs-split__body">
+            <p>
+              I mapped the competitive space across social audio (Clubhouse, Twitter Spaces),
+              sports media (ESPN, Bleacher Report), and fan community platforms (Discord,
+              Reddit game threads). The pattern was consistent: no product combined real-time
+              audio with sports-specific context and discovery.
+            </p>
+            <p>
+              I ran 30+ interviews with sports fans across different engagement levels —
+              from casual viewers to fantasy league organizers. Five patterns defined the opportunity:
+            </p>
+            <ul>
+              <li>Fans crave real-time social connection during live games, not post-game recaps</li>
+              <li>Audio is preferred over video for multitasking — fans watch the game simultaneously</li>
+              <li>Trust and credibility of hosts matters more than production quality</li>
+              <li>Discovery is broken — fans can't find rooms for their specific team or game</li>
+              <li>The cold-start problem is real — joining a silent room feels deeply awkward</li>
+            </ul>
           </div>
-          <div class="next-project__text">
-            <span class="next-project__label">Next Project</span>
-            <h3 class="next-project__title">Audible — Content Pipeline</h3>
+        </div>
+        <div class="cs-split__visual">
+          <div class="cs-split__image">
+            <img src="../assets/images/dubclub-2.png" alt="DubClub — capper dashboard">
           </div>
-          <span class="next-project__arrow">&rarr;</span>
+          <p class="cs-split__image-caption">Competitive analysis — mapping the social audio and sports media landscape</p>
         </div>
-      </a>
-    </div>
-  </section>
+      </div>
+    </section>
 
-  <!-- Contact Form -->
-  <section class="contact section--alt" id="contact">
+    <!-- Pull Quote -->
+    <section class="cs-pull-quote">
+      <div class="container">
+        <p class="cs-pull-quote__text">
+          "Audio is preferred over video for multitasking — fans want to watch the game <strong>and</strong> be part of a conversation at the same time."
+        </p>
+        <p class="cs-pull-quote__attribution">— Key finding from 30+ user interviews</p>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         CHAPTER 02 — PROCESS
+         ============================================================ -->
     <div class="container">
-      <div class="grid">
-        <div class="col-5 tab-col-12">
-          <p class="section__eyebrow">Get in Touch</p>
-          <h2 class="section__title">Like what<br>you see?</h2>
-          <p class="section__subtitle mt-2">Let's talk about your next project.</p>
+      <div class="cs-chapter">
+        <span class="cs-chapter__number">02</span>
+        <h2 class="cs-chapter__label">Design Process</h2>
+      </div>
+    </div>
+
+    <!-- Split: IA -->
+    <section class="cs-split cs-split--flip">
+      <div class="container" style="display:contents;">
+        <div class="cs-split__text">
+          <p class="cs-split__eyebrow">Information Architecture</p>
+          <h3 class="cs-split__heading">Two needs, one architecture</h3>
+          <div class="cs-split__body">
+            <p>
+              The core IA challenge was balancing scheduled rooms (pre-game shows, recurring
+              podcasts) and spontaneous rooms (live reactions during games). I designed a
+              dual-feed architecture — a "Live Now" tab for in-progress rooms and a
+              "Schedule" tab for upcoming events, unified by a game-centric navigation model.
+            </p>
+            <p>
+              I explored 4 distinct design directions — from minimal (audio-first, no visual
+              chrome) to immersive (live stats overlays, animated reactions). The winning
+              direction was "contextual simplicity" — a clean, dark-themed interface that
+              surfaced just enough game context without competing with the audio experience.
+            </p>
+          </div>
         </div>
-        <div class="col-6 col-start-7 tab-col-12">
-          <form class="contact__form" novalidate>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-group__label" for="contact-name">Name</label>
-                <input class="form-group__input" type="text" id="contact-name" name="name" placeholder="Your name" required>
+        <div class="cs-split__visual">
+          <div class="cs-split__image">
+            <!-- Placeholder: wireframe / IA exploration -->
+          </div>
+          <p class="cs-split__image-caption">IA exploration — dual-feed architecture mapped to the sports calendar</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Split: Design System -->
+    <section class="cs-split">
+      <div class="container" style="display:contents;">
+        <div class="cs-split__text">
+          <p class="cs-split__eyebrow">Design System</p>
+          <h3 class="cs-split__heading">Built from scratch, scaled to 40+ screens</h3>
+          <div class="cs-split__body">
+            <p>
+              I built the design system from the ground up — defining a token-based
+              architecture with a dark-first color palette, sport-specific accent colors,
+              and a typography scale optimized for glanceable information during live events.
+            </p>
+            <p>
+              The system scaled across 40+ screens and was adopted by the growing design
+              team without significant deviation — validating the architecture decisions
+              made in those early stages.
+            </p>
+          </div>
+        </div>
+        <div class="cs-split__visual">
+          <div class="cs-split__image">
+            <!-- Placeholder: design system tokens -->
+          </div>
+          <p class="cs-split__image-caption">Token-based design system — dark-first palette with sport accent colors</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         CHAPTER 03 — SOLUTION
+         ============================================================ -->
+    <div class="container">
+      <div class="cs-chapter">
+        <span class="cs-chapter__number">03</span>
+        <h2 class="cs-chapter__label">The Solution</h2>
+      </div>
+    </div>
+
+    <section class="cs-statement">
+      <div class="container">
+        <p class="cs-statement__text">
+          Three core experiences, each designed to reduce friction
+          at the moment of <em>highest intent.</em>
+        </p>
+      </div>
+    </section>
+
+    <!-- Full-bleed final designs -->
+    <div class="container">
+      <div class="cs-full-bleed">
+        <div class="cs-full-bleed__frame">
+          <!-- Placeholder: key screens showcase -->
+        </div>
+        <p class="cs-full-bleed__caption">Final product — game-centric discovery, live room experience, and host scheduling</p>
+      </div>
+    </div>
+
+    <!-- Split: Key Feature -->
+    <section class="cs-split">
+      <div class="container" style="display:contents;">
+        <div class="cs-split__text">
+          <p class="cs-split__eyebrow">Core Experience</p>
+          <h3 class="cs-split__heading">From "I want to talk about this game" to "I'm in a room" in under 3 seconds</h3>
+          <div class="cs-split__body">
+            <p>
+              Instead of browsing generic room lists, users see a feed organized by live
+              and upcoming games. Each game card shows active rooms, listener counts, and
+              featured hosts — letting fans find their community instantly.
+            </p>
+            <p>
+              The room UI was designed for ambient listening with easy escalation. Users
+              enter muted by default, see a minimal speaker layout with real-time game
+              context, and can request to speak with a single tap. The "raise hand" mechanic
+              was specifically designed to lower the social anxiety barrier identified in research.
+            </p>
+          </div>
+        </div>
+        <div class="cs-split__visual">
+          <div class="cs-split__image">
+            <!-- Placeholder: room UI screen -->
+          </div>
+          <p class="cs-split__image-caption">Room experience — ambient listening with one-tap participation</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         IMPACT — Stats
+         ============================================================ -->
+    <section class="cs-stats">
+      <div class="container">
+        <div class="cs-stats__grid">
+          <div class="cs-stat">
+            <p class="cs-stat__number" data-count="2" data-suffix="M+">2M+</p>
+            <p class="cs-stat__label">Users within the first year of launch</p>
+          </div>
+          <div class="cs-stat">
+            <p class="cs-stat__number" data-count="94" data-suffix="%">94%</p>
+            <p class="cs-stat__label">Task completion rate for core flows, up from 72% in beta</p>
+          </div>
+          <div class="cs-stat">
+            <p class="cs-stat__number" data-count="3.2" data-suffix="×">3.2×</p>
+            <p class="cs-stat__label">Higher retention for users who joined a room in their first session</p>
+          </div>
+          <div class="cs-stat">
+            <p class="cs-stat__number" data-count="4.7" data-prefix="★ ">★ 4.7</p>
+            <p class="cs-stat__label">App Store rating with consistent praise for ease of use</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         CHAPTER 04 — REFLECTION
+         ============================================================ -->
+    <div class="container">
+      <div class="cs-chapter">
+        <span class="cs-chapter__number">04</span>
+        <h2 class="cs-chapter__label">What I Learned</h2>
+      </div>
+    </div>
+
+    <section class="cs-split">
+      <div class="container" style="display:contents;">
+        <div class="cs-split__text">
+          <p class="cs-split__eyebrow">Reflection</p>
+          <h3 class="cs-split__heading">The hardest design problems aren't visual — they're structural</h3>
+          <div class="cs-split__body">
+            <p>
+              Building 0-to-1 taught me that getting the information architecture right
+              had 10× more impact on retention than any UI polish. Game-centric vs.
+              room-centric navigation was a structural bet — and it paid off.
+            </p>
+            <p>
+              The biggest lever for growth was reducing the time from "I want to talk
+              about this game" to "I'm in a room talking about this game." That's a design
+              problem, not a marketing one. Constraints clarify what matters: when you're
+              building alone with 4 engineers and a tight timeline, every decision has to
+              earn its place.
+            </p>
+          </div>
+        </div>
+        <div class="cs-split__visual">
+          <div class="cs-split__image">
+            <!-- Placeholder: post-launch iteration screenshot -->
+          </div>
+          <p class="cs-split__image-caption">Post-launch iterations informed by session recordings and in-app surveys</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Next Project -->
+    <section class="section">
+      <div class="container">
+        <a href="project-2.html" class="next-project">
+          <div class="next-project__inner">
+            <div class="next-project__image">
+              <img src="../assets/images/audible-logo.png" alt="Audible">
+            </div>
+            <div class="next-project__text">
+              <span class="next-project__label">Next Project</span>
+              <h3 class="next-project__title">Audible — Content Pipeline</h3>
+            </div>
+            <span class="next-project__arrow">&rarr;</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact section--alt" id="contact">
+      <div class="container">
+        <div class="grid">
+          <div class="col-5 tab-col-12">
+            <p class="section__eyebrow">Get in Touch</p>
+            <h2 class="section__title">Like what<br>you see?</h2>
+            <p class="section__subtitle mt-2">Let's talk about your next project.</p>
+          </div>
+          <div class="col-6 col-start-7 tab-col-12">
+            <form class="contact__form" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-group__label" for="contact-name">Name</label>
+                  <input class="form-group__input" type="text" id="contact-name" name="name" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-group__label" for="contact-email">Email</label>
+                  <input class="form-group__input" type="email" id="contact-email" name="email" placeholder="you@example.com" required>
+                </div>
               </div>
               <div class="form-group">
-                <label class="form-group__label" for="contact-email">Email</label>
-                <input class="form-group__input" type="email" id="contact-email" name="email" placeholder="you@example.com" required>
+                <label class="form-group__label" for="contact-company">Company</label>
+                <input class="form-group__input" type="text" id="contact-company" name="company" placeholder="Your company (optional)">
               </div>
-            </div>
-            <div class="form-group">
-              <label class="form-group__label" for="contact-company">Company</label>
-              <input class="form-group__input" type="text" id="contact-company" name="company" placeholder="Your company (optional)">
-            </div>
-            <div class="form-group">
-              <label class="form-group__label" for="contact-message">Message</label>
-              <textarea class="form-group__textarea" id="contact-message" name="message" placeholder="Tell me about your project..." required></textarea>
-            </div>
-            <div class="form-message"></div>
-            <button type="submit" class="btn btn--primary btn--lg contact__submit">Send Message <span class="btn__arrow">&rarr;</span></button>
-          </form>
+              <div class="form-group">
+                <label class="form-group__label" for="contact-message">Message</label>
+                <textarea class="form-group__textarea" id="contact-message" name="message" placeholder="Tell me about your project..." required></textarea>
+              </div>
+              <div class="form-message"></div>
+              <button type="submit" class="btn btn--primary btn--lg contact__submit">Send Message <span class="btn__arrow">&rarr;</span></button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
         <a href="../index.html" aria-label="NAAS, LLC — Home">
           <img src="../assets/images/logo-white-footer.png" alt="NAAS, LLC" class="footer__logo-img">
         </a>
-        
       </div>
       <div class="footer__links">
         <a href="../resume.html" class="footer__link" download>Download Resume</a>

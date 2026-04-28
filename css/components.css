@@ -1395,11 +1395,9 @@ body.theme--light .projects-grid--list .next-project__divider {
 .kpi-card {
   padding: var(--space-xl);
   background-color: var(--color-surface);
-  border: 1px solid var(--color-border-light);
   border-radius: var(--radius-card);
   height: 100%;
-  transition: background-color var(--duration-theme),
-              border-color var(--duration-theme);
+  transition: background-color var(--duration-theme);
 }
 
 .kpi-card__label {
@@ -1430,7 +1428,6 @@ body.theme--light .projects-grid--list .next-project__divider {
 /* Light theme */
 body.theme--light .kpi-card {
   background-color: var(--p-neutral-50);
-  border-color: var(--p-neutral-150);
 }
 
 body.theme--light .kpi-card__metric {

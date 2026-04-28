@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initProjectThemeScroll();
   initViewToggle();
   initCardCarousels();
+  initImageExpand();
 });
 
 /* ---- Mobile Navigation Toggle ---- */
@@ -283,6 +284,48 @@ function initViewToggle() {
   // Run on load and on every resize
   syncMobileState();
   window.addEventListener('resize', syncMobileState);
+}
+
+/* ---- Image Expand on Hover ---- */
+function initImageExpand() {
+  const expandables = document.querySelectorAll('.img-expand');
+  if (!expandables.length) return;
+
+  let overlay = null;
+
+  expandables.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      overlay = document.createElement('div');
+      overlay.className = 'img-expand-overlay';
+
+      // Mirror content: if img exists use it, otherwise replicate placeholder
+      const img = el.querySelector('img');
+      if (img) {
+        const clone = img.cloneNode(true);
+        clone.style.cssText = 'width:100%;height:100%;object-fit:contain;';
+        overlay.appendChild(clone);
+      } else {
+        const label = el.dataset.label || '';
+        const span = document.createElement('span');
+        span.className = 'img-expand-overlay__label';
+        span.textContent = label;
+        overlay.appendChild(span);
+      }
+
+      document.body.appendChild(overlay);
+      // Force reflow before adding class so transition fires
+      overlay.getBoundingClientRect();
+      overlay.classList.add('is-visible');
+    });
+
+    el.addEventListener('mouseleave', () => {
+      if (!overlay) return;
+      const leaving = overlay;
+      leaving.classList.remove('is-visible');
+      leaving.addEventListener('transitionend', () => leaving.remove(), { once: true });
+      overlay = null;
+    });
+  });
 }
 
 /* ---- Card Image Carousel ---- */

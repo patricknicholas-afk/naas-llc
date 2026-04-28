@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Interactions — hover expand, phase images
+   Linked directly (not via @import) so browsers always fetch fresh.
+   ========================================================================== */
+
+/* ================================================================
+   PHASE IMAGE — inline placeholder with expand-on-hover
+   ================================================================ */
+.phase-image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  cursor: zoom-in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow var(--duration-normal) var(--ease-default);
+}
+
+.phase-image:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.phase-image__label {
+  font-size: var(--text-caption);
+  color: var(--color-text-tertiary);
+  letter-spacing: var(--tracking-wide);
+  pointer-events: none;
+  user-select: none;
+}
+
+body.theme--light .phase-image {
+  background-color: var(--p-neutral-100);
+}
+
+/* ================================================================
+   IMG EXPAND OVERLAY — fixed centered preview on hover
+   ================================================================ */
+.img-expand-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.96);
+  width: 80vw;
+  max-height: 80vh;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-modal);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-default),
+              transform var(--duration-normal) var(--ease-default);
+  min-height: 200px;
+}
+
+.img-expand-overlay.is-visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.img-expand-overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.img-expand-overlay__label {
+  font-size: var(--text-caption);
+  color: var(--color-text-tertiary);
+  letter-spacing: var(--tracking-wide);
+}
+
+body.theme--light .img-expand-overlay {
+  background-color: var(--p-neutral-100);
+}

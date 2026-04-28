@@ -288,9 +288,9 @@ function initViewToggle() {
 /* ---- Card Image Carousel ---- */
 function initCardCarousels() {
   // Per-card delays (ms): card 1 = 5s, card 2 = 3s, card 3 = 4s
-  const DELAYS = [5000, 3000, 4000];
+  const DELAYS = [5000, 3000, 4000, 3500];
   // Stagger offsets so cards never fire in sync
-  const START_OFFSETS = [0, 1200, 2400];
+  const START_OFFSETS = [0, 1200, 2400, 800];
 
   document.querySelectorAll('.card-carousel').forEach((carousel, idx) => {
     const track  = carousel.querySelector('.card-carousel__track');

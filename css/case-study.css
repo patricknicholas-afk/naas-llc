@@ -1,0 +1,480 @@
+/* ==========================================================================
+   Case Study Layout — cs-* components
+   Used by project-4.html (and future case studies).
+
+   Per-project accent color: set --cs-accent on <main>.
+   e.g. <main style="--cs-accent: #0060AF;">
+
+   All components respect body.theme--light via semantic tokens.
+   ========================================================================== */
+
+/* ================================================================
+   CUSTOM PROPERTY DEFAULTS
+   ================================================================ */
+:root {
+  --cs-accent:          #2563EB;         /* fallback — overridden per project */
+  --cs-accent-dim:      rgba(37, 99, 235, 0.12);
+  --cs-section-py:      var(--space-5xl);
+  --cs-chapter-py:      var(--space-3xl);
+  --cs-split-gap:       var(--space-5xl);
+  --cs-split-col-text:  7fr;
+  --cs-split-col-vis:   5fr;
+}
+
+
+/* ================================================================
+   CS-INTRO — Overview + Meta 2-col block
+   ================================================================ */
+.cs-intro {
+  padding: var(--cs-section-py) 0 var(--space-4xl);
+  background-color: var(--color-bg);
+  transition: background-color var(--duration-theme);
+}
+
+.cs-intro__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl) var(--space-4xl);
+  align-items: start;
+}
+
+.cs-intro__overview-label {
+  font-size: var(--text-caption);
+  font-weight: var(--fw-emphasis);
+  letter-spacing: var(--tracking-overline);
+  text-transform: uppercase;
+  color: var(--cs-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.cs-intro__text {
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-prose);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+}
+
+/* Right: stacked meta list */
+.cs-intro__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding-left: var(--space-2xl);
+  border-left: 1px solid var(--color-border);
+}
+
+.cs-intro__meta-item {
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.cs-intro__meta-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.cs-intro__meta-label {
+  font-size: var(--text-caption);
+  font-weight: var(--fw-emphasis);
+  letter-spacing: var(--tracking-overline);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: 4px;
+}
+
+.cs-intro__meta-value {
+  font-size: var(--text-label);
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  font-weight: var(--fw-emphasis);
+}
+
+@media (max-width: 1024px) {
+  .cs-intro__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+  }
+
+  .cs-intro__meta {
+    padding-left: 0;
+    border-left: none;
+    padding-top: var(--space-2xl);
+    border-top: 1px solid var(--color-border);
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .cs-intro__meta-item {
+    flex: 1 1 calc(50% - var(--space-md));
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .cs-intro__meta-item {
+    flex: 1 1 100%;
+  }
+}
+
+
+/* ================================================================
+   CS-STATEMENT — Large editorial pull statement
+   ================================================================ */
+.cs-statement {
+  padding: var(--space-4xl) 0;
+  background-color: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+  transition: background-color var(--duration-theme),
+              border-color var(--duration-theme);
+}
+
+.cs-statement__text {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.5rem, 2.5vw + 0.5rem, 2.5rem);
+  line-height: 1.35;
+  color: var(--color-text-primary);
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+.cs-statement__text em {
+  font-style: normal;
+  color: var(--cs-accent);
+}
+
+
+/* ================================================================
+   CS-FULL-BLEED — Image with caption
+   ================================================================ */
+.cs-full-bleed {
+  margin: var(--space-4xl) 0;
+}
+
+.cs-full-bleed__frame {
+  width: 100%;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+}
+
+.cs-full-bleed__frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.cs-full-bleed__caption {
+  margin-top: var(--space-sm);
+  font-size: var(--text-caption);
+  color: var(--color-text-tertiary);
+  text-align: center;
+  letter-spacing: var(--tracking-wide);
+}
+
+
+/* ================================================================
+   CS-CHAPTER — Section divider with number + label
+   ================================================================ */
+.cs-chapter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--cs-chapter-py) 0 var(--space-xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.cs-chapter__number {
+  font-size: var(--text-caption);
+  font-weight: var(--fw-emphasis);
+  letter-spacing: var(--tracking-overline);
+  color: var(--cs-accent);
+  font-variant-numeric: tabular-nums;
+  min-width: 2rem;
+}
+
+.cs-chapter__label {
+  font-size: var(--text-h4);
+  font-weight: var(--fw-heading);
+  color: var(--color-text-primary);
+  letter-spacing: var(--tracking-heading);
+  line-height: 1.2;
+}
+
+
+/* ================================================================
+   CS-SPLIT — Two-column text + visual section
+   ================================================================ */
+.cs-split {
+  padding: 0 0 var(--cs-section-py);
+  background-color: var(--color-bg);
+  transition: background-color var(--duration-theme);
+}
+
+/* Display grid is on the section; container has display:contents to
+   let the children participate directly in this grid */
+.cs-split {
+  display: grid;
+  grid-template-columns: var(--cs-split-col-text) var(--cs-split-col-vis);
+  gap: 0 var(--space-4xl);
+  align-items: start;
+  padding-left: var(--grid-margin);
+  padding-right: var(--grid-margin);
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cs-split--flip {
+  grid-template-columns: var(--cs-split-col-vis) var(--cs-split-col-text);
+}
+
+/* Text column */
+.cs-split__text {
+  padding-top: var(--space-lg);
+}
+
+.cs-split__eyebrow {
+  font-size: var(--text-caption);
+  font-weight: var(--fw-emphasis);
+  letter-spacing: var(--tracking-overline);
+  text-transform: uppercase;
+  color: var(--cs-accent);
+  margin-bottom: var(--space-xs);
+}
+
+.cs-split__heading {
+  font-size: var(--text-h3);
+  font-weight: var(--fw-heading);
+  color: var(--color-text-primary);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  margin-bottom: var(--space-lg);
+}
+
+.cs-split__body {
+  font-size: var(--text-body);
+  line-height: var(--leading-prose);
+  color: var(--color-text-secondary);
+}
+
+.cs-split__body p {
+  margin-bottom: var(--space-md);
+}
+
+.cs-split__body p:last-child {
+  margin-bottom: 0;
+}
+
+.cs-split__body ul {
+  margin-top: var(--space-md);
+  margin-bottom: 0;
+  padding-left: 1.25em;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.cs-split__body li {
+  line-height: 1.6;
+}
+
+.cs-split__body li::marker {
+  color: var(--cs-accent);
+}
+
+/* Visual column */
+.cs-split__visual {
+  padding-top: var(--space-lg);
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-lg));
+}
+
+.cs-split__image {
+  width: 100%;
+  min-height: 280px;
+  border-radius: var(--radius-card);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  overflow: hidden;
+  margin-bottom: var(--space-sm);
+}
+
+.cs-split__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cs-split__image-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-tertiary);
+  line-height: 1.5;
+  letter-spacing: var(--tracking-wide);
+}
+
+/* Flipped: visual moves to col 1 */
+.cs-split--flip .cs-split__text {
+  order: 2;
+}
+
+.cs-split--flip .cs-split__visual {
+  order: 1;
+}
+
+@media (max-width: 1024px) {
+  .cs-split,
+  .cs-split--flip {
+    display: flex;
+    flex-direction: column;
+    padding-left: var(--grid-margin);
+    padding-right: var(--grid-margin);
+    gap: var(--space-2xl);
+  }
+
+  .cs-split--flip .cs-split__text,
+  .cs-split--flip .cs-split__visual {
+    order: unset;
+  }
+
+  .cs-split__visual {
+    position: static;
+  }
+}
+
+
+/* ================================================================
+   CS-PULL-QUOTE — Bold blockquote section
+   ================================================================ */
+.cs-pull-quote {
+  padding: var(--space-4xl) 0;
+  background-color: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+  transition: background-color var(--duration-theme),
+              border-color var(--duration-theme);
+}
+
+.cs-pull-quote__text {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.25rem, 1.5vw + 0.5rem, 1.75rem);
+  line-height: 1.45;
+  color: var(--color-text-primary);
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  padding-left: var(--space-2xl);
+  padding-right: var(--space-2xl);
+  position: relative;
+}
+
+.cs-pull-quote__text::before {
+  content: '"';
+  display: block;
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--cs-accent);
+  opacity: 0.4;
+  margin-bottom: -1rem;
+}
+
+.cs-pull-quote__text strong {
+  font-style: normal;
+  font-weight: var(--fw-heading);
+  color: var(--color-text-primary);
+}
+
+
+/* ================================================================
+   CS-STATS — Impact metrics grid
+   ================================================================ */
+.cs-stats {
+  padding: var(--cs-section-py) 0;
+  background-color: var(--color-bg);
+  transition: background-color var(--duration-theme);
+}
+
+.cs-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+}
+
+.cs-stat {
+  padding: var(--space-xl) var(--space-lg);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-card);
+  text-align: center;
+  transition: background-color var(--duration-theme),
+              border-color var(--duration-theme);
+}
+
+.cs-stat__number {
+  font-size: clamp(2.5rem, 4vw + 0.5rem, 4rem);
+  font-weight: var(--fw-black);
+  line-height: 1;
+  color: var(--cs-accent);
+  letter-spacing: var(--tracking-heading);
+  margin-bottom: var(--space-xs);
+  font-variant-numeric: tabular-nums;
+}
+
+.cs-stat__label {
+  font-size: var(--text-caption);
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .cs-stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .cs-stats__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+  }
+
+  .cs-stat {
+    padding: var(--space-lg) var(--space-md);
+  }
+}
+
+
+/* ================================================================
+   THEME — Light mode overrides
+   All semantic-token-based components update automatically.
+   These are for cs-specific elements that need explicit overrides.
+   ================================================================ */
+body.theme--light .cs-stat {
+  background-color: var(--p-neutral-50);
+  border-color: var(--p-neutral-150);
+}
+
+body.theme--light .cs-full-bleed__frame {
+  background-color: var(--p-neutral-100);
+  border-color: var(--p-neutral-200);
+}
+
+body.theme--light .cs-split__image {
+  background-color: var(--p-neutral-100);
+  border-color: var(--p-neutral-200);
+}

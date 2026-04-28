@@ -1408,7 +1408,7 @@ body.theme--light .projects-grid--list .next-project__divider {
   font-weight: var(--fw-emphasis);
   letter-spacing: var(--tracking-overline);
   text-transform: uppercase;
-  color: var(--color-link);
+  color: var(--color-text-tertiary);
   margin-bottom: var(--space-xs);
 }
 
@@ -1418,7 +1418,7 @@ body.theme--light .projects-grid--list .next-project__divider {
   color: var(--color-text-primary);
   line-height: 1.25;
   letter-spacing: var(--tracking-heading);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-xl);
 }
 
 .kpi-card__insight {

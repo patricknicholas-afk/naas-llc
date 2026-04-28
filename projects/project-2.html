@@ -44,9 +44,9 @@
         <p class="hero__eyebrow">Case Study</p>
         <h1 class="hero__title">Audible</h1>
         <p class="hero__subtitle">
-          Redesigning the internal content metadata pipeline at Amazon's Audible,
-          transforming how 500K+ audiobook titles are ingested, enriched, and
-          surfaced to millions of listeners worldwide.
+          Intentionally displaying back-end metadata to meet the customer mindset,
+          aligning purpose and functionality across Audible's product detail page
+          for 500K+ titles worldwide.
         </p>
         <div class="hero__meta">
           <div class="hero__meta-item">
@@ -77,24 +77,28 @@
     <div class="container grid">
       <div class="col-8 tab-col-12">
         <div class="prose">
-          <h2>The Problem</h2>
+          <h2>The Scenario</h2>
+
+          <h3>Business</h3>
           <p>
-            Audible's content catalog was growing faster than the internal tools could
-            handle. The metadata pipeline, the system that ingests, validates, enriches,
-            and publishes audiobook metadata, had been built incrementally over years
-            and was struggling under the weight of 500K+ titles across dozens of markets.
+            Customer data indicated that Audible's product detail page (PDP) functions
+            primarily as a navigational touchpoint. Listeners weren't landing on a title
+            to confirm a decision they'd already made; they were using the PDP to discover
+            their next great listen. That changes everything about what the page needs to do.
           </p>
           <p>
-            Content operations teams were spending 40% of their time on manual data
-            cleanup rather than strategic curation. Error rates in metadata (wrong
-            narrators, missing categories, incorrect series ordering) were directly
-            impacting discovery and customer trust. A title with bad metadata is
-            effectively invisible to listeners.
+            Back-end metadata is rich, but how it surfaces to the customer determines
+            whether that data drives discovery or creates noise. The opportunity was to
+            display that metadata with intention, mapping it directly to how customers
+            think and browse rather than how the system stores it.
           </p>
+
+          <h3>Customer</h3>
           <p>
-            I was brought in to redesign the pipeline's operator experience, making
-            it faster, more accurate, and scalable enough to support Audible's
-            aggressive content expansion.
+            Tag display on the PDP was too widely spread, with insufficient depth in
+            any single dimension. Customers encountered a broad scatter of labels without
+            the breadth to meaningfully orient within a genre, theme, or mood. The result
+            was a page that looked informative but failed to move people forward.
           </p>
         </div>
       </div>
@@ -108,29 +112,42 @@
     <div class="container grid">
       <div class="col-8 tab-col-12">
         <div class="prose">
-          <h2>Research & Discovery</h2>
+          <h2>Technical Context</h2>
           <p>
-            I spent the first 6 weeks embedded with the content operations team,
-            shadowing their workflows, auditing the existing tooling, and mapping
-            the end-to-end data flow from publisher submission to customer-facing
-            product page.
+            Understanding how metadata is structured at the back end was essential
+            to making intentional decisions about what surfaces to the customer and how.
+            Three systems shaped the design constraints.
           </p>
 
-          <h3>Stakeholder Mapping</h3>
+          <h3>Ingestion Model</h3>
           <p>
-            The pipeline touched 5 distinct teams: publisher relations, content
-            ingestion, editorial curation, quality assurance, and localization.
-            Each team had developed workarounds and shadow processes that weren't
-            visible in the official workflow documentation.
+            Metadata enters the Audible system through a structured ingestion pipeline
+            that normalizes and validates submissions from publishers across global markets.
+            The model governs how data is accepted, cleaned, and routed before it ever
+            reaches the customer-facing catalog.
           </p>
 
-          <h3>Key Findings</h3>
+          <h3>World Tree Verticals</h3>
+          <p>
+            Audible's taxonomy is organized around a hierarchical "World Tree" of content
+            verticals, providing a structured L1 through L4 classification framework
+            across genre, theme, subject, and mood. This tree defines the inheritance
+            model for tags and determines which labels a title can legitimately carry.
+          </p>
+
+          <h3>Authoritative vs. Subjective Data</h3>
+          <p>
+            Not all metadata is equal. Authoritative data (narrator, series, publisher,
+            runtime) is factual and verifiable. Subjective and objective data (thematic
+            tags, mood labels, listener-contributed attributes) requires editorial judgment
+            to apply consistently. Designing for both types meant building distinct
+            display patterns for each.
+          </p>
+
+          <h3>Challenges and Risks</h3>
           <ul>
-            <li>Operators toggled between 7 different tools to process a single title; no unified view existed</li>
-            <li>Validation rules were inconsistent across markets, causing titles to pass QA in one region and fail in another</li>
-            <li>Batch operations were essentially impossible: every title required individual attention</li>
-            <li>The error resolution workflow had no state tracking; operators couldn't tell if an issue was already being addressed</li>
-            <li>Institutional knowledge lived in people's heads, not in the system; when experienced operators left, quality dropped</li>
+            <li>Over-saturation of tags: surfacing too much information creates cognitive overload rather than useful orientation</li>
+            <li>Tag duplication: overlapping labels from different taxonomy levels produce redundancy on the page without adding discovery value</li>
           </ul>
         </div>
       </div>
@@ -167,37 +184,37 @@
     <div class="container grid">
       <div class="col-8 tab-col-12">
         <div class="prose">
-          <h2>Design Process</h2>
+          <h2>Recommendations</h2>
           <p>
-            Working within Amazon's design framework, I led a phased redesign
-            that prioritized the highest-impact workflows first while maintaining
-            backward compatibility with existing integrations.
+            Two strategic directions were developed in response to the scenario,
+            each targeting a different layer of the discovery problem.
           </p>
 
-          <h3>Unified Title View</h3>
+          <h3>Ranked Strategies</h3>
           <p>
-            The first intervention was consolidating the 7-tool workflow into
-            a single "title detail" view. I designed a tabbed interface that
-            brought metadata, audio assets, editorial notes, validation status,
-            and publication history into one screen, reducing context-switching
-            by 80%.
+            Rather than displaying all available tags at equal weight, ranked
+            strategies prioritize metadata based on customer relevance signals.
+            Tags most correlated with navigation behavior and conversion surface
+            first, while lower-signal attributes are deprioritized or omitted
+            entirely. This directly addresses the oversaturation risk by letting
+            data quality govern what appears, not what the system happens to have.
           </p>
 
-          <h3>Smart Validation Engine</h3>
+          <h3>P13N Strategies</h3>
           <p>
-            I worked with engineering to surface validation results inline
-            rather than in separate reports. Each metadata field now shows
-            its validation state in real-time, with contextual guidance for
-            resolution. Rules are market-aware; operators see only the
-            requirements relevant to their target region.
+            Personalization strategies adapt the tag display to the individual
+            listener's context: browsing history, genre affinities, and listening
+            patterns inform which metadata dimensions are surfaced on a given PDP.
+            A listener who consistently browses by narrator sees narrator prominence;
+            a listener driven by theme sees thematic tags lead. The page meets the
+            customer where they already are.
           </p>
 
-          <h3>Batch Processing</h3>
+          <h3>Expected Results</h3>
           <p>
-            For bulk operations (re-categorization, narrator corrections,
-            series reordering), I designed a spreadsheet-inspired batch
-            editor with preview, undo, and dry-run capabilities. This
-            was the single most requested feature from the operations team.
+            Both strategies were expected to increase conversion rate (CVR) through
+            more accurate and meaningful informational tags, producing a more optimized
+            and relevant browsing experience for listeners across all catalog segments.
           </p>
         </div>
       </div>
@@ -228,35 +245,34 @@
         <div class="prose">
           <h2>The Solution</h2>
           <p>
-            The redesigned pipeline centered on three principles: consolidate
-            information, automate the repeatable, and surface errors before
-            they reach customers.
+            The design solution centered on a single principle: surface back-end metadata
+            in a way that mirrors the customer's mental model, not the system's data structure.
+            Every display decision mapped back to one of the two strategic directions.
           </p>
 
-          <h3>Pipeline Dashboard</h3>
+          <h3>Intentional Tag Hierarchy</h3>
           <p>
-            A real-time operations dashboard gives team leads visibility into
-            pipeline health: ingestion volume, error rates by category,
-            processing bottlenecks, and SLA compliance. What was previously
-            a weekly manual report is now a live, filterable view.
+            Tags are displayed in a ranked order derived from customer navigation data.
+            The most discovery-relevant dimensions lead; supporting attributes follow.
+            The hierarchy adapts to title type, ensuring a non-fiction title surfaces
+            differently from a thriller without requiring manual editorial override.
           </p>
 
-          <h3>Error Resolution Workflow</h3>
+          <h3>World Tree-Informed Display</h3>
           <p>
-            I designed a stateful error queue with assignment, priority
-            scoring, and resolution tracking. Operators can claim errors,
-            see related issues on the same title, and mark resolutions
-            that automatically update downstream systems. No more fixing
-            the same problem twice.
+            The World Tree vertical structure was used to deduplicate and consolidate
+            tags before they reach the page. Child tags that are fully implied by a
+            parent tag are suppressed, eliminating the redundancy that previously
+            created visual noise without adding navigational value.
           </p>
 
-          <h3>Knowledge Codification</h3>
+          <h3>Personalized Metadata Surfaces</h3>
           <p>
-            To address the institutional knowledge problem, I embedded
-            contextual guidance directly into the interface: inline
-            help, decision trees for ambiguous categorization, and
-            "last edited by" attribution that lets operators learn
-            from each other's decisions.
+            For logged-in listeners, the P13N strategy surfaces the metadata dimension
+            most relevant to their listening history. The underlying tag set remains
+            consistent; the order and prominence shift to match the individual.
+            This required close collaboration with the recommendations engineering
+            team to expose the right signals at the right time.
           </p>
         </div>
       </div>
@@ -313,40 +329,65 @@
   </section>
 
   <!-- ============================================================
-       7. IMPACT — Quantitative Results
+       7. IMPACT — Contributions
        ============================================================ -->
   <section class="section section--alt">
     <div class="container grid">
       <div class="col-8 tab-col-12">
         <div class="prose">
-          <h2>Impact</h2>
+          <h2>Contributions</h2>
           <p>
-            The redesigned pipeline shipped across all Audible markets and
-            became the standard tool for content operations globally.
-          </p>
-          <ul>
-            <li><strong>60% reduction in processing time</strong> per title (from 12 minutes to under 5)</li>
-            <li><strong>40% fewer metadata errors</strong> reaching the customer-facing catalog</li>
-            <li><strong>3x increase in batch processing throughput</strong>, enabling faster catalog expansion</li>
-            <li><strong>Tool consolidation from 7 systems to 1</strong>, eliminating context-switching overhead</li>
-            <li><strong>Net Promoter Score of 78</strong> among internal operators (up from 23)</li>
-          </ul>
-          <p>
-            The unified title view and validation engine patterns were later
-            adopted by two other Amazon internal tools teams as reference
-            implementations.
-          </p>
-
-          <h3>What I Learned</h3>
-          <p>
-            Designing for internal tools at scale taught me that operator
-            efficiency compounds. A 7-minute improvement per title across
-            500K titles per year translates to thousands of hours reclaimed.
-            The lesson: internal tools deserve the same design rigor as
-            consumer products; the ROI is often higher because the usage
-            is daily and mandatory.
+            The work produced five distinct deliverables, each designed to
+            serve a specific team and create lasting value beyond the immediate
+            project scope.
           </p>
         </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="grid">
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For Development</span>
+            <h3 class="kpi-card__metric">Back-End Data Strategies</h3>
+            <p class="kpi-card__insight">New back-end strategies to improve data structures, giving engineering a clear framework for how metadata should be organized and prioritized before it ever reaches the front end.</p>
+          </div>
+        </div>
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For Development &amp; Design</span>
+            <h3 class="kpi-card__metric">Design System Components</h3>
+            <p class="kpi-card__insight">Scalable, reusable design system components built to handle the full range of metadata display states, ensuring consistency across the catalog and reducing one-off implementation work.</p>
+          </div>
+        </div>
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For Stakeholder Alignment</span>
+            <h3 class="kpi-card__metric">PDP Architecture</h3>
+            <p class="kpi-card__insight">A data-driven customer mental model architecture for the PDP, providing stakeholders with a principled framework for evaluating future optimizations against actual browsing behavior.</p>
+          </div>
+        </div>
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For UX Research</span>
+            <h3 class="kpi-card__metric">Research Frameworks</h3>
+            <p class="kpi-card__insight">A usability interview guide and customer mental model frameworks, giving the research team the tools to continue validating metadata display decisions with real listeners over time.</p>
+          </div>
+        </div>
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For Design &amp; UX Research</span>
+            <h3 class="kpi-card__metric">User Task Flows</h3>
+            <p class="kpi-card__insight">User task flows mapped across major information architecture states, creating a shared reference for both design and research to evaluate how customers navigate through the catalog.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>

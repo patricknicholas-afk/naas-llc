@@ -1388,6 +1388,59 @@ body.theme--light .projects-grid--list .next-project__divider {
   background-color: var(--p-neutral-50);
 }
 
+
+/* ================================================================
+   KPI CARD — Business Opportunity metrics on project pages
+   ================================================================ */
+.kpi-card {
+  padding: var(--space-xl);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-card);
+  height: 100%;
+  transition: background-color var(--duration-theme),
+              border-color var(--duration-theme);
+}
+
+.kpi-card__label {
+  display: inline-block;
+  font-size: var(--text-caption);
+  font-weight: var(--fw-emphasis);
+  letter-spacing: var(--tracking-overline);
+  text-transform: uppercase;
+  color: var(--color-link);
+  margin-bottom: var(--space-xs);
+}
+
+.kpi-card__metric {
+  font-size: var(--text-h4);
+  font-weight: var(--fw-heading);
+  color: var(--color-text-primary);
+  line-height: 1.25;
+  letter-spacing: var(--tracking-heading);
+  margin-bottom: var(--space-md);
+}
+
+.kpi-card__insight {
+  font-size: var(--text-label);
+  line-height: var(--leading-body);
+  color: var(--color-text-secondary);
+}
+
+/* Light theme */
+body.theme--light .kpi-card {
+  background-color: var(--p-neutral-50);
+  border-color: var(--p-neutral-150);
+}
+
+body.theme--light .kpi-card__metric {
+  color: var(--p-neutral-900);
+}
+
+body.theme--light .kpi-card__insight {
+  color: var(--p-neutral-500);
+}
+
 .section--light-trigger.is-light .text-body,
 .section--light-trigger.is-light .text-secondary {
   color: var(--p-neutral-500);

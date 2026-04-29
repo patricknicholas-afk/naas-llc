@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/main.css?v=20260428">
+  <link rel="stylesheet" href="../css/main.css?v=20260429">
 </head>
 <body>
 
@@ -66,9 +66,20 @@
             <span class="hero__meta-value">Amazon / Audible</span>
           </div>
         </div>
+
+        <div class="hero-tabs" role="tablist" aria-label="Audible case study sections">
+          <button class="hero-tab" role="tab" aria-selected="true"  data-tab="metadata">Metadata Case Study</button>
+          <button class="hero-tab" role="tab" aria-selected="false" data-tab="ui-uat">UI &amp; UAT Case Study</button>
+          <button class="hero-tab" role="tab" aria-selected="false" data-tab="report">Report Feature Case Study</button>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- ============================================================
+       TAB PANEL: Metadata Case Study
+       ============================================================ -->
+  <div class="tab-panel" id="panel-metadata" role="tabpanel">
 
   <!-- ============================================================
        2. PROBLEM — Business Context & User Pain Points
@@ -391,6 +402,46 @@
       </div>
     </div>
   </section>
+
+  </div><!-- /panel-metadata -->
+
+  <!-- ============================================================
+       TAB PANEL: UI & UAT Case Study
+       ============================================================ -->
+  <div class="tab-panel" id="panel-ui-uat" role="tabpanel" hidden>
+    <section class="section">
+      <div class="container">
+        <div class="tab-panel-placeholder">
+          <span class="tab-panel-placeholder__label">Coming Soon</span>
+          <h2 class="tab-panel-placeholder__title">UI &amp; UAT Case Study</h2>
+          <p class="tab-panel-placeholder__body">
+            This section will cover the front-end design execution and user acceptance
+            testing cycles that validated the metadata display changes across Audible's
+            product detail page, including cross-team coordination with engineering and QA.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div><!-- /panel-ui-uat -->
+
+  <!-- ============================================================
+       TAB PANEL: Report Feature Case Study
+       ============================================================ -->
+  <div class="tab-panel" id="panel-report" role="tabpanel" hidden>
+    <section class="section">
+      <div class="container">
+        <div class="tab-panel-placeholder">
+          <span class="tab-panel-placeholder__label">Coming Soon</span>
+          <h2 class="tab-panel-placeholder__title">Report Feature Case Study</h2>
+          <p class="tab-panel-placeholder__body">
+            This section will document the design of Audible's content reporting feature,
+            covering the moderation workflow, user-facing flag and report UX, and the
+            internal tooling built to support the DSA compliance requirements.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div><!-- /panel-report -->
 
   <!-- Next Project -->
   <section class="section">

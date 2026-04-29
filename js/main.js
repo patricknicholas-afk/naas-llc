@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initViewToggle();
   initCardCarousels();
   initImageExpand();
+  initHeroTabs();
 });
 
 /* ---- Mobile Navigation Toggle ---- */
@@ -324,6 +325,42 @@ function initImageExpand() {
       leaving.classList.remove('is-visible');
       leaving.addEventListener('transitionend', () => leaving.remove(), { once: true });
       overlay = null;
+    });
+  });
+}
+
+/* ---- Hero Tab Switching ---- */
+function initHeroTabs() {
+  const tabGroups = document.querySelectorAll('.hero-tabs');
+  if (!tabGroups.length) return;
+
+  tabGroups.forEach(tabGroup => {
+    const tabs = Array.from(tabGroup.querySelectorAll('.hero-tab'));
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.dataset.tab;
+
+        // Update tab ARIA states
+        tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+        tab.setAttribute('aria-selected', 'true');
+
+        // Show / hide panels
+        document.querySelectorAll('.tab-panel').forEach(panel => {
+          if (panel.id === `panel-${targetId}`) {
+            panel.removeAttribute('hidden');
+          } else {
+            panel.setAttribute('hidden', '');
+          }
+        });
+
+        // Scroll to just below hero so user sees new content
+        const hero = document.querySelector('.hero');
+        if (hero) {
+          const offset = hero.offsetTop + hero.offsetHeight;
+          window.scrollTo({ top: offset, behavior: 'smooth' });
+        }
+      });
     });
   });
 }

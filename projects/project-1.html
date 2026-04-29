@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/main.css?v=20260428">
-  <link rel="stylesheet" href="../css/interactions.css?v=20260428">
+  <link rel="stylesheet" href="../css/main.css?v=20260429">
+  <link rel="stylesheet" href="../css/interactions.css?v=20260429">
 </head>
 <body>
 
@@ -67,9 +67,19 @@
             <span class="hero__meta-value">2M+ Users</span>
           </div>
         </div>
+
+        <div class="hero-tabs" role="tablist" aria-label="DubClub case study sections">
+          <button class="hero-tab" role="tab" aria-selected="true" data-tab="b2c">B2C Case Study</button>
+          <button class="hero-tab" role="tab" aria-selected="false" data-tab="b2b">B2B Case Study</button>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- ============================================================
+       TAB PANEL: B2C Case Study
+       ============================================================ -->
+  <div class="tab-panel" id="panel-b2c" role="tabpanel">
 
   <!-- ============================================================
        2. PROBLEM — Business Context & User Pain Points
@@ -483,6 +493,27 @@
       </div>
     </div>
   </section>
+
+  </div><!-- /panel-b2c -->
+
+  <!-- ============================================================
+       TAB PANEL: B2B Case Study
+       ============================================================ -->
+  <div class="tab-panel" id="panel-b2b" role="tabpanel" hidden>
+    <section class="section">
+      <div class="container">
+        <div class="tab-panel-placeholder">
+          <span class="tab-panel-placeholder__label">Coming Soon</span>
+          <h2 class="tab-panel-placeholder__title">B2B Partners Case Study</h2>
+          <p class="tab-panel-placeholder__body">
+            The B2B DubClub partner experience case study is being prepared.
+            This section will cover the partner onboarding flow, capper dashboard
+            design, and revenue-sharing tools built for the professional side of the platform.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div><!-- /panel-b2b -->
 
   <!-- Next Project -->
   <section class="section">

@@ -173,8 +173,13 @@ function initProjectThemeScroll() {
   // Only runs on project pages (hero--project present)
   if (!document.querySelector('.hero--project')) return;
 
-  // Watch the first content section after the hero — same timing as About page
-  const firstSection = document.querySelector('.hero--project + * + * , .hero--project ~ .section');
+  // Watch the first content element after the hero.
+  // Sections may now be wrapped in .tab-panel divs, so check for that first,
+  // then fall back to the old direct-sibling selectors for pages without tabs.
+  const firstSection =
+    document.querySelector('.hero--project ~ .tab-panel') ||
+    document.querySelector('.hero--project + * + *')      ||
+    document.querySelector('.hero--project ~ .section');
   if (!firstSection) return;
 
   const observer = new IntersectionObserver((entries) => {

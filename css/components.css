@@ -317,7 +317,6 @@ body.theme--light .hero--project .hero__meta-value { color: var(--p-neutral-50);
   align-items: center;
   gap: 2px;
   background: var(--nav-bg);
-  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--p-radius-md);
   padding: 8px 16px;
   margin-top: var(--space-xl);
@@ -356,7 +355,7 @@ body.theme--light .hero--project .hero__meta-value { color: var(--p-neutral-50);
 }
 
 /* Keep hero tabs dark even when body.theme--light fires */
-body.theme--light .hero-tabs         { background: var(--nav-bg); border-color: rgba(255,255,255,0.08); }
+body.theme--light .hero-tabs         { background: var(--nav-bg); }
 body.theme--light .hero-tab          { color: rgba(255, 255, 255, 0.5); }
 body.theme--light .hero-tab[aria-selected="true"] { color: var(--p-neutral-0); }
 

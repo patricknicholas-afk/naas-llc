@@ -173,13 +173,14 @@ function initProjectThemeScroll() {
   // Only runs on project pages (hero--project present)
   if (!document.querySelector('.hero--project')) return;
 
-  // Watch the first section after the hero.
-  // Content may now be wrapped in a .tab-panel div, so look inside that first;
-  // fall back to old direct-sibling selectors for pages without tabs.
+  // Prefer the .tabs-strip (now sits between hero and panels) — it's small so
+  // the threshold fires the moment it enters the viewport, giving an instant
+  // dark→light transition. Fall back to first section for pages without tabs.
   const panel = document.querySelector('.hero--project ~ .tab-panel');
-  const firstSection = panel
-    ? panel.querySelector('section')
-    : document.querySelector('.hero--project + * + *, .hero--project ~ .section');
+  const firstSection =
+    document.querySelector('.hero--project ~ .tabs-strip') ||
+    (panel ? panel.querySelector('section') : null) ||
+    document.querySelector('.hero--project + * + *, .hero--project ~ .section');
   if (!firstSection) return;
 
   const observer = new IntersectionObserver((entries) => {

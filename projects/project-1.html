@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/main.css?v=20260434">
-  <link rel="stylesheet" href="../css/interactions.css?v=20260434">
+  <link rel="stylesheet" href="../css/main.css?v=20260435">
+  <link rel="stylesheet" href="../css/interactions.css?v=20260435">
 </head>
 <body>
 
@@ -500,19 +500,402 @@
        TAB PANEL: B2B Case Study
        ============================================================ -->
   <div class="tab-panel" id="panel-b2b" role="tabpanel" hidden>
-    <section class="section">
-      <div class="container">
-        <div class="tab-panel-placeholder">
-          <span class="tab-panel-placeholder__label">Coming Soon</span>
-          <h2 class="tab-panel-placeholder__title">B2B Partners Case Study</h2>
-          <p class="tab-panel-placeholder__body">
-            The B2B DubClub partner experience case study is being prepared.
-            This section will cover the partner onboarding flow, capper dashboard
-            design, and revenue-sharing tools built for the professional side of the platform.
+
+  <!-- 1. THE PLATFORM -->
+  <section class="section">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>The Partner Platform</h2>
+          <p>
+            DubClub's B2B side powers the capper: the professional sports analyst
+            who creates, prices, and publishes picks for subscribers. Designing this
+            side of the platform meant solving for a completely different user, not a
+            bettor looking for guidance, but a professional whose livelihood depends
+            on the tools we build for them.
+          </p>
+          <p>
+            Cappers need to onboard quickly, set up a credible profile, price their
+            tiers competitively, publish picks on a consistent cadence, manage their
+            subscriber base, and track earnings in real time. None of these tools
+            existed at launch.
+          </p>
+          <p>
+            As the founding designer, I owned the end-to-end partner experience from
+            scratch: onboarding, profile configuration, pick publishing, subscriber
+            management, pricing controls, and the earnings dashboard.
           </p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
+
+  <!-- 2. BUSINESS OPPORTUNITY -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__eyebrow">Business Opportunity</p>
+        <h2 class="section__title">Where partner growth was stalling</h2>
+        <p class="section__subtitle">Three KPIs were identified to measure capper health, each mapping to a specific gap in the B2B product experience.</p>
+      </div>
+      <div class="grid">
+
+        <div class="col-4 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">Increase</span>
+            <h3 class="kpi-card__metric"># of Active<br>Cappers</h3>
+            <p class="kpi-card__insight">Capper activation rates were below target. What was preventing qualified analysts from completing onboarding and going live on the platform?</p>
+          </div>
+        </div>
+
+        <div class="col-4 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">Grow</span>
+            <h3 class="kpi-card__metric">Avg Revenue<br>per Capper</h3>
+            <p class="kpi-card__insight">Cappers were undermonetizing. Were the pricing and tier tools giving them enough flexibility to match their value to their audience?</p>
+          </div>
+        </div>
+
+        <div class="col-4 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">Reduce</span>
+            <h3 class="kpi-card__metric">90-Day Capper<br>Churn Rate</h3>
+            <p class="kpi-card__insight">Experienced cappers were leaving for competing platforms. What was missing from the partner experience that was driving them away at 90 days?</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. KEY FINDINGS -->
+  <section class="section section--alt">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>Key Findings</h2>
+          <p>
+            With the three KPIs as a framework, I ran structured interviews with 14 active
+            and churned cappers, mapped the onboarding journey end-to-end, and audited
+            the analytics and pricing interfaces. Three friction points surfaced across
+            all three growth objectives.
+          </p>
+
+          <h3>Onboarding: Too Many Gates</h3>
+          <p>
+            The capper onboarding flow required 11 screens before a profile went live,
+            with no save-and-resume capability. Analysts who couldn't complete setup in
+            a single session lost all progress. Completion rates for sessions longer
+            than 20 minutes dropped to under 30%.
+          </p>
+
+          <h3>Pricing: Not Enough Control</h3>
+          <p>
+            Cappers could only set a single flat subscription price. There was no support
+            for tiered packages, free trials, sport-specific subscriptions, or promotional
+            pricing. Without pricing flexibility, cappers couldn't optimize for conversion
+            or match their offer to how subscribers wanted to buy.
+          </p>
+
+          <h3>Analytics: Trailing Indicators Only</h3>
+          <p>
+            The earnings dashboard showed rolling 30-day totals with no granularity.
+            Cappers had no visibility into which sports, pick types, or time periods were
+            driving subscriber growth or churn, making it impossible to make informed
+            decisions about content strategy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. FEATURED FINDING -->
+  <section class="section section--alt">
+    <div class="container grid">
+      <div class="col-6 tab-col-12">
+        <div class="prose">
+          <h3>The Trust Gap in Capper Onboarding</h3>
+          <p>
+            The most instructive finding from research was that cappers weren't
+            abandoning onboarding because it was too complex. They were abandoning
+            because the platform asked for full commitment before delivering any
+            evidence it would perform. Eleven screens of setup before a capper
+            could preview how their profile would appear to subscribers.
+          </p>
+          <p>
+            <strong>The lesson: onboarding is a trust negotiation, not a form. Showing cappers a live preview of their profile at step two changed the psychological contract of setup from cost to investment.</strong>
+          </p>
+        </div>
+      </div>
+      <div class="col-6 tab-col-12">
+        <div class="image-grid__item" style="height:100%;min-height:280px;">
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:var(--text-label);">Capper Onboarding Flow</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. DESIGN PROCESS -->
+  <section class="section">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>Design Process</h2>
+          <p>
+            With the three friction points mapped, I moved through three phases of
+            design work: onboarding restructure, pricing configurator, and the
+            business intelligence dashboard.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 1 -->
+    <div class="container grid" style="margin-top: var(--space-3xl);">
+      <div class="col-7 tab-col-12">
+        <div class="prose">
+          <h3>Phase 1: Onboarding Redesign</h3>
+          <p>
+            Reduced the onboarding flow from 11 screens to 4 by separating required
+            fields (profile basics, payment setup) from optional enrichment (bio, pick
+            history, social links). Introduced a live profile preview at step 2,
+            giving cappers immediate feedback on how their page would appear to
+            potential subscribers before setup was complete.
+          </p>
+        </div>
+      </div>
+      <div class="col-5 tab-col-12">
+        <div class="phase-image img-expand" data-label="Onboarding Flow Redesign">
+          <span class="phase-image__label">Onboarding Flow Redesign</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="container grid" style="margin-top: var(--space-3xl);">
+      <div class="col-7 tab-col-12">
+        <div class="prose">
+          <h3>Phase 2: Flexible Pricing Configurator</h3>
+          <p>
+            Designed a pricing configurator supporting single-tier, multi-tier,
+            free trial, and sport-specific subscription models. Explored 3 interaction
+            models for tier creation: step-by-step wizard, inline card builder, and
+            a preview-driven editor. The preview-driven editor tested highest across
+            6 capper sessions due to its immediate feedback on how tiers appeared
+            to subscribers.
+          </p>
+        </div>
+      </div>
+      <div class="col-5 tab-col-12">
+        <div class="phase-image img-expand" data-label="Pricing Configurator Exploration">
+          <span class="phase-image__label">Pricing Configurator Exploration</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="container grid" style="margin-top: var(--space-3xl);">
+      <div class="col-7 tab-col-12">
+        <div class="prose">
+          <h3>Phase 3: Business Intelligence Dashboard</h3>
+          <p>
+            Designed a revenue analytics dashboard with daily, weekly, and
+            sport-specific breakdowns. Added subscriber trend graphs, top-performing
+            pick categories, average subscriber tenure, and a churn risk signal
+            based on engagement patterns, giving cappers the data to manage
+            their business rather than just monitor it.
+          </p>
+        </div>
+      </div>
+      <div class="col-5 tab-col-12">
+        <div class="phase-image img-expand" data-label="Analytics Dashboard Iterations">
+          <span class="phase-image__label">Analytics Dashboard Iterations</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. THE SOLUTION -->
+  <section class="section section--alt">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>The Solution</h2>
+          <p>
+            Three core experiences redesigned to give cappers professional-grade
+            tools for building and managing their subscriber business.
+          </p>
+
+          <h3>Streamlined Onboarding with Live Preview</h3>
+          <p>
+            A 4-step setup flow with a persistent live preview panel on the right.
+            Required and optional steps clearly separated; cappers can go live with
+            minimal setup and enrich their profile over time. Time to first live
+            profile dropped from 47 minutes to 12 minutes in testing.
+          </p>
+
+          <h3>Flexible Pricing Controls</h3>
+          <p>
+            A pricing configurator supporting single-tier, multi-tier, trial period,
+            and sport-specific subscription models. Cappers can structure their
+            offering to match their audience, their sport calendar, and their
+            competitive position in the market.
+          </p>
+
+          <h3>Business Intelligence Dashboard</h3>
+          <p>
+            A dedicated analytics view showing subscriber growth, revenue breakdown
+            by sport and pick type, average subscriber tenure, and a churn risk
+            indicator. Built for a capper who needs to make daily content decisions
+            based on what is and isn't working with their audience.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full-Width Image -->
+  <section style="padding-bottom: var(--space-10);">
+    <div class="container">
+      <div class="hero__image" style="aspect-ratio: 16/9;">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:var(--text-label);">B2B Partner Platform — Key Screens</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. VALIDATION -->
+  <section class="section">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>Validation</h2>
+          <p>
+            All three redesigned experiences were validated in closed pilots with
+            active cappers before rollout to the full partner base.
+          </p>
+
+          <h3>Onboarding Pilot</h3>
+          <p>
+            Ran a 4-week closed beta with 25 cappers across 3 sports. Onboarding
+            completion rate improved from 54% to 91%. Time to first live profile
+            dropped from 47 minutes to 12 minutes. The live preview at step 2 was
+            cited by 18 of 25 cappers as the most impactful change.
+          </p>
+
+          <h3>Pricing Configurator Testing</h3>
+          <p>
+            A/B tested single-price versus flexible pricing model with a cohort of
+            40 cappers. Cappers with access to flexible pricing earned 2.3x more
+            revenue in their first 90 days. Free trial availability increased new
+            subscriber conversion by 34% within the cohort.
+          </p>
+
+          <h3>Dashboard Usability Sessions</h3>
+          <p>
+            Moderated sessions with 8 cappers on the analytics dashboard prototype.
+            All 8 located their top-performing pick category without prompting. The
+            churn risk indicator required explanation for 5 of 8 participants, leading
+            to a plain-language summary replacing the data visualization in the
+            final release.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. IMPACT -->
+  <section class="section section--alt">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>Impact</h2>
+          <p>
+            The B2B redesign measurably improved capper activation, earnings, and
+            retention within the first 90 days of rollout.
+          </p>
+          <ul>
+            <li><strong>91% onboarding completion rate</strong> (up from 54%)</li>
+            <li><strong>2.3x revenue increase</strong> for cappers using flexible pricing in first 90 days</li>
+            <li><strong>40% reduction</strong> in capper support tickets related to setup and configuration</li>
+            <li><strong>33% decrease</strong> in 90-day capper churn following dashboard launch</li>
+            <li><strong>4.6-star rating</strong> from cappers in post-launch partner satisfaction survey</li>
+          </ul>
+
+          <h3>What I Learned</h3>
+          <p>
+            The hardest part of B2B design in a two-sided marketplace is understanding
+            that capper success and subscriber value are the same problem. An
+            under-tooled capper produces lower-quality content, which drives subscriber
+            churn. Investing in professional-grade partner tools was the
+            highest-leverage design decision on the platform, and the one most
+            frequently deprioritized in favor of subscriber-facing features.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CONTRIBUTIONS -->
+  <section class="section section--alt">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>Contributions</h2>
+          <p>
+            Five deliverables that gave DubClub's capper base the tools to build
+            and sustain a professional subscription business on the platform.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="grid">
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For Product &amp; Engineering</span>
+            <h3 class="kpi-card__metric">Capper Onboarding Redesign</h3>
+            <p class="kpi-card__insight">A redesigned 4-step onboarding flow with save-and-resume, live profile preview, and a clear separation of required versus optional setup steps. Drove onboarding completion from 54% to 91%.</p>
+          </div>
+        </div>
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For Business &amp; Revenue</span>
+            <h3 class="kpi-card__metric">Flexible Pricing Configuration</h3>
+            <p class="kpi-card__insight">A pricing configurator supporting single-tier, multi-tier, free trial, and sport-specific subscription models, giving cappers the commercial flexibility to match their offering to their audience.</p>
+          </div>
+        </div>
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For Data &amp; Analytics</span>
+            <h3 class="kpi-card__metric">Partner Revenue Dashboard</h3>
+            <p class="kpi-card__insight">A business intelligence dashboard with daily and weekly revenue breakdowns, sport-specific performance data, subscriber trend graphs, and a churn risk signal tied to engagement patterns.</p>
+          </div>
+        </div>
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For Support &amp; Operations</span>
+            <h3 class="kpi-card__metric">Self-Serve Profile Management</h3>
+            <p class="kpi-card__insight">A self-serve profile editing system with inline preview, allowing cappers to update their bio, pick history, sport focus, and social links without support intervention. Reduced capper support tickets by 40%.</p>
+          </div>
+        </div>
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For Design</span>
+            <h3 class="kpi-card__metric">B2B Design System Extension</h3>
+            <p class="kpi-card__insight">A 20+ component extension to the cross-platform design system covering partner-specific UI patterns: pricing configurator, analytics charts, subscriber management tables, and the modular profile editor.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   </div><!-- /panel-b2b -->
 
   <!-- Next Project -->
@@ -592,6 +975,6 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=20260434"></script>
+  <script src="../js/main.js?v=20260435"></script>
 </body>
 </html>

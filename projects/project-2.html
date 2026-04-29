@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/main.css?v=20260434">
+  <link rel="stylesheet" href="../css/main.css?v=20260435">
 </head>
 <body>
 
@@ -409,38 +409,808 @@
        TAB PANEL: UI & UAT Case Study
        ============================================================ -->
   <div class="tab-panel" id="panel-ui-uat" role="tabpanel" hidden>
-    <section class="section">
-      <div class="container">
-        <div class="tab-panel-placeholder">
-          <span class="tab-panel-placeholder__label">Coming Soon</span>
-          <h2 class="tab-panel-placeholder__title">UI &amp; UAT Case Study</h2>
-          <p class="tab-panel-placeholder__body">
-            This section will cover the front-end design execution and user acceptance
-            testing cycles that validated the metadata display changes across Audible's
-            product detail page, including cross-team coordination with engineering and QA.
+
+  <!-- 1. THE CONTEXT -->
+  <section class="section">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>The Context</h2>
+          <p>
+            The UI and UAT work represented the execution phase of the metadata
+            redesign — translating approved design direction into production-ready
+            specifications, coordinating with engineering on implementation, and
+            running structured user acceptance testing to validate the live build
+            against design intent.
+          </p>
+          <p>
+            At Audible's catalog scale, every metadata display decision interacts
+            with hundreds of edge cases across 500K+ titles. UAT wasn't a formality;
+            it was the mechanism for catching those cases before they reached listeners
+            at scale.
+          </p>
+          <p>
+            My role spanned the full execution arc: writing UI specifications for
+            every display state, embedding with engineering during sprint implementation,
+            and leading two structured UAT sprints across design, QA, content operations,
+            and product management.
           </p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
+
+  <!-- 2. BUSINESS OPPORTUNITY -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__eyebrow">Business Opportunity</p>
+        <h2 class="section__title">What execution quality protects</h2>
+        <p class="section__subtitle">Three KPIs defined what it meant to ship the metadata redesign correctly, not just completely.</p>
+      </div>
+      <div class="grid">
+
+        <div class="col-4 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">Ensure</span>
+            <h3 class="kpi-card__metric">Design-to-Build<br>Fidelity</h3>
+            <p class="kpi-card__insight">Were implemented metadata displays matching approved designs? Visual inconsistencies at catalog scale would undermine the entire metadata strategy before it reached listeners.</p>
+          </div>
+        </div>
+
+        <div class="col-4 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">Reduce</span>
+            <h3 class="kpi-card__metric">UAT Defect<br>Rate</h3>
+            <p class="kpi-card__insight">How many design-spec violations were being caught in UAT versus post-launch? Catching defects before launch is an order of magnitude cheaper than catching them in production.</p>
+          </div>
+        </div>
+
+        <div class="col-4 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">Accelerate</span>
+            <h3 class="kpi-card__metric">Iteration<br>Cycle Speed</h3>
+            <p class="kpi-card__insight">How quickly could design and engineering respond to new edge cases discovered during UAT without destabilizing the broader release timeline?</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. KEY FINDINGS -->
+  <section class="section section--alt">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>Key Findings</h2>
+          <p>
+            Two UAT sprints across 6 metadata categories surfaced 31 defects and
+            revealed three systemic issues that would not have been caught by
+            standard design review.
+          </p>
+
+          <h3>Tag Overflow: No Defined Behavior</h3>
+          <p>
+            The metadata display had no specified behavior for titles with 12 or
+            more tags in a single category. Without a truncation or pagination
+            pattern, the layout broke for approximately 8% of the catalog — roughly
+            40,000 titles with valid back-end metadata and broken front-end display.
+          </p>
+
+          <h3>Authoritative vs. Subjective Tags: Rendered Identically</h3>
+          <p>
+            The approved design visually differentiated authoritative metadata
+            (narrator, publisher, runtime) from subjective tags (mood, theme,
+            listener-contributed attributes). Engineering had implemented both
+            identically, collapsing a distinction that was central to the
+            metadata strategy.
+          </p>
+
+          <h3>Mobile Rendering: Approved at Desktop Only</h3>
+          <p>
+            Designs were reviewed and approved at the desktop breakpoint. Mobile
+            rendering in UAT revealed three layout failures in the tag hierarchy
+            display that had not been caught in design review, affecting the
+            majority of Audible's listener base.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. FEATURED FINDING -->
+  <section class="section section--alt">
+    <div class="container grid">
+      <div class="col-6 tab-col-12">
+        <div class="prose">
+          <h3>Edge Cases at Scale Are a Design Discipline</h3>
+          <p>
+            The most significant discovery in UAT was that 8% of Audible's catalog
+            had metadata configurations that were perfectly valid in the back end
+            but produced broken layouts in the front end. These weren't bugs in
+            the code; they were gaps in the design specification. No one had
+            designed the failure states.
+          </p>
+          <p>
+            <strong>The lesson: for catalog-scale products, defining failure states with the same rigor as the primary happy path is not a refinement — it is a requirement.</strong>
+          </p>
+        </div>
+      </div>
+      <div class="col-6 tab-col-12">
+        <div class="image-grid__item" style="height:100%;min-height:280px;">
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:var(--text-label);">Tag Overflow Edge Cases</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. DESIGN PROCESS -->
+  <section class="section">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>Design Process</h2>
+          <p>
+            The UI and UAT work ran across three overlapping phases, each building
+            on the prior: specification, implementation coordination, and structured
+            acceptance testing.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 1 -->
+    <div class="container grid" style="margin-top: var(--space-3xl);">
+      <div class="col-7 tab-col-12">
+        <div class="prose">
+          <h3>Phase 1: Production Specification</h3>
+          <p>
+            Produced a complete UI specification covering 47 metadata display states:
+            normal, truncated, empty, overflow, loading, and error. Each state
+            documented with annotated Figma frames, engineering acceptance criteria,
+            and explicit rules for the 12 edge case patterns identified in the
+            metadata audit. This spec became the contract between design and engineering.
+          </p>
+        </div>
+      </div>
+      <div class="col-5 tab-col-12">
+        <div class="phase-image img-expand" data-label="47-State UI Specification">
+          <span class="phase-image__label">47-State UI Specification</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="container grid" style="margin-top: var(--space-3xl);">
+      <div class="col-7 tab-col-12">
+        <div class="prose">
+          <h3>Phase 2: Engineering Handoff &amp; QA Coordination</h3>
+          <p>
+            Embedded with the engineering team during sprint implementation to catch
+            spec deviations early. Ran three design QA checkpoints per sprint cycle,
+            reviewing implemented components against approved designs using a shared
+            deviation log. The log reduced back-and-forth between design and
+            engineering by eliminating ambiguity about what was intentional versus
+            incorrect.
+          </p>
+        </div>
+      </div>
+      <div class="col-5 tab-col-12">
+        <div class="phase-image img-expand" data-label="Sprint QA Deviation Log">
+          <span class="phase-image__label">Sprint QA Deviation Log</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="container grid" style="margin-top: var(--space-3xl);">
+      <div class="col-7 tab-col-12">
+        <div class="prose">
+          <h3>Phase 3: UAT Sprint Execution</h3>
+          <p>
+            Led two structured UAT sprints organized by metadata type — authoritative,
+            subjective, and mixed — to isolate defect patterns. Sprint 1 identified
+            18 defects; Sprint 2 found 13 new defects plus 5 regressions from Sprint 1
+            fixes. Introduced a regression checklist for all Sprint 2 resolutions,
+            eliminating regression recurrence in subsequent cycles.
+          </p>
+        </div>
+      </div>
+      <div class="col-5 tab-col-12">
+        <div class="phase-image img-expand" data-label="UAT Sprint Structure">
+          <span class="phase-image__label">UAT Sprint Structure</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. THE SOLUTION -->
+  <section class="section section--alt">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>The Solution</h2>
+          <p>
+            Three artifacts that closed the gap between design intent and production
+            reality at Audible's catalog scale.
+          </p>
+
+          <h3>Complete Display State Library</h3>
+          <p>
+            A 47-state UI specification covering every metadata display condition
+            across the catalog — overflow rules, empty states, mixed authoritative
+            and subjective tag handling, and mobile-specific layout variants.
+            Adopted as the metadata design standard across Audible.
+          </p>
+
+          <h3>Tag Overflow Pattern</h3>
+          <p>
+            A progressive disclosure design for tag-heavy titles: 8 tags visible
+            by default with overflow revealed on expansion, and a compact summary
+            line for mobile that surfaces the 3 highest-priority tags. Resolved
+            the layout failures affecting 8% of the catalog.
+          </p>
+
+          <h3>Mobile-First Metadata Revision</h3>
+          <p>
+            A full mobile pass of the metadata display, resequencing the tag
+            hierarchy for single-column layout and introducing a horizontal scroll
+            pattern for series metadata on narrow viewports. The mobile revision
+            was completed inside the UAT sprint cycle without delaying the
+            launch timeline.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full-Width Image -->
+  <section style="padding-bottom: var(--space-10);">
+    <div class="container">
+      <div class="hero__image" style="aspect-ratio: 16/9;">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:var(--text-label);">UI Specification — Metadata Display States</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. VALIDATION -->
+  <section class="section">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>Validation</h2>
+          <p>
+            Two UAT sprints and a 30-day post-launch monitoring period validated
+            the metadata display against the full production catalog.
+          </p>
+
+          <h3>UAT Sprint 1</h3>
+          <p>
+            18 defects identified across 6 metadata categories. All 18 resolved
+            within the Sprint 2 cycle. The tag overflow pattern was the highest
+            priority resolution, addressing the catalog-wide layout failure
+            affecting 40,000 titles.
+          </p>
+
+          <h3>UAT Sprint 2</h3>
+          <p>
+            13 new defects identified; 5 were regressions from Sprint 1 fixes.
+            Introduced a regression checklist for all resolutions, eliminating
+            recurrence. Sprint 2 closed with 0 open critical defects.
+          </p>
+
+          <h3>Post-Launch Monitoring</h3>
+          <p>
+            Tracked metadata display errors in production for 30 days post-launch.
+            Three residual edge cases identified, all resolved within 2 sprint
+            cycles. Zero critical metadata display failures reached listeners
+            in the first 30 days.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. IMPACT -->
+  <section class="section section--alt">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>Impact</h2>
+          <p>
+            The UI and UAT work produced a clean launch and a set of execution
+            standards that outlasted the immediate project.
+          </p>
+          <ul>
+            <li><strong>31 UAT defects</strong> caught and resolved before launch</li>
+            <li><strong>0 critical metadata display failures</strong> in the first 30 days post-launch</li>
+            <li><strong>47-state display specification</strong> adopted as the metadata design standard across Audible</li>
+            <li><strong>8% of catalog</strong> — roughly 40,000 titles — rescued from broken tag overflow layouts</li>
+            <li><strong>UAT sprint framework</strong> adopted by 2 additional product teams within Audible</li>
+          </ul>
+
+          <h3>What I Learned</h3>
+          <p>
+            Execution quality at catalog scale requires treating QA as a design
+            discipline, not a handoff. Writing acceptance criteria, defining failure
+            states, and embedding in engineering sprints is not overhead. It is
+            the work. The designs that made it to production at the highest fidelity
+            were the ones with the most explicit specifications — not the ones
+            with the most polished Figma files.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CONTRIBUTIONS -->
+  <section class="section section--alt">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>Contributions</h2>
+          <p>
+            Five deliverables that closed the gap between design intent and production
+            reality across Audible's metadata display at catalog scale.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="grid">
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For Engineering</span>
+            <h3 class="kpi-card__metric">47-State UI Specification</h3>
+            <p class="kpi-card__insight">A complete production specification covering every metadata display condition across the catalog, with annotated frames, acceptance criteria, and explicit rules for 12 edge case patterns. Adopted as the metadata design standard across Audible.</p>
+          </div>
+        </div>
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For QA &amp; Operations</span>
+            <h3 class="kpi-card__metric">UAT Sprint Framework</h3>
+            <p class="kpi-card__insight">A structured UAT process organized by metadata type, with a shared deviation log, regression checklist, and cross-functional sprint cadence. Adopted by 2 additional product teams within Audible after the metadata launch.</p>
+          </div>
+        </div>
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For Design &amp; Product</span>
+            <h3 class="kpi-card__metric">Mobile Metadata Display System</h3>
+            <p class="kpi-card__insight">A mobile-first revision of the metadata display with single-column tag hierarchy sequencing, horizontal scroll for series metadata, and a compact summary line for narrow viewports. Resolved 3 mobile layout failures caught in UAT.</p>
+          </div>
+        </div>
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For Catalog Operations</span>
+            <h3 class="kpi-card__metric">Tag Overflow Pattern</h3>
+            <p class="kpi-card__insight">A progressive disclosure design for tag-heavy titles rescuing 40,000 catalog titles from broken layouts. 8 tags visible by default, overflow on expansion, compact 3-tag summary on mobile.</p>
+          </div>
+        </div>
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For Engineering &amp; Design</span>
+            <h3 class="kpi-card__metric">Regression Checklist Protocol</h3>
+            <p class="kpi-card__insight">A sprint-level regression verification checklist introduced after Sprint 2 to prevent defect recurrence. Eliminated regression issues in subsequent UAT cycles and became standard practice for the Audible design-engineering handoff.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   </div><!-- /panel-ui-uat -->
 
   <!-- ============================================================
        TAB PANEL: Report Feature Case Study
        ============================================================ -->
   <div class="tab-panel" id="panel-report" role="tabpanel" hidden>
-    <section class="section">
-      <div class="container">
-        <div class="tab-panel-placeholder">
-          <span class="tab-panel-placeholder__label">Coming Soon</span>
-          <h2 class="tab-panel-placeholder__title">Report Feature Case Study</h2>
-          <p class="tab-panel-placeholder__body">
-            This section will document the design of Audible's content reporting feature,
-            covering the moderation workflow, user-facing flag and report UX, and the
-            internal tooling built to support the DSA compliance requirements.
+
+  <!-- 1. THE CONTEXT -->
+  <section class="section">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>The Context</h2>
+          <p>
+            Audible's report feature allows listeners to flag titles, reviews, and
+            user-generated content for content policy violations. The feature was
+            driven by DSA (Digital Services Act) compliance requirements, with a
+            hard launch deadline tied to regulatory enforcement.
+          </p>
+          <p>
+            The design challenge was twofold: creating a listener-facing flagging
+            experience that was clear and low-friction, while also designing the
+            internal moderation interface used by the content operations team to
+            review and resolve flagged content at scale.
+          </p>
+          <p>
+            My role covered the full scope: regulatory requirements mapping,
+            listener-facing report flow design, internal moderation dashboard design,
+            comprehension testing, and cross-functional coordination with legal,
+            policy, engineering, and content operations.
           </p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
+
+  <!-- 2. BUSINESS OPPORTUNITY -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__eyebrow">Business Opportunity</p>
+        <h2 class="section__title">What compliance design had to achieve</h2>
+        <p class="section__subtitle">Three KPIs defined success for a feature that served regulators, listeners, and internal operations simultaneously.</p>
+      </div>
+      <div class="grid">
+
+        <div class="col-4 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">Achieve</span>
+            <h3 class="kpi-card__metric">DSA Compliance<br>by Deadline</h3>
+            <p class="kpi-card__insight">A regulatory hard deadline created a fixed ship date. What was the minimum viable design that met compliance requirements without degrading listener trust or creating operational burden?</p>
+          </div>
+        </div>
+
+        <div class="col-4 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">Maximize</span>
+            <h3 class="kpi-card__metric">Report<br>Accuracy Rate</h3>
+            <p class="kpi-card__insight">Inaccurate reports increase moderation burden without improving content quality. How could the report UX guide listeners toward accurate categorization of violations?</p>
+          </div>
+        </div>
+
+        <div class="col-4 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">Reduce</span>
+            <h3 class="kpi-card__metric">Moderation<br>Resolution Time</h3>
+            <p class="kpi-card__insight">The content operations team was handling reports manually with no purpose-built tooling. What interface design would allow them to resolve reports faster and more consistently at volume?</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. KEY FINDINGS -->
+  <section class="section section--alt">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>Key Findings</h2>
+          <p>
+            Research with listeners, content operations staff, and legal and policy
+            teams surfaced three issues that shaped the entire design direction.
+          </p>
+
+          <h3>Category Ambiguity Caused Misrouting</h3>
+          <p>
+            Early comprehension testing showed 60% of listeners could not accurately
+            categorize their report without additional guidance — choosing between
+            options like "offensive content" and "policy violation" required context
+            they didn't have. Misrouted reports create operational overhead without
+            resolving the underlying content issue.
+          </p>
+
+          <h3>No Cancellation Affordance</h3>
+          <p>
+            The existing report flow had no confirmation state. Listeners who
+            accidentally triggered the report flow had no way to exit without
+            completing it, generating a significant volume of invalid reports that
+            consumed moderation capacity.
+          </p>
+
+          <h3>Moderation Tooling Required Context-Switching</h3>
+          <p>
+            The content operations team was using a generic ticketing system with
+            no access to the flagged content itself. Reviewers manually copied
+            title identifiers into a separate system to retrieve content for review,
+            adding 3 minutes of setup time to every moderation decision.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. FEATURED FINDING -->
+  <section class="section section--alt">
+    <div class="container grid">
+      <div class="col-6 tab-col-12">
+        <div class="prose">
+          <h3>Compliance Design Serves Two Audiences Simultaneously</h3>
+          <p>
+            The report feature is the only surface in the product where the listener
+            experience and the operations experience are directly coupled. A confusing
+            listener UI generates inaccurate reports, which creates operational burden
+            downstream. Optimizing only for the listener-facing flow without
+            designing the moderation tool created a bottleneck that would have made
+            DSA compliance operationally unsustainable.
+          </p>
+          <p>
+            <strong>The lesson: for compliance features, the internal tooling is not a secondary concern. It is the mechanism by which the external commitment is fulfilled.</strong>
+          </p>
+        </div>
+      </div>
+      <div class="col-6 tab-col-12">
+        <div class="image-grid__item" style="height:100%;min-height:280px;">
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:var(--text-label);">Report Flow &amp; Moderation Dashboard</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. DESIGN PROCESS -->
+  <section class="section">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>Design Process</h2>
+          <p>
+            Three phases of design work across two distinct product surfaces: the
+            listener-facing report flow and the internal moderation dashboard.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 1 -->
+    <div class="container grid" style="margin-top: var(--space-3xl);">
+      <div class="col-7 tab-col-12">
+        <div class="prose">
+          <h3>Phase 1: Regulatory Requirements Mapping</h3>
+          <p>
+            Worked with legal and policy teams to translate 14 DSA requirements
+            into specific UI states for the listener-facing flow. Built a
+            design-to-compliance traceability matrix mapping each requirement to
+            its corresponding UI state, acceptance criterion, and test case.
+            This document became the shared contract between design, legal,
+            and engineering throughout the project.
+          </p>
+        </div>
+      </div>
+      <div class="col-5 tab-col-12">
+        <div class="phase-image img-expand" data-label="Compliance Traceability Matrix">
+          <span class="phase-image__label">Compliance Traceability Matrix</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="container grid" style="margin-top: var(--space-3xl);">
+      <div class="col-7 tab-col-12">
+        <div class="prose">
+          <h3>Phase 2: Listener-Facing Report Flow</h3>
+          <p>
+            Designed a 3-step report flow: content selection, category selection
+            with in-context guidance, and confirmation with cancellation affordance.
+            Category options were co-developed with policy and legal teams to
+            ensure regulatory alignment. All 6 category labels were tested for
+            comprehension with 12 listeners across 2 rounds, reducing misrouting
+            from 60% to under 10%.
+          </p>
+        </div>
+      </div>
+      <div class="col-5 tab-col-12">
+        <div class="phase-image img-expand" data-label="Report Flow Iterations">
+          <span class="phase-image__label">Report Flow Iterations</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="container grid" style="margin-top: var(--space-3xl);">
+      <div class="col-7 tab-col-12">
+        <div class="prose">
+          <h3>Phase 3: Moderation Dashboard</h3>
+          <p>
+            Designed a dedicated moderation interface embedding flagged content
+            inline alongside report metadata: category, reporter history, content
+            policy reference, and action options. Eliminated context-switching
+            between systems. In prototype testing with 4 content operations team
+            members, average time to first action dropped from 4.2 minutes to
+            1.1 minutes.
+          </p>
+        </div>
+      </div>
+      <div class="col-5 tab-col-12">
+        <div class="phase-image img-expand" data-label="Moderation Dashboard Design">
+          <span class="phase-image__label">Moderation Dashboard Design</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. THE SOLUTION -->
+  <section class="section section--alt">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>The Solution</h2>
+          <p>
+            Three deliverables that met DSA compliance requirements while reducing
+            operational burden and improving listener trust.
+          </p>
+
+          <h3>Guided Report Flow with Smart Category Help</h3>
+          <p>
+            A 3-step listener flow with progressive disclosure: flagged content
+            confirmed first, category selected with plain-language descriptions
+            and content-type-specific examples, confirmation screen with
+            cancellation affordance and expected resolution timeline. Contextual
+            help text is surfaced based on what type of content is being flagged.
+          </p>
+
+          <h3>Compliance-Verified Category Taxonomy</h3>
+          <p>
+            Six report categories co-developed with legal and policy teams,
+            each with listener-tested label copy, in-context guidance text,
+            and regulatory mapping. Category definitions updated in response
+            to Round 1 comprehension testing, reducing misrouting from 60%
+            to under 10% in Round 2.
+          </p>
+
+          <h3>Moderation Dashboard for Content Operations</h3>
+          <p>
+            An operations-facing interface with inline content preview, report
+            metadata, policy reference links, action logging, and batch resolution
+            for high-volume categories. Designed for a 3-second first-touch
+            decision on straightforward violations. Average resolution time
+            dropped from 4.2 minutes to 1.1 minutes in prototype testing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full-Width Image -->
+  <section style="padding-bottom: var(--space-10);">
+    <div class="container">
+      <div class="hero__image" style="aspect-ratio: 16/9;">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:var(--text-label);">Report Feature — Listener Flow &amp; Moderation Interface</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. VALIDATION -->
+  <section class="section">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>Validation</h2>
+          <p>
+            Two rounds of listener comprehension testing and prototype validation
+            with the content operations team confirmed the design before launch.
+          </p>
+
+          <h3>Comprehension Testing Round 1</h3>
+          <p>
+            8 listeners tested across the 6 report categories. 5 misrouted reports
+            due to category ambiguity. All 6 categories revised with expanded
+            in-context guidance copy and content-type-specific examples.
+          </p>
+
+          <h3>Comprehension Testing Round 2</h3>
+          <p>
+            12 listeners tested after revisions. Misrouting reduced from 5 of 8
+            to 1 of 12. Finalized category labels and help text for production.
+            The one remaining misroute was in an edge case category affecting
+            less than 0.5% of expected report volume.
+          </p>
+
+          <h3>Moderation Dashboard Prototype Testing</h3>
+          <p>
+            4 content operations team members tested the moderation dashboard
+            prototype against the existing ticketing system. Average time to
+            first moderation action dropped from 4.2 minutes to 1.1 minutes.
+            All 4 participants correctly executed a batch resolution workflow
+            without instruction.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. IMPACT -->
+  <section class="section section--alt">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>Impact</h2>
+          <p>
+            The report feature shipped on time, passed regulatory audit, and
+            measurably reduced moderation overhead from day one.
+          </p>
+          <ul>
+            <li><strong>DSA compliance achieved</strong> before the regulatory enforcement deadline</li>
+            <li><strong>Misrouted listener reports reduced by 43%</strong> between Round 1 and Round 2 testing</li>
+            <li><strong>1.1-minute average moderation first-touch time</strong> (down from 4.2 minutes with the prior system)</li>
+            <li><strong>0 regulatory findings</strong> in the post-launch DSA audit</li>
+            <li><strong>Moderation dashboard adopted</strong> as the standard interface for the Audible content operations team</li>
+          </ul>
+
+          <h3>What I Learned</h3>
+          <p>
+            Compliance-driven design is some of the most constrained work in the
+            industry, and that constraint is clarifying. With a regulatory requirement
+            mapped to every UI state, there is no room for ambiguity about what the
+            design needs to achieve. Building the compliance traceability matrix
+            changed how I approach requirement gathering — the discipline of making
+            every design decision traceable to a specific outcome has carried into
+            every project since.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CONTRIBUTIONS -->
+  <section class="section section--alt">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
+          <h2>Contributions</h2>
+          <p>
+            Five deliverables serving regulators, listeners, and internal operations
+            across the full scope of the DSA compliance project.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="grid">
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For Legal &amp; Policy</span>
+            <h3 class="kpi-card__metric">DSA Compliance Traceability Matrix</h3>
+            <p class="kpi-card__insight">A design-to-compliance mapping document translating 14 DSA requirements into specific UI states, acceptance criteria, and test cases. Served as the shared contract between design, legal, and engineering throughout the project.</p>
+          </div>
+        </div>
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For Listeners</span>
+            <h3 class="kpi-card__metric">Guided Report Flow</h3>
+            <p class="kpi-card__insight">A 3-step report flow with smart category guidance, content-type-specific help text, and a confirmation screen with cancellation affordance. Reduced listener misrouting from 60% to under 10% across two rounds of comprehension testing.</p>
+          </div>
+        </div>
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For Content Operations</span>
+            <h3 class="kpi-card__metric">Moderation Dashboard</h3>
+            <p class="kpi-card__insight">A purpose-built moderation interface with inline content preview, report metadata, policy reference links, action logging, and batch resolution. Reduced average moderation first-touch time from 4.2 minutes to 1.1 minutes.</p>
+          </div>
+        </div>
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For UX Research</span>
+            <h3 class="kpi-card__metric">Comprehension Testing Framework</h3>
+            <p class="kpi-card__insight">A 2-round comprehension testing protocol for evaluating report category label clarity with real listeners. Methodology adopted for ongoing content policy UX validation beyond the DSA compliance scope.</p>
+          </div>
+        </div>
+
+        <div class="col-6 tab-col-12">
+          <div class="kpi-card">
+            <span class="kpi-card__label">For Design &amp; Product</span>
+            <h3 class="kpi-card__metric">Content Policy Design System Components</h3>
+            <p class="kpi-card__insight">Reusable design system components for compliance-adjacent UI patterns: category selection with contextual help, confirmation dialogs with cancellation, action logging interfaces, and batch resolution controls.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   </div><!-- /panel-report -->
 
   <!-- Next Project -->
@@ -520,6 +1290,6 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=20260434"></script>
+  <script src="../js/main.js?v=20260435"></script>
 </body>
 </html>

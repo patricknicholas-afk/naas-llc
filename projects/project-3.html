@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/main.css?v=20260436">
+  <link rel="stylesheet" href="../css/main.css?v=20260439">
 </head>
 <body>
 
@@ -51,19 +51,19 @@
         <div class="hero__meta">
           <div class="hero__meta-item">
             <span class="hero__meta-label">Role</span>
-            <span class="hero__meta-value">Design Systems Lead</span>
+            <span class="hero__meta-value">Lead Designer</span>
           </div>
           <div class="hero__meta-item">
             <span class="hero__meta-label">Timeline</span>
-            <span class="hero__meta-value">14 Months</span>
+            <span class="hero__meta-value">Aug – Oct 2021</span>
           </div>
           <div class="hero__meta-item">
             <span class="hero__meta-label">Platform</span>
-            <span class="hero__meta-value">Web & Mobile</span>
+            <span class="hero__meta-value">iOS & Web</span>
           </div>
           <div class="hero__meta-item">
-            <span class="hero__meta-label">Scale</span>
-            <span class="hero__meta-value">500+ Brands</span>
+            <span class="hero__meta-label">Agency</span>
+            <span class="hero__meta-value">Wunderman Thompson</span>
           </div>
         </div>
       </div>
@@ -79,22 +79,25 @@
         <div class="prose">
           <h2>The Problem</h2>
           <p>
-            Anheuser-Busch InBev operates 500+ brands across 150+ markets, from
-            Budweiser and Stella Artois to regional craft labels. Each brand had
-            its own design team, agency relationships, and digital presence, resulting
-            in a fragmented ecosystem where every new campaign or digital touchpoint
-            was built from scratch.
+            The MyCooler app — Anheuser-Busch's loyalty MVP already live on iOS and
+            web — didn't represent the brand accurately or well. Built quickly as a
+            beta, it had limited functionality, clunky interactions, and subpar
+            readability and consistency. The core concept was genuinely compelling:
+            loyal customers could scan purchase receipts to earn points, redeemable
+            across physical touchpoints like bars, sporting events, and in-venue QR
+            codes. But the application experience didn't match the ambition of the idea.
           </p>
           <p>
-            The cost was staggering: duplicated design effort across teams, inconsistent
-            user experiences that eroded brand trust, and a 6-8 week average timeline
-            to launch a new brand microsite. Marketing teams were spending more time
-            negotiating with agencies about button styles than crafting strategy.
+            The challenge was compounded by brand complexity. Anheuser-Busch's portfolio
+            spans Michelob Ultra, Budweiser, Stella Artois, and hundreds of sub-brands —
+            each with distinct color systems, messaging tone, and content types. A design
+            system that could accommodate all of them without becoming overwhelming or
+            inconsistent required a clear architectural decision from the start.
           </p>
           <p>
-            I was brought in to lead the design system initiative, creating a shared
-            foundation that could serve the entire brand portfolio while respecting
-            each brand's unique visual identity.
+            When I joined, there was no documentation to work from — no brand guidelines,
+            no asset library, no specification for how the MVP had been built. I was the
+            lead and only designer on the project. I had to dive in and discover everything.
           </p>
         </div>
       </div>
@@ -108,41 +111,46 @@
     <div class="container grid">
       <div class="col-8 tab-col-12">
         <div class="prose">
-          <h2>Research & Discovery</h2>
+          <h2>Current State Analysis</h2>
           <p>
-            Before designing anything, I needed to understand the full scope
-            of the problem: how many teams were affected, what patterns
-            already existed, and where the biggest inefficiencies lived.
+            With no assets or documentation provided by the client, the first priority
+            was a ground-up audit of everything the existing MVP contained.
           </p>
 
-          <h3>Component Audit</h3>
+          <h3>Full App Walkthrough</h3>
           <p>
-            I led a comprehensive audit across 40 brand properties, cataloging
-            every unique component, interaction pattern, and design decision.
-            The results were eye-opening: we found 23 different button styles,
-            14 navigation patterns, and 8 distinct form implementations doing
-            essentially the same thing.
+            I walked the entire application from create account and login all the way
+            through answering onboarding questions and building a profile — mapping
+            every screen, interaction pattern, and layout decision as I went. The
+            visual audit revealed approximately 17 different colors in use, with
+            around 8 navy variants alone. There was no consistent grid, no typography
+            scale, and no token structure underlying any of it.
           </p>
 
-          <h3>Stakeholder Interviews</h3>
+          <h3>Information Architecture Mapping</h3>
           <p>
-            I interviewed 25+ stakeholders across brand teams, engineering,
-            marketing, and agency partners. The tension was clear:
+            Simultaneously with the visual audit, I mapped out the current information
+            architecture and user experience flows — understanding how the navigation
+            was structured, where friction lived, and how the app's sections related
+            to each other. This ran alongside the visual work because the structural
+            problems and the design problems were inseparable.
           </p>
-          <ul>
-            <li>Brand teams feared a design system would flatten their brand's personality into generic templates</li>
-            <li>Engineering wanted shared code but couldn't adopt it if every brand needed custom overrides</li>
-            <li>Marketing needed faster launch times but couldn't sacrifice brand authenticity</li>
-            <li>Agencies resisted standardization because bespoke work justified their retainers</li>
-            <li>Leadership wanted consistency and cost reduction without understanding the technical tradeoffs</li>
-          </ul>
 
-          <h3>The Core Insight</h3>
+          <h3>Accessibility Review</h3>
           <p>
-            The breakthrough was realizing that brand differentiation lived in a small
-            number of high-impact properties (color, typography, imagery, tone) while
-            structural patterns (layout, navigation, forms, accessibility) could, and
-            should, be shared. The system needed to be a platform, not a template.
+            I reviewed contrast ratios across the app's existing color combinations.
+            My hypothesis on the customer demographic — loyal Anheuser-Busch buyers,
+            likely 35–60 — made accessibility a critical design priority, not a
+            compliance checkbox. Ensuring readability and scanability for this
+            demographic on mobile needed to be baked into every decision from the start.
+          </p>
+
+          <h3>The Core Finding</h3>
+          <p>
+            The app had been built without a structural foundation. No design system,
+            no grid, no typographic scale, no token system. Every screen had been
+            assembled ad hoc. Before any visual improvements could land, the underlying
+            architecture had to be rebuilt from scratch.
           </p>
         </div>
       </div>
@@ -171,37 +179,70 @@
       <div class="col-8 tab-col-12">
         <div class="prose">
           <h2>Design Process</h2>
-
-          <h3>Token Architecture</h3>
           <p>
-            I designed a three-tier token system that became the foundation
-            of the entire design system:
-          </p>
-          <ul>
-            <li><strong>Tier 1: Global tokens:</strong> Spacing scale, grid system, breakpoints, elevation, motion curves. Shared across every brand, never overridden.</li>
-            <li><strong>Tier 2: Brand tokens:</strong> Color palettes, typography stacks, border radius preferences, imagery guidelines. Each brand defines its own set.</li>
-            <li><strong>Tier 3: Component tokens:</strong> Map semantic roles (primary-action, surface, text-secondary) to brand token values. This is where brand personality meets structural consistency.</li>
-          </ul>
-          <p>
-            This architecture meant a "Button" component could look distinctly
-            Budweiser or distinctly Stella Artois while sharing identical
-            accessibility, interaction, and responsive behavior.
+            The work moved through a deliberate sequence: grid → typography → color →
+            components → hi-fidelity prototype. Each layer had to be resolved before
+            the next one could be built on top of it.
           </p>
 
-          <h3>Component Library</h3>
+          <h3>Grid System</h3>
           <p>
-            I designed 45 core components with full state coverage: default,
-            hover, active, focused, disabled, loading, error, and empty states.
-            Each component was documented with usage guidelines, do/don't
-            examples, and accessibility requirements.
+            I built a new grid structure from scratch, referencing standard breakpoints
+            across mobile, tablet, and desktop. Containers were the priority — having
+            a solid structural framework meant that every page and component could be
+            assembled in a modular, adaptable way. This alone was an elevation over
+            how the application had been functioning.
           </p>
 
-          <h3>Governance Model</h3>
+          <h3>Typography</h3>
           <p>
-            A design system without governance dies. I established a contribution
-            model with clear criteria for when to extend the system vs. when to
-            create a brand-specific component, a review process for new additions,
-            and quarterly audits to catch drift.
+            I selected a type system and worked through the atomic relationships —
+            how the sizes fit together, what spacing existed between them, how white
+            space could serve readability for the target demographic. The goal was
+            a scale that a developer could build from precisely, not a loose collection
+            of sizes applied by feel.
+          </p>
+
+          <h3>Color</h3>
+          <p>
+            I reduced the existing palette from 17 colors down to 9. Saturated,
+            high-contrast primaries were chosen to both resonate with the Anheuser-Busch
+            brand and visually distinguish the app as its own sub-brand — with an eye
+            toward intriguing a younger demographic. The original brand colors were
+            retained as accents, keeping the palette familiar to existing customers
+            while giving the product a cleaner, more intentional visual presence.
+          </p>
+
+          <h3>Components in Sketch</h3>
+          <p>
+            This work was done in Sketch — Figma hadn't yet established its current
+            reputation. That meant individually mapping every margin, column, padding,
+            and spacing value by hand. The documentation was thorough enough that the
+            Director pushed back at one point, saying I was spending too long on button
+            states. My position was that leaving things open to interpretation during
+            a build creates confusion; the detail was there so engineers could build
+            with minimal oversight. He reluctantly agreed. The quality of what got
+            handed off validated that call.
+          </p>
+
+          <h3>High-Fidelity Prototype: Referral Flow</h3>
+          <p>
+            The Director initially said not to build high-fidelity screens — we needed
+            to deliver the system, not full comps. My view was that the client needed
+            to see the components working together holistically to understand the
+            direction and trust the decisions being made. I proposed spending a couple
+            of hours putting together a referral flow — a specific flow the client had
+            identified as important — to show how all the pieces came together. If the
+            client didn't respond well, I'd drop it. The Director reluctantly agreed.
+          </p>
+          <p>
+            The following day, I walked the client through the documentation and the
+            screens. The reaction was immediate — they said they could now see the
+            direction clearly, understand how the colors were being applied, and read
+            the design decisions holistically. Afterward, in the debrief, the Director
+            told me it was a good call. Taking that initiative, going slightly beyond
+            scope to build confidence and alignment with the client, was one of the
+            more meaningful moments of the project.
           </p>
         </div>
       </div>
@@ -232,36 +273,34 @@
         <div class="prose">
           <h2>The Solution</h2>
           <p>
-            The final design system, internally called "Brew," shipped as
-            both a Figma library and a React component library, with
-            documentation hosted on an internal platform.
+            A complete design system built from the ground up: grid, typography,
+            color, components, documentation, and templates — all specified with
+            enough detail that engineering could build with minimal oversight.
           </p>
 
-          <h3>Brand Theming Engine</h3>
+          <h3>Design System &amp; Component Library</h3>
           <p>
-            The centerpiece was the theming engine. Brand teams fill out a
-            configuration file with their brand tokens (colors, fonts, radius,
-            imagery) and the entire component library adapts automatically.
-            A new brand can go from zero to a fully themed, accessible
-            component set in under 2 hours.
+            Ten major components delivered with full state coverage: default, hover,
+            active, focused, disabled. Checkboxes, buttons, sign-up forms, dialog
+            boxes, dropdowns — each documented with margins, spacing, color values,
+            and usage notes for both mobile and desktop breakpoints. Every decision
+            was annotated so there was no room for interpretation at handoff.
           </p>
 
-          <h3>Page Templates</h3>
+          <h3>Design Tenets &amp; Guidelines</h3>
           <p>
-            I designed 12 page templates covering the most common brand
-            needs: product landing pages, campaign microsites, age gates,
-            store locators, and event pages. Each template is assembled
-            from system components and pre-wired with analytics and
-            accessibility compliance.
+            A set of design tenets and system guidelines giving the client a framework
+            for how to apply the system going forward — not just what was built, but
+            the principles behind the decisions, so future designers and developers
+            could extend the system without breaking it.
           </p>
 
-          <h3>Documentation & Onboarding</h3>
+          <h3>Information Architecture &amp; Templates</h3>
           <p>
-            The documentation site includes interactive component playgrounds,
-            brand token previews, copy-paste code snippets, and a
-            decision-tree tool for choosing the right component. I designed
-            this as a product, not just reference docs; because adoption
-            depends on discoverability.
+            Improved information architecture reflected in sign-up and onboarding
+            templates — moving the app from its ad hoc structure to a deliberate,
+            navigable flow. Pattern UI components and hi-fidelity wireframes provided
+            a full reference set for building any area of the application.
           </p>
         </div>
       </div>
@@ -286,29 +325,35 @@
         <div class="prose">
           <h2>Validation</h2>
 
-          <h3>Pilot Program</h3>
+          <h3>High-Fidelity Prototype</h3>
           <p>
-            We launched with 3 pilot brands: Budweiser (global flagship),
-            a mid-tier regional brand, and a recently acquired craft label.
-            This gave us validation across the full spectrum of brand
-            complexity and team capability.
+            The referral flow prototype served as the primary validation mechanism —
+            taking the design system out of documentation and showing it applied to
+            a real, client-identified user flow. The client's positive reaction
+            confirmed that the color choices, component decisions, and overall
+            direction were reading as both distinctly AB InBev and visually fresh.
+            It aligned the team on what was being built before build decisions locked in.
           </p>
 
-          <h3>Accessibility Audit</h3>
+          <h3>Client Alignment Sessions</h3>
           <p>
-            Every component was tested against WCAG 2.1 AA standards. I
-            worked with an accessibility specialist to ensure color contrast,
-            keyboard navigation, screen reader support, and focus management
-            were built into the system, not bolted on after the fact.
+            Regular client calls throughout the engagement — with the Director of UX
+            at Wunderman Thompson, the client directly, and a second designer later
+            brought onto the team — provided ongoing validation checkpoints. Having
+            another designer ask questions during client calls filled in gaps that
+            deep documentation work can create when you're too close to the details.
           </p>
 
-          <h3>Developer Experience Testing</h3>
+          <h3>Retrospective</h3>
           <p>
-            I ran usability testing with front-end developers to validate
-            the component API, documentation clarity, and theming workflow.
-            The biggest iteration was simplifying the token override syntax:
-            developers needed fewer steps to customize components without
-            breaking the system's constraints.
+            In hindsight, the project would have benefited from stepping back earlier
+            to validate the core MyCooler concept itself — not just the design system.
+            A one-week interview guide, one week of customer interviews, and one week
+            of prototype testing around the receipt-scanning mechanic and physical
+            touchpoint ideas (scanning a QR at a bar, a receipt at a stadium) could
+            have surfaced whether the concept was valid before committing to the full
+            build. The design system was elevated, but the more impactful question —
+            whether customers would use it — was left unanswered.
           </p>
         </div>
       </div>
@@ -324,31 +369,35 @@
         <div class="prose">
           <h2>Impact</h2>
           <p>
-            The design system rolled out across AB InBev's digital portfolio
-            over 14 months and fundamentally changed how the organization
-            builds digital experiences.
+            The design system elevated the MyCooler product significantly —
+            and the most tangible evidence of its durability came years later,
+            not immediately after delivery.
+          </p>
+          <p>
+            The Budweiser app that emerged over subsequent years reflected the
+            guidelines directly: the color choices, button types, input fields,
+            form fields, and layout structure all followed what had been designed
+            for MyCooler. Seeing those decisions carry through into a shipped,
+            public product — without my involvement in the eventual build — was
+            confirmation that the system was coherent and buildable enough to
+            translate across teams and time.
           </p>
           <ul>
-            <li><strong>75% reduction in microsite launch time</strong>: from 6-8 weeks to under 2 weeks</li>
-            <li><strong>45 shared components</strong> with full state coverage, adopted across 12 brand teams</li>
-            <li><strong>100% WCAG 2.1 AA compliance</strong> built into every component</li>
-            <li><strong>$2.3M estimated annual savings</strong> in reduced agency and duplicate design effort</li>
-            <li><strong>3 pilot brands to 12 active brands</strong> within 6 months of launch</li>
+            <li><strong>17 colors reduced to 9</strong> — a disciplined palette that balanced brand familiarity with visual clarity</li>
+            <li><strong>10+ major components</strong> delivered with full state coverage and individual documentation for both mobile and desktop</li>
+            <li><strong>Structural foundation built from zero</strong> — grid, typography, color, and component systems where none had existed</li>
+            <li><strong>Client confidence established</strong> through high-fidelity prototype work that made the system legible before build decisions locked in</li>
           </ul>
-          <p>
-            The three-tier token architecture became the reference model for
-            AB InBev's broader digital transformation, with the pattern being
-            evaluated for their mobile app portfolio as well.
-          </p>
 
           <h3>What I Learned</h3>
           <p>
-            The hardest part of a design system isn't the components; it's
-            the politics. Adoption is a change management problem, not a
-            design problem. The token architecture was the technical
-            breakthrough, but the governance model and stakeholder alignment
-            were what made it stick. A design system that nobody uses is
-            just a Figma file.
+            The detail matters — but knowing when to show the vision matters
+            just as much. Delivering meticulous documentation builds engineering
+            confidence. But taking the initiative to assemble those components
+            into a real screen, over the Director's objection and with a clear
+            read on what the client needed to see, was what actually moved the
+            project forward. The two things together — rigorous craft and
+            strategic communication — are what design leadership looks like.
           </p>
         </div>
       </div>
@@ -432,6 +481,6 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=20260436"></script>
+  <script src="../js/main.js?v=20260439"></script>
 </body>
 </html>

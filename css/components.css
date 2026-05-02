@@ -312,7 +312,7 @@ body.theme--light .hero--project .hero__meta-value { color: var(--p-neutral-50);
   display: flex;
   justify-content: center;
   padding: var(--space-2xl) var(--space-lg) var(--space-xl);
-  transition: background-color var(--duration-theme);
+  transition: background-color var(--duration-theme) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-tabs {
@@ -323,7 +323,7 @@ body.theme--light .hero--project .hero__meta-value { color: var(--p-neutral-50);
   border-radius: var(--p-radius-md);
   padding: 8px;
   flex-wrap: nowrap;
-  transition: background-color var(--duration-theme);
+  transition: background-color var(--duration-theme) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-tab {
@@ -589,6 +589,7 @@ body.theme--light .hero--project .hero__meta-value { color: var(--p-neutral-50);
 
 .section--alt {
   background-color: var(--color-bg-alt);
+  transition: background-color var(--duration-theme) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .section__header {

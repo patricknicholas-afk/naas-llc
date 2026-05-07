@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCardCarousels();
   initImageExpand();
   initHeroTabs();
+  initHeroCarousel();
 });
 
 /* ---- Mobile Navigation Toggle ---- */
@@ -385,6 +386,43 @@ function initHeroTabs() {
       });
     });
   });
+}
+
+/* ---- Hero Right-Side Image Carousel ---- */
+function initHeroCarousel() {
+  const carousel = document.querySelector('.hero__carousel');
+  if (!carousel) return;
+
+  const slides = Array.from(carousel.querySelectorAll('.hero__carousel-slide'));
+  if (slides.length < 2) return;
+
+  let current = 0;
+
+  // Activate first slide immediately (no transition on initial paint)
+  slides[0].classList.add('is-active');
+
+  // Enable transitions after first paint so slide 0 doesn't animate in
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      carousel.classList.add('hero__carousel--ready');
+    });
+  });
+
+  function advance() {
+    const prev = current;
+    current = (current + 1) % slides.length;
+
+    slides[prev].classList.remove('is-active');
+    slides[prev].classList.add('is-exiting');
+    slides[current].classList.add('is-active');
+
+    // Clean up exiting class once animation completes
+    slides[prev].addEventListener('transitionend', () => {
+      slides[prev].classList.remove('is-exiting');
+    }, { once: true });
+  }
+
+  setInterval(advance, 3000);
 }
 
 /* ---- Card Image Carousel ---- */

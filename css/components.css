@@ -461,6 +461,87 @@ body.theme--light .hero--project .hero__meta-value { color: var(--p-neutral-50);
   object-fit: cover;
 }
 
+/* ================================================================
+   HERO CAROUSEL — right-half image reel on project hero banners
+   ================================================================ */
+.hero__carousel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 58%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Gradient overlay — left edge fades images into hero background */
+.hero__carousel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    to right,
+    var(--hero-bg-project) 0%,
+    rgba(26,28,30,0.7) 30%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.hero--dark .hero__carousel::after {
+  background: linear-gradient(
+    to right,
+    var(--hero-bg-project-dark) 0%,
+    rgba(24,24,27,0.7) 30%,
+    transparent 60%
+  );
+}
+
+.hero--warm .hero__carousel::after {
+  background: linear-gradient(
+    to right,
+    var(--hero-bg-project-warm) 0%,
+    rgba(30,27,24,0.7) 30%,
+    transparent 60%
+  );
+}
+
+.hero__carousel-slide {
+  position: absolute;
+  inset: 0;
+  transform: translateX(105%);
+  will-change: transform;
+}
+
+/* Ready class added by JS — enables transitions after initial paint */
+.hero__carousel--ready .hero__carousel-slide {
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero__carousel-slide.is-active  { transform: translateX(0);      }
+.hero__carousel-slide.is-exiting { transform: translateX(-105%);  }
+
+.hero__carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* Ensure text container renders above carousel */
+.hero--project .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hide on mobile — text needs the full width */
+@media (max-width: 768px) {
+  .hero__carousel { display: none; }
+}
+
 .hero__meta {
   display: flex;
   gap: var(--space-2xl);

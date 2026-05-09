@@ -518,15 +518,22 @@ body.theme--light .hero--project .hero__meta-value { color: var(--p-neutral-50);
   align-items: center;
   justify-content: center;
   padding: 32px 24px 32px 48px;
+  z-index: 0;
+  /* Solid background per hero variant — blocks see-through during transitions */
+  background-color: var(--hero-bg-project);
 }
+
+.hero--dark .hero__carousel-slide { background-color: var(--hero-bg-project-dark); }
+.hero--warm .hero__carousel-slide { background-color: var(--hero-bg-project-warm); }
 
 /* Ready class added by JS — enables transitions after initial paint */
 .hero__carousel--ready .hero__carousel-slide {
   transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.hero__carousel-slide.is-active  { transform: translateX(0);      }
-.hero__carousel-slide.is-exiting { transform: translateX(-105%);  }
+/* Active slide always on top; exiting slides render beneath it */
+.hero__carousel-slide.is-active  { transform: translateX(0);     z-index: 2; }
+.hero__carousel-slide.is-exiting { transform: translateX(-105%); z-index: 1; }
 
 .hero__carousel-slide img {
   max-width: 75%;

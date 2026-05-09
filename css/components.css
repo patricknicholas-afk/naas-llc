@@ -529,8 +529,8 @@ body.theme--light .hero--project .hero__meta-value { color: var(--p-neutral-50);
 .hero__carousel-slide.is-exiting { transform: translateX(-105%);  }
 
 .hero__carousel-slide img {
-  max-width: 45%;
-  max-height: 45%;
+  max-width: 75%;
+  max-height: 75%;
   width: auto;
   height: auto;
   object-fit: contain;

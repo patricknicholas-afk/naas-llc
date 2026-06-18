@@ -185,7 +185,7 @@
   align-items: center;
   gap: var(--space-sm);
   padding: var(--cs-chapter-py) 0 var(--space-xl);
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--cs-accent);
 }
 
 .cs-chapter__number {
@@ -472,4 +472,198 @@ body.theme--light .cs-full-bleed__frame {
 body.theme--light .cs-split__image {
   background-color: var(--p-neutral-100);
   border-color: var(--p-neutral-200);
+}
+
+/* ================================================================
+   CS-PROGRESS — Thin reading progress bar (fixed top of viewport)
+   ================================================================ */
+.cs-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background-color: var(--cs-accent);
+  z-index: 200;
+  transition: width 80ms linear;
+  pointer-events: none;
+}
+
+
+/* ================================================================
+   HERO BREADCRUMB + TAGS
+   ================================================================ */
+.hero__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-xl);
+  font-size: var(--text-caption);
+  font-weight: var(--fw-emphasis);
+  letter-spacing: var(--tracking-overline);
+  text-transform: uppercase;
+  color: var(--p-neutral-400);
+}
+
+.hero__breadcrumb a {
+  color: inherit;
+  transition: color var(--duration-fast) var(--ease-default);
+}
+
+.hero__breadcrumb a:hover {
+  color: var(--p-neutral-100);
+}
+
+.hero__breadcrumb-sep {
+  color: var(--p-neutral-600);
+  font-weight: var(--p-fw-regular);
+}
+
+.hero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.hero__tag {
+  font-size: var(--text-caption);
+  font-weight: var(--fw-emphasis);
+  letter-spacing: var(--tracking-overline);
+  text-transform: uppercase;
+  color: var(--cs-accent);
+  opacity: 0.85;
+}
+
+/* Lock hero breadcrumb/tags to dark palette even when body.theme--light */
+body.theme--light .hero--project .hero__breadcrumb { color: var(--p-neutral-400); }
+body.theme--light .hero--project .hero__breadcrumb a:hover { color: var(--p-neutral-100); }
+body.theme--light .hero--project .hero__tag { color: var(--cs-accent); }
+
+
+/* ================================================================
+   CS-STATS EARLY — Compact inline stat strip (used in cs-intro zone)
+   Displays headline numbers before the narrative for FAANG outcome-first
+   scanning. Separate from the full cs-stats grid at the end.
+   ================================================================ */
+.cs-stats-early {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg) var(--space-3xl);
+  padding: var(--space-2xl) 0 var(--space-xl);
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+  margin-bottom: var(--space-3xl);
+}
+
+.cs-stats-early__item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cs-stats-early__number {
+  font-size: var(--text-h3);
+  font-weight: var(--fw-display);
+  line-height: 1;
+  letter-spacing: var(--tracking-heading);
+  color: var(--cs-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.cs-stats-early__label {
+  font-size: var(--text-caption);
+  font-weight: var(--fw-emphasis);
+  letter-spacing: var(--tracking-overline);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  max-width: 200px;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .cs-stats-early {
+    gap: var(--space-lg) var(--space-2xl);
+  }
+  .cs-stats-early__number {
+    font-size: var(--text-h4);
+  }
+}
+
+
+/* ================================================================
+   CS-VIDEO — Inline .mov / mp4 player
+   Usage: <div class="cs-video" data-src="../assets/video/demo.mov"
+               data-poster="../assets/images/poster.jpg"
+               data-caption="Caption text here">
+          </div>
+          <p class="cs-video__caption"></p>
+   JS (initVideoPlaceholders) injects the <video> element on load.
+   ================================================================ */
+.cs-video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  border: 1px solid var(--color-border-light);
+  margin: var(--space-3xl) 0 var(--space-sm);
+}
+
+.cs-video video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background-color: var(--p-neutral-950);
+}
+
+/* Placeholder state — shown before JS injects the video */
+.cs-video:not(:has(video))::after {
+  content: attr(data-caption);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-caption);
+  color: var(--color-text-tertiary);
+  letter-spacing: var(--tracking-wide);
+}
+
+.cs-video__caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-tertiary);
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: var(--space-3xl);
+  line-height: 1.5;
+}
+
+/* Light theme */
+body.theme--light .cs-video {
+  background-color: var(--p-neutral-100);
+  border-color: var(--p-neutral-200);
+}
+
+body.theme--light .cs-video video {
+  background-color: var(--p-neutral-950);
+}
+
+
+/* ================================================================
+   LIGHT THEME — New component overrides
+   ================================================================ */
+body.theme--light .cs-stats-early {
+  border-color: var(--p-neutral-200);
+}
+
+body.theme--light .cs-stats-early__number {
+  color: var(--cs-accent);
+}
+
+body.theme--light .cs-stats-early__label {
+  color: var(--p-neutral-500);
 }

@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initImageExpand();
   initHeroTabs();
   initHeroCarousel();
+  initCaseStudyProgress();
+  initStatCounters();
+  initVideoPlaceholders();
 });
 
 /* ---- Mobile Navigation Toggle ---- */
@@ -483,5 +486,101 @@ function initCardCarousels() {
 
     // Staggered kick-off so cards don't scroll in sync
     setTimeout(startAuto, offset);
+  });
+}
+
+/* ---- Case Study Reading Progress Bar ---- */
+function initCaseStudyProgress() {
+  const bar = document.querySelector('.cs-progress');
+  if (!bar) return;
+
+  function update() {
+    const doc = document.documentElement;
+    const scrolled = doc.scrollTop || document.body.scrollTop;
+    const total = doc.scrollHeight - doc.clientHeight;
+    const pct = total > 0 ? (scrolled / total) * 100 : 0;
+    bar.style.width = pct + '%';
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+}
+
+/* ---- Stat Counter Animation ---- */
+function initStatCounters() {
+  const stats = document.querySelectorAll('.cs-stat__number[data-count]');
+  if (!stats.length) return;
+
+  // Respect reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      const el = entry.target;
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      const prefix = el.dataset.prefix || '';
+      const isDecimal = String(target).includes('.');
+      const duration = 1600;
+      const startTime = performance.now();
+
+      function tick(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Cubic ease-out
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = eased * target;
+        el.textContent = prefix + (isDecimal ? current.toFixed(1) : Math.round(current)) + suffix;
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          el.textContent = prefix + (isDecimal ? target.toFixed(1) : target) + suffix;
+        }
+      }
+
+      requestAnimationFrame(tick);
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+
+  stats.forEach(el => {
+    // Store original text as fallback, hide until in view for cleaner entrance
+    observer.observe(el);
+  });
+}
+
+/* ---- Video Placeholder — .mov / mp4 inline player ---- */
+function initVideoPlaceholders() {
+  document.querySelectorAll('.cs-video[data-src]').forEach(wrapper => {
+    const src = wrapper.dataset.src;
+    const poster = wrapper.dataset.poster || '';
+    const caption = wrapper.dataset.caption || '';
+
+    const video = document.createElement('video');
+    video.src = src;
+    video.controls = true;
+    video.playsInline = true;
+    video.loop = false;
+    video.preload = 'metadata';
+    if (poster) video.poster = poster;
+    video.style.cssText = 'width:100%;height:100%;object-fit:contain;display:block;';
+
+    wrapper.appendChild(video);
+
+    // Auto-pause when scrolled out of view (polite playback)
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting && !video.paused) video.pause();
+      });
+    }, { threshold: 0.2 });
+    obs.observe(wrapper);
+
+    // If a caption sibling exists, populate it
+    const cap = wrapper.nextElementSibling;
+    if (cap && cap.classList.contains('cs-video__caption') && caption) {
+      cap.textContent = caption;
+    }
   });
 }

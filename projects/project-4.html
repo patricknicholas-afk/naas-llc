@@ -8,10 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/main.css?v=20260436">
-  <link rel="stylesheet" href="../css/case-study.css?v=20260443">
+  <link rel="stylesheet" href="../css/main.css?v=20260450">
+  <link rel="stylesheet" href="../css/case-study.css?v=20260450">
 </head>
 <body>
+
+  <!-- Reading progress bar — accent-colored, 2px fixed top -->
+  <div class="cs-progress" aria-hidden="true"></div>
 
   <a href="#main-content" class="skip-link">Skip to content</a>
 
@@ -38,7 +41,6 @@
          ============================================================ -->
     <section class="hero hero--project">
 
-      <!-- Right-side image carousel (decorative) -->
       <div class="hero__carousel" aria-hidden="true">
         <div class="hero__carousel-slide">
           <img src="../assets/images/coned-slide-1.png" alt="">
@@ -50,7 +52,25 @@
 
       <div class="container grid">
         <div class="col-8 tab-col-12">
-          <p class="hero__eyebrow">Case Study</p>
+
+          <!-- Breadcrumb -->
+          <nav class="hero__breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span class="hero__breadcrumb-sep">/</span>
+            <a href="../index.html#projects">Work</a>
+            <span class="hero__breadcrumb-sep">/</span>
+            <span>VML &times; ConEdison</span>
+          </nav>
+
+          <!-- Discipline tags -->
+          <div class="hero__tags" aria-label="Project disciplines">
+            <span class="hero__tag">/UX Leadership</span>
+            <span class="hero__tag">/AI Integration</span>
+            <span class="hero__tag">/Design Systems</span>
+            <span class="hero__tag">/Accessibility</span>
+          </div>
+
+          <p class="hero__eyebrow" style="margin-top: var(--space-lg);">Case Study</p>
           <h1 class="hero__title">VML &times; ConEdison</h1>
           <p class="hero__subtitle">
             Embedding AI into design and engineering workflows at scale,
@@ -58,6 +78,7 @@
             a WCAG-compliant design system and raising AI literacy across
             cross-functional teams.
           </p>
+
           <div class="hero__meta">
             <div class="hero__meta-item">
               <span class="hero__meta-label">Role</span>
@@ -80,24 +101,53 @@
       </div>
     </section>
 
+
     <!-- ============================================================
-         INTRO
+         INTRO — Overview + Outcome-first stats + Meta
          ============================================================ -->
     <section class="cs-intro">
       <div class="container">
         <div class="cs-intro__inner">
+
           <div class="cs-intro__overview">
             <p class="cs-intro__overview-label">Overview</p>
             <p class="cs-intro__text">
               This engagement is about more than UX delivery. Leading two Agile pods
               across Customer Billing and Account Management for ConEdison, I've been
               driving a parallel mission: demonstrating that design doesn't just
-              consume AI tools; it leads their integration. Through coaching, live demos,
-              and cross-functional workshops, I've reshaped how both VML and ConEdison
-              teams prototype, collaborate, and build, while holding the line on design
-              system quality and accessibility standards that serve millions of New Yorkers.
+              consume AI tools — it leads their integration.
             </p>
+
+            <!-- Outcome-first stat strip — FAANG reviewers scan top, not bottom -->
+            <div class="cs-stats-early" aria-label="Project outcomes">
+              <div class="cs-stats-early__item">
+                <span class="cs-stat__number cs-stats-early__number"
+                      data-count="2"
+                      aria-label="2 Agile pods">2</span>
+                <span class="cs-stats-early__label">Agile pods led simultaneously</span>
+              </div>
+              <div class="cs-stats-early__item">
+                <span class="cs-stat__number cs-stats-early__number"
+                      data-count="22"
+                      data-suffix="%"
+                      aria-label="22% task completion improvement">22%</span>
+                <span class="cs-stats-early__label">Improvement in task-completion rates</span>
+              </div>
+              <div class="cs-stats-early__item">
+                <span class="cs-stat__number cs-stats-early__number"
+                      data-count="18"
+                      data-suffix="%"
+                      aria-label="18% drop-off reduction">18%</span>
+                <span class="cs-stats-early__label">Reduction in user drop-off</span>
+              </div>
+              <div class="cs-stats-early__item">
+                <span class="cs-stat__number cs-stats-early__number"
+                      aria-label="WCAG 2.1 AA compliant">AA</span>
+                <span class="cs-stats-early__label">WCAG 2.1 AA from day one</span>
+              </div>
+            </div>
           </div>
+
           <div class="cs-intro__meta">
             <div class="cs-intro__meta-item">
               <p class="cs-intro__meta-label">Pods</p>
@@ -116,6 +166,7 @@
               <p class="cs-intro__meta-value">Design System, Brand Guidelines, WCAG 2.1 AA Compliance</p>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -125,7 +176,7 @@
       <div class="container">
         <p class="cs-statement__text">
           The question wasn't whether AI would change how designers work.
-          It was whether design would <em>lead that change</em>, or wait for engineering to.
+          It was whether design would <em>lead that change</em> — or wait for engineering to.
         </p>
       </div>
     </section>
@@ -134,9 +185,9 @@
     <div class="container">
       <div class="cs-full-bleed">
         <div class="cs-full-bleed__frame">
-          <img src="../assets/images/coned-slide-1.png" alt="ConEdison — customer billing portal">
+          <img src="../assets/images/coned-slide-1.png" alt="ConEdison customer billing portal — managing multiple accounts, payment flows, and account snapshot modules">
         </div>
-        <p class="cs-full-bleed__caption">ConEdison customer portal: Customer Billing pod, managing multiple accounts, payment flows, and account snapshot modules</p>
+        <p class="cs-full-bleed__caption">ConEdison customer portal — Customer Billing pod. Multi-account management, payment flows, and account snapshot modules.</p>
       </div>
     </div>
 
@@ -145,7 +196,7 @@
          CHAPTER 01 — LEADERSHIP CONTEXT
          ============================================================ -->
     <div class="container">
-      <div class="cs-chapter">
+      <div class="cs-chapter" id="chapter-01">
         <span class="cs-chapter__number">01</span>
         <h2 class="cs-chapter__label">Leadership Context</h2>
       </div>
@@ -162,21 +213,12 @@
               coherence across parallel workstreams that often pull in different
               directions. Customer Billing and Account Management share a platform
               but diverge in complexity, data density, and stakeholder pressure.
-              My role is to make sure both move with intention.
-            </p>
-            <p>
-              Day to day that means working across the full org chart, managing
-              stakeholder expectations through prototyping and presentations,
-              facilitating collaborative UX discovery sessions, and navigating
-              the competing constraints of legal, copy, frontend, backend, and
-              Scrum Masters without losing design quality in the process.
             </p>
             <ul>
-              <li>Lead design strategy and feature-level UX discovery sessions across both pods</li>
+              <li>Lead design strategy and UX discovery sessions across both pods</li>
               <li>Manage stakeholder expectations through high-fidelity prototypes and executive presentations</li>
-              <li>Partner with Legal and Content teams to ensure copy, compliance, and design are aligned before engineering picks up a ticket</li>
-              <li>Collaborate with Creative Directors at VML and ConEdison to maintain brand voice and visual consistency</li>
-              <li>Mentor designers on the pod: critique structure, career growth, and raising the quality floor</li>
+              <li>Partner with Legal and Content to ensure alignment before engineering picks up a ticket</li>
+              <li>Mentor designers on critique structure, career growth, and quality standards</li>
             </ul>
           </div>
         </div>
@@ -184,7 +226,7 @@
           <div class="cs-split__image">
             <!-- Placeholder: org chart / pod structure -->
           </div>
-          <p class="cs-split__image-caption">Two Agile pods, Customer Billing and Account Management, operating in parallel under a unified design direction</p>
+          <p class="cs-split__image-caption">Two Agile pods operating in parallel under a unified design direction</p>
         </div>
       </div>
     </section>
@@ -202,7 +244,7 @@
          CHAPTER 02 — AI INTEGRATION
          ============================================================ -->
     <div class="container">
-      <div class="cs-chapter">
+      <div class="cs-chapter" id="chapter-02">
         <span class="cs-chapter__number">02</span>
         <h2 class="cs-chapter__label">AI Integration</h2>
       </div>
@@ -224,25 +266,32 @@
           <h3 class="cs-split__heading">Embedding AI at every stage of the design process</h3>
           <div class="cs-split__body">
             <p>
-              I introduced AI tooling into the design workflow incrementally, starting
-              with the highest-friction areas and building team confidence before expanding.
-              The goal wasn't adoption for its own sake; it was measurable speed and quality
-              improvements that both design and engineering could feel.
+              I introduced AI tooling incrementally — starting with the highest-friction
+              areas and building team confidence before expanding. The goal wasn't
+              adoption for its own sake; it was measurable speed and quality improvements
+              that both design and engineering could feel.
             </p>
             <ul>
-              <li>Prompt-driven wireframe divergence to explore 4–6 layout directions in the time it previously took to produce one</li>
-              <li>AI-assisted copy generation paired directly with content designers for faster UX copy iteration</li>
+              <li>Prompt-driven wireframe divergence: 4–6 layout directions in the time it previously took to produce one</li>
+              <li>AI-assisted UX copy iteration paired directly with content designers</li>
               <li>Generative component variants in Figma to stress-test design system edge cases before engineering encounters them</li>
-              <li>AI-supported accessibility checks integrated into the review workflow, catching contrast, label, and focus order issues before handoff</li>
-              <li>Prototype acceleration using Framer and AI-enhanced interaction patterns to demonstrate complex behaviors to stakeholders without engineering investment</li>
+              <li>AI-supported accessibility checks catching contrast, label, and focus order issues before handoff</li>
             </ul>
           </div>
         </div>
         <div class="cs-split__visual">
-          <div class="cs-split__image">
-            <!-- Placeholder: AI workflow diagram or Figma exploration -->
+          <!--
+            VIDEO USAGE:
+            Place a .mov or .mp4 file at ../assets/video/coned-ai-workflow.mov
+            Update data-src, data-poster, and data-caption accordingly.
+            JS will inject the <video> element automatically.
+          -->
+          <div class="cs-video"
+               data-src="../assets/video/coned-ai-workflow.mov"
+               data-poster="../assets/images/coned-slide-1.png"
+               data-caption="AI-assisted wireframe exploration: multiple directions generated and evaluated before high-fidelity work begins">
           </div>
-          <p class="cs-split__image-caption">AI-assisted wireframe exploration: multiple directions generated and evaluated before any high-fidelity work begins</p>
+          <p class="cs-video__caption"></p>
         </div>
       </div>
     </section>
@@ -254,22 +303,17 @@
           <h3 class="cs-split__heading">Raising AI literacy across two organizations</h3>
           <div class="cs-split__body">
             <p>
-              I run regular Lunch &amp; Learn sessions for both the VML and ConEdison
-              teams, design and engineering, demonstrating practical AI integrations
-              with live tooling. These sessions aren't theoretical; they're hands-on
-              demos that teams can walk away and apply the same day.
-            </p>
-            <p>
-              One-on-one coaching focuses on building critical judgment: when to use
-              AI output as a starting point, when to reject it entirely, and how to
-              review AI-generated content with the same rigour as any other design
-              decision. The aim is a team that uses AI confidently, not blindly.
+              I run regular Lunch &amp; Learn sessions for VML and ConEdison teams —
+              designers and engineers — with live tooling demos teams can apply the
+              same day. One-on-one coaching focuses on building critical judgment:
+              when to use AI output, when to reject it, and how to review it with
+              the same rigour as any other design decision.
             </p>
             <ul>
-              <li>Live demo sessions covering Figma AI features, AI-aided prototyping, and prompt engineering for design</li>
-              <li>Tailored coaching for designers at different comfort levels, from skeptics to early adopters</li>
-              <li>Engineering-focused sessions on design-to-code handoff improvements enabled by AI tooling</li>
-              <li>Documented AI usage guidelines and decision frameworks shared with both organizations</li>
+              <li>Live sessions covering Figma AI features, AI-aided prototyping, and prompt engineering for design</li>
+              <li>Tailored coaching for designers at different comfort levels — skeptics to early adopters</li>
+              <li>Engineering-focused sessions on design-to-code handoff improvements</li>
+              <li>Documented AI usage guidelines and decision frameworks shared across both organizations</li>
             </ul>
           </div>
         </div>
@@ -277,7 +321,7 @@
           <div class="cs-split__image">
             <!-- Placeholder: lunch & learn session or demo screenshot -->
           </div>
-          <p class="cs-split__image-caption">Cross-functional AI sessions, bridging design and engineering teams at VML and ConEdison</p>
+          <p class="cs-split__image-caption">Cross-functional AI sessions bridging design and engineering at VML and ConEdison</p>
         </div>
       </div>
     </section>
@@ -287,7 +331,7 @@
          CHAPTER 03 — DESIGN SYSTEM + WCAG
          ============================================================ -->
     <div class="container">
-      <div class="cs-chapter">
+      <div class="cs-chapter" id="chapter-03">
         <span class="cs-chapter__number">03</span>
         <h2 class="cs-chapter__label">Design System &amp; Accessibility</h2>
       </div>
@@ -300,23 +344,16 @@
           <h3 class="cs-split__heading">A living system that engineering actually uses</h3>
           <div class="cs-split__body">
             <p>
-              Building and maintaining the ConEdison design system requires holding
-              two things in tension: the creative flexibility teams need to solve real
-              product problems, and the structural consistency that makes a platform
-              serving millions of customers predictable and trustworthy.
-            </p>
-            <p>
-              I maintain the Figma component library with a token-based architecture
-              (primitives → semantic → component) that maps directly to the
-              frontend implementation, reducing the translation layer between design
-              and code and making brand guideline updates propagate automatically
-              across all surfaces.
+              Building the ConEdison design system means holding two things in tension:
+              the creative flexibility teams need to solve real product problems, and
+              the structural consistency that makes a platform serving millions
+              predictable and trustworthy.
             </p>
             <ul>
-              <li>Token-based Figma system: primitives → semantic → component, mirroring the CSS token structure used in production</li>
-              <li>Component documentation with usage guidelines, state specifications, and explicit do/don'ts for engineers and designers</li>
-              <li>Brand guideline stewardship, maintaining ConEdison's visual identity across web portal, mobile web, and tablet breakpoints</li>
-              <li>Design system contribution model: clear criteria for extending vs. creating new components, preventing fragmentation across pods</li>
+              <li>Token-based Figma system — primitives → semantic → component — mirroring the CSS token structure in production</li>
+              <li>Component documentation with usage guidelines, state specs, and explicit do/don'ts</li>
+              <li>Design system contribution model preventing fragmentation across pods</li>
+              <li>Brand guideline stewardship across web portal, mobile web, and tablet breakpoints</li>
             </ul>
           </div>
         </div>
@@ -324,7 +361,7 @@
           <div class="cs-split__image">
             <!-- Placeholder: design system / component library screenshot -->
           </div>
-          <p class="cs-split__image-caption">ConEdison design system: token architecture mapped to production CSS, maintained across two pod workstreams</p>
+          <p class="cs-split__image-caption">ConEdison design system — token architecture mapped to production CSS, maintained across two pod workstreams</p>
         </div>
       </div>
     </section>
@@ -336,22 +373,16 @@
           <h3 class="cs-split__heading">Accessibility as infrastructure, not a checklist</h3>
           <div class="cs-split__body">
             <p>
-              ConEdison serves all of New York, which means the platform must work
-              for users who are elderly, visually impaired, or operating under stress
-              during an outage or billing dispute. Accessibility isn't an audit item
-              at the end of a sprint; it's a design constraint from the first wireframe.
-            </p>
-            <p>
-              I built WCAG 2.1 AA compliance into the design system itself: contrast
-              tokens, focus order documentation, accessible form patterns, and
-              screen reader annotation standards, so that every component engineers
-              pull from the library starts from a compliant baseline.
+              ConEdison serves all of New York — the platform must work for users
+              who are elderly, visually impaired, or under stress during an outage
+              or billing dispute. Accessibility is a design constraint from the
+              first wireframe, not an audit item at the end of a sprint.
             </p>
             <ul>
-              <li>WCAG 2.1 AA contrast ratios enforced at the token level; no component ships with a failing color pair</li>
-              <li>Focus management and keyboard navigation patterns documented and tested across critical flows (payment, account management, outage reporting)</li>
+              <li>WCAG 2.1 AA contrast ratios enforced at the token level — no component ships with a failing color pair</li>
+              <li>Focus management and keyboard navigation patterns documented and tested across critical flows</li>
               <li>Screen reader annotation layer in Figma: every handoff includes ARIA labels, landmark structure, and reading order</li>
-              <li>Accessibility review integrated into the sprint definition of done, not a separate QA pass</li>
+              <li>Accessibility review integrated into the sprint definition of done</li>
             </ul>
           </div>
         </div>
@@ -359,7 +390,7 @@
           <div class="cs-split__image">
             <!-- Placeholder: accessibility annotation or contrast audit -->
           </div>
-          <p class="cs-split__image-caption">WCAG compliance built in at the token level: color, contrast, and focus patterns enforced across every component</p>
+          <p class="cs-split__image-caption">WCAG compliance built in at the token level — color, contrast, and focus patterns enforced across every component</p>
         </div>
       </div>
     </section>
@@ -374,25 +405,34 @@
 
 
     <!-- ============================================================
-         IMPACT — Stats
+         IMPACT — Stats grid (outcome reinforcement)
          ============================================================ -->
-    <section class="cs-stats">
+    <section class="cs-stats" id="chapter-impact">
       <div class="container">
         <div class="cs-stats__grid">
           <div class="cs-stat">
-            <p class="cs-stat__number" data-count="2">2</p>
+            <p class="cs-stat__number"
+               data-count="2"
+               aria-label="2 Agile pods">2</p>
             <p class="cs-stat__label">Agile pods led simultaneously: Customer Billing and Account Management</p>
           </div>
           <div class="cs-stat">
-            <p class="cs-stat__number" data-count="22" data-suffix="%">22%</p>
+            <p class="cs-stat__number"
+               data-count="22"
+               data-suffix="%"
+               aria-label="22 percent">22%</p>
             <p class="cs-stat__label">Improvement in core task-completion rates across platform redesign initiatives</p>
           </div>
           <div class="cs-stat">
-            <p class="cs-stat__number" data-count="18" data-suffix="%">18%</p>
+            <p class="cs-stat__number"
+               data-count="18"
+               data-suffix="%"
+               aria-label="18 percent">18%</p>
             <p class="cs-stat__label">Reduction in user drop-off following platform-wide navigation and IA redesign</p>
           </div>
           <div class="cs-stat">
-            <p class="cs-stat__number">AA</p>
+            <p class="cs-stat__number"
+               aria-label="WCAG 2.1 AA">AA</p>
             <p class="cs-stat__label">WCAG 2.1 AA compliance built into every component in the design system from day one</p>
           </div>
         </div>
@@ -404,7 +444,7 @@
          CHAPTER 04 — REFLECTION
          ============================================================ -->
     <div class="container">
-      <div class="cs-chapter">
+      <div class="cs-chapter" id="chapter-04">
         <span class="cs-chapter__number">04</span>
         <h2 class="cs-chapter__label">What I Learned</h2>
       </div>
@@ -417,32 +457,33 @@
           <h3 class="cs-split__heading">AI adoption is a leadership problem before it's a tooling problem</h3>
           <div class="cs-split__body">
             <p>
-              The technology is the easy part. Getting a team of designers and engineers
-              to shift how they work, especially in a regulated, enterprise environment
-              with legacy process inertia, requires sustained investment in trust,
-              demonstration, and psychological safety.
+              The technology is the easy part. Getting a team to shift how they work —
+              especially in a regulated enterprise with legacy process inertia — requires
+              sustained investment in trust, demonstration, and psychological safety.
             </p>
             <p>
-              The Lunch &amp; Learns that landed weren't the ones with the most impressive
-              demos. They were the ones where I solved a real problem the team had that
-              week, live, using AI. That's the proof of concept that changes behavior.
-              Design leadership in an AI era isn't about knowing the most tools; it's
-              about knowing which tool to reach for, and making that judgment legible
-              enough that your team can replicate it.
+              The Lunch &amp; Learns that landed weren't the most impressive demos.
+              They were the ones where I solved a real problem the team had that week,
+              live, using AI. That's the proof of concept that changes behavior.
             </p>
+            <ul>
+              <li>Design leadership in an AI era is about judgment, not tool coverage</li>
+              <li>Making that judgment legible and repeatable is what separates a workshop from a culture shift</li>
+              <li>This engagement continues to evolve as AI tooling and team capability compound</li>
+            </ul>
           </div>
         </div>
         <div class="cs-split__visual">
           <div class="cs-split__image">
             <!-- Placeholder: workshop or session photo -->
           </div>
-          <p class="cs-split__image-caption">Ongoing: this engagement continues to evolve as AI tooling and team capability compound</p>
+          <p class="cs-split__image-caption">Ongoing — this engagement continues to evolve as AI tooling and team capability compound</p>
         </div>
       </div>
     </section>
 
 
-    <!-- Next Project (loops back to first) -->
+    <!-- Next Project -->
     <section class="section">
       <div class="container">
         <a href="project-1.html" class="next-project">
@@ -517,6 +558,6 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=20260436"></script>
+  <script src="../js/main.js?v=20260450"></script>
 </body>
 </html>

@@ -8,10 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/main.css?v=20260443">
-  <link rel="stylesheet" href="../css/interactions.css?v=20260443">
+  <link rel="stylesheet" href="../css/main.css?v=20260450">
+  <link rel="stylesheet" href="../css/case-study.css?v=20260450">
+  <link rel="stylesheet" href="../css/interactions.css?v=20260450">
 </head>
 <body>
+
+  <div class="cs-progress" aria-hidden="true"></div>
 
   <a href="#main-content" class="skip-link">Skip to content</a>
 
@@ -34,7 +37,7 @@
     </div>
   </nav>
 
-  <main id="main-content">
+  <main id="main-content" style="--cs-accent: #10B981;">
 
   <!-- ============================================================
        1. HOOK — Hero
@@ -53,7 +56,23 @@
 
     <div class="container grid">
       <div class="col-8 tab-col-12">
-        <p class="hero__eyebrow">Case Study</p>
+
+        <nav class="hero__breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a>
+          <span class="hero__breadcrumb-sep">/</span>
+          <a href="../index.html#projects">Work</a>
+          <span class="hero__breadcrumb-sep">/</span>
+          <span>DubClub</span>
+        </nav>
+
+        <div class="hero__tags" aria-label="Project disciplines">
+          <span class="hero__tag">/0-to-1 Product</span>
+          <span class="hero__tag">/Product Strategy</span>
+          <span class="hero__tag">/Design Systems</span>
+          <span class="hero__tag">/Growth</span>
+        </div>
+
+        <p class="hero__eyebrow" style="margin-top: var(--space-lg);">Case Study</p>
         <h1 class="hero__title">DubClub</h1>
         <p class="hero__subtitle">
           Connecting amateur sports bettors with professional cappers,
@@ -76,6 +95,25 @@
           <div class="hero__meta-item">
             <span class="hero__meta-label">Impact</span>
             <span class="hero__meta-value">2M+ Users</span>
+          </div>
+        </div>
+
+        <div class="cs-stats-early" aria-label="Project outcomes">
+          <div class="cs-stats-early__item">
+            <span class="cs-stat__number cs-stats-early__number" data-count="2" data-suffix="M+" aria-label="2M+ users">2M+</span>
+            <span class="cs-stats-early__label">Users within first year</span>
+          </div>
+          <div class="cs-stats-early__item">
+            <span class="cs-stat__number cs-stats-early__number" data-count="94" data-suffix="%" aria-label="94% task completion">94%</span>
+            <span class="cs-stats-early__label">Task completion rate</span>
+          </div>
+          <div class="cs-stats-early__item">
+            <span class="cs-stat__number cs-stats-early__number" data-count="4.7" data-suffix="★" aria-label="4.7 star rating">4.7★</span>
+            <span class="cs-stats-early__label">App Store rating</span>
+          </div>
+          <div class="cs-stats-early__item">
+            <span class="cs-stat__number cs-stats-early__number" aria-label="18 months">18mo</span>
+            <span class="cs-stats-early__label">Zero to 2M users</span>
           </div>
         </div>
 
@@ -990,6 +1028,6 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=20260443"></script>
+  <script src="../js/main.js?v=20260450"></script>
 </body>
 </html>

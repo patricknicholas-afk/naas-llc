@@ -43,7 +43,7 @@ body.theme--light .phase-image {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.96);
-  width: 80vw;
+  max-width: 80vw;
   max-height: 80vh;
   border-radius: var(--radius-card);
   overflow: hidden;
@@ -57,7 +57,6 @@ body.theme--light .phase-image {
   opacity: 0;
   transition: opacity var(--duration-normal) var(--ease-default),
               transform var(--duration-normal) var(--ease-default);
-  min-height: 200px;
 }
 
 .img-expand-overlay.is-visible {
@@ -66,9 +65,11 @@ body.theme--light .phase-image {
 }
 
 .img-expand-overlay img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  max-width: 80vw;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  display: block;
 }
 
 .img-expand-overlay__label {

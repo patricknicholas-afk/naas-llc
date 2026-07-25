@@ -521,7 +521,14 @@ function initHomeHeroCarousel() {
     incoming.classList.add('is-active');
 
     window.setTimeout(() => {
+      // Snap back to the resting position instantly — removing the exit
+      // class alone would fall back to the base transform with the
+      // transition still enabled, animating the hidden slide visibly
+      // back through the frame.
+      outgoing.classList.add('no-transition');
       outgoing.classList.remove('is-exit-up', 'is-exit-down');
+      void outgoing.offsetWidth; // force reflow so the snap applies before re-enabling the transition
+      outgoing.classList.remove('no-transition');
       animating = false;
     }, DURATION);
 

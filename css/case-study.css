@@ -864,8 +864,10 @@ body.theme--light .cs-stats-early__label {
 
 .hero__eyebrow--home {
   position: absolute;
-  top: calc(var(--nav-height) + var(--space-lg));
-  right: var(--space-2xl);
+  top: calc(var(--nav-height) + var(--space-lg) + 16px);
+  /* Corner mark's inward edge sits at space-lg + 21px (its own size);
+     add 16px past that for a true visual gap, not just a flat shift. */
+  right: calc(var(--space-lg) + 21px + 16px);
   margin-bottom: 0;
   font-size: var(--text-caption);
 }
@@ -890,7 +892,7 @@ body.theme--light .cs-stats-early__label {
   left: var(--space-lg);
   border-top-width: 2px;
   border-left-width: 2px;
-  border-top-left-radius: 6px;
+  border-top-left-radius: 2px;
 }
 
 .hero__frame-corner--tr {
@@ -898,7 +900,7 @@ body.theme--light .cs-stats-early__label {
   right: var(--space-lg);
   border-top-width: 2px;
   border-right-width: 2px;
-  border-top-right-radius: 6px;
+  border-top-right-radius: 2px;
 }
 
 .hero__frame-corner--bl {
@@ -906,7 +908,7 @@ body.theme--light .cs-stats-early__label {
   left: var(--space-lg);
   border-bottom-width: 2px;
   border-left-width: 2px;
-  border-bottom-left-radius: 6px;
+  border-bottom-left-radius: 2px;
 }
 
 .hero__frame-corner--br {
@@ -914,7 +916,7 @@ body.theme--light .cs-stats-early__label {
   right: var(--space-lg);
   border-bottom-width: 2px;
   border-right-width: 2px;
-  border-bottom-right-radius: 6px;
+  border-bottom-right-radius: 2px;
 }
 
 /* Decorative accent ring, centered behind the copy block */
@@ -934,9 +936,11 @@ body.theme--light .cs-stats-early__label {
 /* Back / Next caption row — doubles as the home carousel's controls */
 .hero__frame-nav {
   position: absolute;
-  left: var(--space-2xl);
-  right: var(--space-2xl);
-  bottom: calc(var(--space-lg) + 6px);
+  left: calc(var(--space-lg) + 21px + 16px);
+  right: calc(var(--space-lg) + 21px + 16px);
+  /* Corner mark's inward (top) edge sits at space-lg + 21px (its own
+     size); add 16px past that for a true visual gap above it. */
+  bottom: calc(var(--space-lg) + 21px + 16px);
   display: flex;
   justify-content: space-between;
   z-index: 1;
@@ -1025,9 +1029,10 @@ body.theme--light .cs-stats-early__label {
 
   /* Reserve room so the absolutely-positioned Back/Next row doesn't
      collide with the CTA button once the panel height is content-driven
-     instead of viewport-driven (stacked layout). */
+     instead of viewport-driven (stacked layout). Sized for the row's
+     bottom offset (space-lg + 21px + 16px) plus its own height. */
   .hero--split .hero__panel-text--home {
-    padding-bottom: calc(var(--space-2xl) + 28px);
+    padding-bottom: calc(var(--space-2xl) + 60px);
   }
 }
 

@@ -933,14 +933,16 @@ body.theme--light .cs-stats-early__label {
   z-index: 0;
 }
 
-/* Back / Next caption row — doubles as the home carousel's controls */
+/* Back / Next caption row — doubles as the home carousel's controls.
+   Vertically centered on the corner bracket's top edge (space-lg +
+   21px, its own footprint) via the bottom+translateY(50%) pairing,
+   which stays centered regardless of the row's actual line-height. */
 .hero__frame-nav {
   position: absolute;
   left: calc(var(--space-lg) + 21px + 16px);
   right: calc(var(--space-lg) + 21px + 16px);
-  /* Corner mark's inward (top) edge sits at space-lg + 21px (its own
-     size); add 16px past that for a true visual gap above it. */
-  bottom: calc(var(--space-lg) + 21px + 16px);
+  bottom: calc(var(--space-lg) + 21px);
+  transform: translateY(50%);
   display: flex;
   justify-content: space-between;
   z-index: 1;

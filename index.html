@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css?v=20260444">
-  <link rel="stylesheet" href="css/case-study.css?v=20260458">
+  <link rel="stylesheet" href="css/case-study.css?v=20260459">
 </head>
 <body class="theme--light">
 
@@ -65,21 +65,22 @@
         </div>
       </div>
 
-      <div class="hero__frame-nav" aria-hidden="true">
-        <span class="hero__frame-nav-label">Back</span>
-        <span class="hero__frame-nav-label">Next</span>
+      <div class="hero__frame-nav">
+        <button type="button" class="hero__frame-nav-label" data-home-carousel-back aria-label="Previous slide">Back</button>
+        <button type="button" class="hero__frame-nav-label" data-home-carousel-next aria-label="Next slide">Next</button>
       </div>
 
     </div>
 
-    <!-- Right panel — placeholder image/video carousel, auto-advances every 3s.
-         Swap these <img> slides for final photography/video before launch. -->
+    <!-- Right panel — placeholder image/video carousel, auto-advances every 3.75s
+         with a vertical slide transition. Swap these <img> slides for final
+         photography/video before launch. -->
     <div class="hero__panel-visual hero__panel-visual--home">
-      <div class="hero__visual-carousel hero__visual-carousel--auto">
-        <div class="hero__visual-slide is-active"><img src="assets/images/dubclub-1.png" alt="" loading="lazy"></div>
-        <div class="hero__visual-slide"><img src="assets/images/audible-carousel-2.png" alt="" loading="lazy"></div>
-        <div class="hero__visual-slide"><img src="assets/images/abi-carousel-1.png" alt="" loading="lazy"></div>
-        <div class="hero__visual-slide"><img src="assets/images/coned-slide-1.png" alt="" loading="lazy"></div>
+      <div class="home-hero-carousel" data-home-carousel>
+        <div class="home-hero-carousel__slide is-active"><img src="assets/images/dubclub-1.png" alt="" loading="lazy"></div>
+        <div class="home-hero-carousel__slide"><img src="assets/images/audible-carousel-2.png" alt="" loading="lazy"></div>
+        <div class="home-hero-carousel__slide"><img src="assets/images/abi-carousel-1.png" alt="" loading="lazy"></div>
+        <div class="home-hero-carousel__slide"><img src="assets/images/coned-slide-1.png" alt="" loading="lazy"></div>
       </div>
     </div>
 
@@ -300,6 +301,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=20260452"></script>
+  <script src="js/main.js?v=20260454"></script>
 </body>
 </html>

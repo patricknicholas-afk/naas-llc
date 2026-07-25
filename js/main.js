@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroTabs();
   initHeroCarousel();
   initHeroVisualCarousel();
-  initHeroVisualAutoCarousel();
+  initHomeHeroCarousel();
   initCaseStudyProgress();
   initStatCounters();
   initVideoPlaceholders();
@@ -478,23 +478,76 @@ function initHeroVisualCarousel() {
   });
 }
 
-/* ---- Hero Split Layout — Plain Auto-Advancing Carousel (no dots) ----
-   For panels like the home hero where the right side is a plain
-   image/video reel with no manual controls — just a timed crossfade. */
-function initHeroVisualAutoCarousel() {
-  document.querySelectorAll('.hero__visual-carousel--auto').forEach(carousel => {
-    const slides = Array.from(carousel.querySelectorAll('.hero__visual-slide'));
-    if (slides.length < 2) return;
+/* ---- Home Hero Carousel — vertical slide transition ----
+   Auto-advances upward every 3.75s; the Back/Next buttons in the left
+   panel drive it manually. Next always slides the incoming image up
+   from the bottom; Back reverses direction, sliding the previous
+   image down from the top. Distinct from the dot/crossfade carousel
+   used on project-page heroes (initHeroVisualCarousel). */
+function initHomeHeroCarousel() {
+  const root = document.querySelector('[data-home-carousel]');
+  if (!root) return;
 
-    let current = Math.max(0, slides.findIndex(s => s.classList.contains('is-active')));
+  const slides = Array.from(root.querySelectorAll('.home-hero-carousel__slide'));
+  if (slides.length < 2) return;
 
-    setInterval(() => {
-      const prev = current;
-      current = (current + 1) % slides.length;
-      slides[prev].classList.remove('is-active');
-      slides[current].classList.add('is-active');
-    }, 3000);
-  });
+  const backBtn = document.querySelector('[data-home-carousel-back]');
+  const nextBtn = document.querySelector('[data-home-carousel-next]');
+
+  const DURATION = 700;
+  const INTERVAL = 3750;
+
+  let current = Math.max(0, slides.findIndex(s => s.classList.contains('is-active')));
+  let animating = false;
+  let timer = null;
+
+  function goTo(index, direction) {
+    if (animating || index === current) return;
+    animating = true;
+
+    const outgoing = slides[current];
+    const incoming = slides[index];
+
+    if (direction === 'back') {
+      // Snap the incoming slide to the top edge instantly, before animating in.
+      incoming.classList.add('no-transition', 'is-enter-top');
+      void incoming.offsetWidth; // force reflow so the snap applies before the transition below
+      incoming.classList.remove('no-transition');
+    }
+
+    outgoing.classList.remove('is-active');
+    outgoing.classList.add(direction === 'next' ? 'is-exit-up' : 'is-exit-down');
+    incoming.classList.remove('is-enter-top');
+    incoming.classList.add('is-active');
+
+    window.setTimeout(() => {
+      outgoing.classList.remove('is-exit-up', 'is-exit-down');
+      animating = false;
+    }, DURATION);
+
+    current = index;
+  }
+
+  function restartTimer() {
+    if (timer) clearInterval(timer);
+    timer = setInterval(() => goTo((current + 1) % slides.length, 'next'), INTERVAL);
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      goTo((current + 1) % slides.length, 'next');
+      restartTimer();
+    });
+  }
+
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      goTo((current - 1 + slides.length) % slides.length, 'back');
+      restartTimer();
+    });
+  }
+
+  restartTimer();
 }
 
 /* ---- Card Image Carousel ---- */

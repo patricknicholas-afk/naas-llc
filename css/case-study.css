@@ -931,7 +931,7 @@ body.theme--light .cs-stats-early__label {
   z-index: 0;
 }
 
-/* Back / Next caption row — decorative, sits just inside the bottom frame marks */
+/* Back / Next caption row — doubles as the home carousel's controls */
 .hero__frame-nav {
   position: absolute;
   left: var(--space-2xl);
@@ -939,15 +939,26 @@ body.theme--light .cs-stats-early__label {
   bottom: calc(var(--space-lg) + 6px);
   display: flex;
   justify-content: space-between;
-  pointer-events: none;
   z-index: 1;
 }
 
 .hero__frame-nav-label {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
   font-size: var(--text-caption);
   font-weight: var(--fw-emphasis);
   letter-spacing: var(--tracking-overline);
   color: var(--color-text-tertiary);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-default);
+}
+
+.hero__frame-nav-label:hover,
+.hero__frame-nav-label:focus-visible {
+  color: var(--color-text-primary);
 }
 
 .hero__panel-visual--home {
@@ -957,14 +968,50 @@ body.theme--light .cs-stats-early__label {
   border-bottom-right-radius: 16px;
 }
 
-/* Full-bleed cover fill for the home hero's plain auto carousel —
-   overrides the contained/inset sizing used by project-page carousels */
-.hero__visual-carousel--auto .hero__visual-slide img {
+/* ================================================================
+   HOME HERO CAROUSEL — vertical slide transition, unique to the
+   home hero (distinct from the dot-controlled project-page
+   carousels, which crossfade instead). Auto-advances upward; the
+   Back/Next buttons drive it manually in either direction.
+   ================================================================ */
+.home-hero-carousel {
+  position: absolute;
+  inset: 0;
+}
+
+.home-hero-carousel__slide {
+  position: absolute;
+  inset: 0;
+  transform: translateY(100%);
+  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.home-hero-carousel__slide.is-active {
+  transform: translateY(0%);
+}
+
+.home-hero-carousel__slide.is-exit-up {
+  transform: translateY(-100%);
+}
+
+.home-hero-carousel__slide.is-exit-down {
+  transform: translateY(100%);
+}
+
+.home-hero-carousel__slide.is-enter-top {
+  transform: translateY(-100%);
+}
+
+.home-hero-carousel__slide.no-transition {
+  transition: none;
+}
+
+.home-hero-carousel__slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  margin: 0;
+  display: block;
 }
 
 @media (max-width: 1024px) {

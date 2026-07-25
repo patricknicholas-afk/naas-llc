@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/main.css?v=20260450">
-  <link rel="stylesheet" href="../css/case-study.css?v=20260450">
+  <link rel="stylesheet" href="../css/main.css?v=20260451">
+  <link rel="stylesheet" href="../css/case-study.css?v=20260451">
 </head>
 <body>
 
@@ -41,64 +41,95 @@
   <!-- ============================================================
        1. HOOK — Hero
        ============================================================ -->
-  <section class="hero hero--project hero--warm">
+  <section class="hero hero--project hero--warm hero--split">
 
-    <!-- Right-side image carousel (decorative) -->
-    <div class="hero__carousel" aria-hidden="true">
-      <div class="hero__carousel-slide">
-        <img src="../assets/images/abi-slide-1.png" alt="">
+    <div class="hero__panel-text">
+
+      <nav class="hero__breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="hero__breadcrumb-sep">/</span>
+        <a href="../index.html#projects">Work</a>
+        <span class="hero__breadcrumb-sep">/</span>
+        <span>Anheuser-Busch</span>
+      </nav>
+
+      <div class="hero__tags" aria-label="Project disciplines">
+        <span class="hero__tag">/Design Systems</span>
+        <span class="hero__tag">/Brand Architecture</span>
+        <span class="hero__tag">/0-to-1</span>
+        <span class="hero__tag">/Mobile</span>
       </div>
-      <div class="hero__carousel-slide">
-        <img src="../assets/images/abi-slide-2.png" alt="">
+
+      <p class="hero__eyebrow" style="margin-top: var(--space-lg);">Case Study</p>
+      <h1 class="hero__title">Anheuser-Busch</h1>
+      <p class="hero__subtitle">
+        Building a unified design system for one of the world's largest
+        beverage companies, creating consistency across 500+ brands
+        while preserving each brand's distinct identity.
+      </p>
+      <div class="hero__meta">
+        <div class="hero__meta-item">
+          <span class="hero__meta-label">Role</span>
+          <span class="hero__meta-value">Lead Designer</span>
+        </div>
+        <div class="hero__meta-item">
+          <span class="hero__meta-label">Timeline</span>
+          <span class="hero__meta-value">Aug – Oct 2021</span>
+        </div>
+        <div class="hero__meta-item">
+          <span class="hero__meta-label">Platform</span>
+          <span class="hero__meta-value">iOS & Web</span>
+        </div>
+        <div class="hero__meta-item">
+          <span class="hero__meta-label">Agency</span>
+          <span class="hero__meta-value">Wunderman Thompson</span>
+        </div>
+      </div>
+
+      <nav class="hero__filmstrip" aria-label="Other case studies">
+        <a class="hero__filmstrip-item" href="project-1.html">
+          <span class="hero__filmstrip-thumb"><img src="../assets/images/dubclub-1.png" alt="" loading="lazy"></span>
+          <span class="hero__filmstrip-label">01 DubClub</span>
+        </a>
+        <a class="hero__filmstrip-item" href="project-2.html">
+          <span class="hero__filmstrip-thumb"><img src="../assets/images/audible-1.png" alt="" loading="lazy"></span>
+          <span class="hero__filmstrip-label">02 Audible</span>
+        </a>
+        <span class="hero__filmstrip-item is-active" aria-current="page">
+          <span class="hero__filmstrip-thumb"><img src="../assets/images/abi-logo.png" alt="" loading="lazy"></span>
+          <span class="hero__filmstrip-label">03 AB InBev</span>
+        </span>
+        <a class="hero__filmstrip-item" href="project-4.html">
+          <span class="hero__filmstrip-thumb"><img src="../assets/images/coned-slide-1.png" alt="" loading="lazy"></span>
+          <span class="hero__filmstrip-label">04 ConEdison</span>
+        </a>
+      </nav>
+
+    </div>
+
+    <div class="hero__panel-visual">
+      <div class="hero__visual-carousel">
+        <div class="hero__visual-slide is-active">
+          <img src="../assets/images/abi-carousel-1.png" alt="MyCooler app — Budweiser branded onboarding and profile screens">
+        </div>
+        <div class="hero__visual-slide">
+          <img src="../assets/images/abi-carousel-2.png" alt="Anheuser-Busch design system token architecture and redeem history screen">
+        </div>
+        <div class="hero__visual-slide">
+          <img src="../assets/images/abi-carousel-3.png" alt="MyCooler rewards, promo codes, and Michelob Ultra product screens">
+        </div>
+        <div class="hero__visual-slide">
+          <img src="../assets/images/abi-carousel-4.png" alt="MyCooler points redemption and favorite team selection screens">
+        </div>
+      </div>
+      <div class="hero__visual-dots" role="tablist" aria-label="Carousel image navigation">
+        <button class="hero__visual-dot is-active" type="button" aria-label="Show image 1" aria-selected="true"></button>
+        <button class="hero__visual-dot" type="button" aria-label="Show image 2" aria-selected="false"></button>
+        <button class="hero__visual-dot" type="button" aria-label="Show image 3" aria-selected="false"></button>
+        <button class="hero__visual-dot" type="button" aria-label="Show image 4" aria-selected="false"></button>
       </div>
     </div>
 
-    <div class="container grid">
-      <div class="col-8 tab-col-12">
-
-        <nav class="hero__breadcrumb" aria-label="Breadcrumb">
-          <a href="../index.html">Home</a>
-          <span class="hero__breadcrumb-sep">/</span>
-          <a href="../index.html#projects">Work</a>
-          <span class="hero__breadcrumb-sep">/</span>
-          <span>Anheuser-Busch</span>
-        </nav>
-
-        <div class="hero__tags" aria-label="Project disciplines">
-          <span class="hero__tag">/Design Systems</span>
-          <span class="hero__tag">/Brand Architecture</span>
-          <span class="hero__tag">/0-to-1</span>
-          <span class="hero__tag">/Mobile</span>
-        </div>
-
-        <p class="hero__eyebrow" style="margin-top: var(--space-lg);">Case Study</p>
-        <h1 class="hero__title">Anheuser-Busch</h1>
-        <p class="hero__subtitle">
-          Building a unified design system for one of the world's largest
-          beverage companies, creating consistency across 500+ brands
-          while preserving each brand's distinct identity.
-        </p>
-        <div class="hero__meta">
-          <div class="hero__meta-item">
-            <span class="hero__meta-label">Role</span>
-            <span class="hero__meta-value">Lead Designer</span>
-          </div>
-          <div class="hero__meta-item">
-            <span class="hero__meta-label">Timeline</span>
-            <span class="hero__meta-value">Aug – Oct 2021</span>
-          </div>
-          <div class="hero__meta-item">
-            <span class="hero__meta-label">Platform</span>
-            <span class="hero__meta-value">iOS & Web</span>
-          </div>
-          <div class="hero__meta-item">
-            <span class="hero__meta-label">Agency</span>
-            <span class="hero__meta-value">Wunderman Thompson</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
   </section>
 
   <!-- ============================================================

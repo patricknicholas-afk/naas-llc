@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initImageExpand();
   initHeroTabs();
   initHeroCarousel();
+  initHeroVisualCarousel();
   initCaseStudyProgress();
   initStatCounters();
   initVideoPlaceholders();
@@ -426,6 +427,32 @@ function initHeroCarousel() {
   }
 
   setInterval(advance, 3000);
+}
+
+/* ---- Hero Split Layout — Visual Carousel (dot-controlled) ----
+   Right-panel image carousel for .hero--split. Independent from
+   initHeroCarousel (the old auto-advancing background carousel) —
+   this one is manually controlled via .hero__visual-dot clicks. */
+function initHeroVisualCarousel() {
+  document.querySelectorAll('.hero__panel-visual').forEach(panel => {
+    const slides = Array.from(panel.querySelectorAll('.hero__visual-slide'));
+    const dots = Array.from(panel.querySelectorAll('.hero__visual-dot'));
+    if (slides.length < 2 || !dots.length) return;
+
+    function goTo(index) {
+      slides.forEach((s, i) => s.classList.toggle('is-active', i === index));
+      dots.forEach((d, i) => {
+        d.classList.toggle('is-active', i === index);
+        d.setAttribute('aria-selected', String(i === index));
+      });
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => goTo(i));
+    });
+
+    goTo(0);
+  });
 }
 
 /* ---- Card Image Carousel ---- */

@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroTabs();
   initHeroCarousel();
   initHeroVisualCarousel();
+  initHeroVisualAutoCarousel();
   initCaseStudyProgress();
   initStatCounters();
   initVideoPlaceholders();
@@ -474,6 +475,25 @@ function initHeroVisualCarousel() {
 
     goTo(0);
     startAutoAdvance();
+  });
+}
+
+/* ---- Hero Split Layout — Plain Auto-Advancing Carousel (no dots) ----
+   For panels like the home hero where the right side is a plain
+   image/video reel with no manual controls — just a timed crossfade. */
+function initHeroVisualAutoCarousel() {
+  document.querySelectorAll('.hero__visual-carousel--auto').forEach(carousel => {
+    const slides = Array.from(carousel.querySelectorAll('.hero__visual-slide'));
+    if (slides.length < 2) return;
+
+    let current = Math.max(0, slides.findIndex(s => s.classList.contains('is-active')));
+
+    setInterval(() => {
+      const prev = current;
+      current = (current + 1) % slides.length;
+      slides[prev].classList.remove('is-active');
+      slides[current].classList.add('is-active');
+    }, 3000);
   });
 }
 

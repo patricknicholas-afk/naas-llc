@@ -842,3 +842,160 @@ body.theme--light .cs-stats-early__label {
     bottom: var(--space-md);
   }
 }
+
+/* ================================================================
+   HERO — HOME SPLIT VARIANT
+   Reuses the .hero--split grid/stack mechanics above, with a
+   light, editorial treatment: viewfinder corner marks, a decorative
+   accent ring behind the copy, and a plain auto-advancing (no dot
+   controls) image/video carousel on the right, edge-to-edge.
+   ================================================================ */
+.hero--home.hero--split {
+  background-color: var(--p-neutral-0);
+  min-height: var(--hero-min-h-home);
+  grid-template-columns: minmax(0, 47%) minmax(0, 53%);
+}
+
+.hero__panel-text--home {
+  position: relative;
+  background-color: var(--p-neutral-50);
+  overflow: hidden;
+}
+
+.hero__eyebrow--home {
+  position: absolute;
+  top: calc(var(--nav-height) + var(--space-lg));
+  right: var(--space-2xl);
+  margin-bottom: 0;
+  font-size: var(--text-caption);
+}
+
+.hero__home-copy {
+  position: relative;
+  z-index: 1;
+}
+
+/* Viewfinder corner marks — decorative, framing the copy block */
+.hero__frame-corner {
+  position: absolute;
+  width: 21px;
+  height: 21px;
+  border: 0 solid var(--p-neutral-900);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero__frame-corner--tl {
+  top: calc(var(--nav-height) + var(--space-lg));
+  left: var(--space-lg);
+  border-top-width: 2px;
+  border-left-width: 2px;
+  border-top-left-radius: 6px;
+}
+
+.hero__frame-corner--tr {
+  top: calc(var(--nav-height) + var(--space-lg));
+  right: var(--space-lg);
+  border-top-width: 2px;
+  border-right-width: 2px;
+  border-top-right-radius: 6px;
+}
+
+.hero__frame-corner--bl {
+  bottom: var(--space-lg);
+  left: var(--space-lg);
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+  border-bottom-left-radius: 6px;
+}
+
+.hero__frame-corner--br {
+  bottom: var(--space-lg);
+  right: var(--space-lg);
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+  border-bottom-right-radius: 6px;
+}
+
+/* Decorative accent ring, centered behind the copy block */
+.hero__accent-ring {
+  position: absolute;
+  left: 44%;
+  top: 62%;
+  width: min(420px, 55%);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1.5px solid var(--p-neutral-200);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Back / Next caption row — decorative, sits just inside the bottom frame marks */
+.hero__frame-nav {
+  position: absolute;
+  left: var(--space-2xl);
+  right: var(--space-2xl);
+  bottom: calc(var(--space-lg) + 6px);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero__frame-nav-label {
+  font-size: var(--text-caption);
+  font-weight: var(--fw-emphasis);
+  letter-spacing: var(--tracking-overline);
+  color: var(--color-text-tertiary);
+}
+
+.hero__panel-visual--home {
+  padding: 0;
+  background-color: #e5e5e5;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+/* Full-bleed cover fill for the home hero's plain auto carousel —
+   overrides the contained/inset sizing used by project-page carousels */
+.hero__visual-carousel--auto .hero__visual-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .hero__panel-visual--home {
+    border-radius: var(--radius-panel);
+  }
+
+  .hero__accent-ring {
+    width: min(320px, 60%);
+  }
+
+  /* Reserve room so the absolutely-positioned Back/Next row doesn't
+     collide with the CTA button once the panel height is content-driven
+     instead of viewport-driven (stacked layout). */
+  .hero--split .hero__panel-text--home {
+    padding-bottom: calc(var(--space-2xl) + 28px);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__frame-corner {
+    display: none;
+  }
+
+  .hero__eyebrow--home {
+    top: calc(var(--nav-height-mobile) + var(--space-md));
+    right: var(--space-lg);
+  }
+
+  .hero__frame-nav {
+    left: var(--space-lg);
+    right: var(--space-lg);
+  }
+}

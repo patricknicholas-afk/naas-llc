@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css?v=20260443">
+  <link rel="stylesheet" href="css/case-study.css?v=20260458">
 </head>
 <body class="theme--light">
 
@@ -40,10 +41,20 @@
   <!-- ============================================================
        HERO — Home
        ============================================================ -->
-  <section class="hero hero--home">
-    <div class="container grid">
-      <div class="col-8 tab-col-12 flex flex-col justify-center">
-        <p class="hero__eyebrow">Design &middot; Strategy &middot; Product</p>
+  <section class="hero hero--home hero--split">
+
+    <div class="hero__panel-text hero__panel-text--home">
+
+      <p class="hero__eyebrow hero__eyebrow--home">Design &middot; Strategy &middot; Product</p>
+
+      <span class="hero__frame-corner hero__frame-corner--tl" aria-hidden="true"></span>
+      <span class="hero__frame-corner hero__frame-corner--tr" aria-hidden="true"></span>
+      <span class="hero__frame-corner hero__frame-corner--bl" aria-hidden="true"></span>
+      <span class="hero__frame-corner hero__frame-corner--br" aria-hidden="true"></span>
+
+      <span class="hero__accent-ring" aria-hidden="true"></span>
+
+      <div class="hero__home-copy">
         <h1 class="hero__title">Scalable creative<br>design &amp; strategy.</h1>
         <p class="hero__subtitle">
           I'm Patrick Nicholas — a product designer and strategist changing complex
@@ -53,7 +64,25 @@
           <a href="#projects" class="btn btn--primary btn--lg">View Work <span class="btn__arrow">&rarr;</span></a>
         </div>
       </div>
+
+      <div class="hero__frame-nav" aria-hidden="true">
+        <span class="hero__frame-nav-label">Back</span>
+        <span class="hero__frame-nav-label">Next</span>
+      </div>
+
     </div>
+
+    <!-- Right panel — placeholder image/video carousel, auto-advances every 3s.
+         Swap these <img> slides for final photography/video before launch. -->
+    <div class="hero__panel-visual hero__panel-visual--home">
+      <div class="hero__visual-carousel hero__visual-carousel--auto">
+        <div class="hero__visual-slide is-active"><img src="assets/images/dubclub-1.png" alt="" loading="lazy"></div>
+        <div class="hero__visual-slide"><img src="assets/images/audible-carousel-2.png" alt="" loading="lazy"></div>
+        <div class="hero__visual-slide"><img src="assets/images/abi-carousel-1.png" alt="" loading="lazy"></div>
+        <div class="hero__visual-slide"><img src="assets/images/coned-slide-1.png" alt="" loading="lazy"></div>
+      </div>
+    </div>
+
   </section>
 
   <!-- ============================================================

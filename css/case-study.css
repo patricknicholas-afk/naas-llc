@@ -523,7 +523,7 @@ body.theme--light .cs-split__image {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-sm);
-  margin-top: var(--space-sm);
+  margin-top: var(--space-lg);
 }
 
 .hero__tag {
@@ -699,7 +699,7 @@ body.theme--light .cs-stats-early__label {
   justify-content: center;
   min-height: 480px;
   padding: var(--space-xl);
-  background-color: var(--color-surface);
+  background-color: transparent; /* inherits the .hero section's own bg (dark/warm/default) to match the text panel */
   overflow: hidden;
 }
 

@@ -429,17 +429,24 @@ function initHeroCarousel() {
   setInterval(advance, 3000);
 }
 
-/* ---- Hero Split Layout — Visual Carousel (dot-controlled) ----
-   Right-panel image carousel for .hero--split. Independent from
-   initHeroCarousel (the old auto-advancing background carousel) —
-   this one is manually controlled via .hero__visual-dot clicks. */
+/* ---- Hero Split Layout — Visual Carousel (auto-advancing, dot-controlled) ----
+   Right-panel image carousel for .hero--split. Auto-advances on the same
+   3s cadence as the old .hero__carousel, and is also manually controllable
+   via .hero__visual-dot clicks — clicking a dot restarts the auto-advance
+   timer so it doesn't immediately jump away from the chosen slide. */
 function initHeroVisualCarousel() {
+  const AUTO_ADVANCE_MS = 3000;
+
   document.querySelectorAll('.hero__panel-visual').forEach(panel => {
     const slides = Array.from(panel.querySelectorAll('.hero__visual-slide'));
     const dots = Array.from(panel.querySelectorAll('.hero__visual-dot'));
     if (slides.length < 2 || !dots.length) return;
 
+    let current = 0;
+    let timer = null;
+
     function goTo(index) {
+      current = index;
       slides.forEach((s, i) => s.classList.toggle('is-active', i === index));
       dots.forEach((d, i) => {
         d.classList.toggle('is-active', i === index);
@@ -447,11 +454,26 @@ function initHeroVisualCarousel() {
       });
     }
 
+    function startAutoAdvance() {
+      clearInterval(timer);
+      timer = setInterval(() => {
+        goTo((current + 1) % slides.length);
+      }, AUTO_ADVANCE_MS);
+    }
+
     dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => goTo(i));
+      dot.addEventListener('click', () => {
+        goTo(i);
+        startAutoAdvance();
+      });
     });
 
+    // Pause while the pointer is over the panel, resume on leave
+    panel.addEventListener('mouseenter', () => clearInterval(timer));
+    panel.addEventListener('mouseleave', startAutoAdvance);
+
     goTo(0);
+    startAutoAdvance();
   });
 }
 

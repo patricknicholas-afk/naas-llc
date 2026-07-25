@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/main.css?v=20260450">
-  <link rel="stylesheet" href="../css/case-study.css?v=20260450">
+  <link rel="stylesheet" href="../css/case-study.css?v=20260452">
 </head>
 <body>
 
@@ -41,70 +41,91 @@
   <!-- ============================================================
        1. HOOK — Hero
        ============================================================ -->
-  <section class="hero hero--project hero--dark">
+  <section class="hero hero--project hero--dark hero--split">
 
-    <!-- Right-side image carousel (decorative) -->
-    <div class="hero__carousel" aria-hidden="true">
-      <div class="hero__carousel-slide">
-        <img src="../assets/images/audible-slide-1.png" alt="">
+    <div class="hero__panel-text">
+
+      <nav class="hero__breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="hero__breadcrumb-sep">/</span>
+        <a href="../index.html#projects">Work</a>
+        <span class="hero__breadcrumb-sep">/</span>
+        <span>Audible</span>
+      </nav>
+
+      <div class="hero__tags" aria-label="Project disciplines">
+        <span class="hero__tag">/Enterprise Platform</span>
+        <span class="hero__tag">/Metadata Strategy</span>
+        <span class="hero__tag">/UAT</span>
+        <span class="hero__tag">/DSA Compliance</span>
       </div>
-      <div class="hero__carousel-slide">
-        <img src="../assets/images/audible-slide-2.png" alt="">
+
+      <p class="hero__eyebrow" style="margin-top: var(--space-lg);">Case Study</p>
+      <h1 class="hero__title">Audible</h1>
+      <p class="hero__subtitle">
+        Intentionally displaying back-end metadata to meet the customer mindset,
+        aligning purpose and functionality across Audible's product detail page
+        for 500K+ titles worldwide.
+      </p>
+      <div class="hero__meta">
+        <div class="hero__meta-item">
+          <span class="hero__meta-label">Role</span>
+          <span class="hero__meta-value">UX Lead</span>
+        </div>
+        <div class="hero__meta-item">
+          <span class="hero__meta-label">Timeline</span>
+          <span class="hero__meta-value">Q2</span>
+        </div>
+        <div class="hero__meta-item">
+          <span class="hero__meta-label">Platform</span>
+          <span class="hero__meta-value">Mobile Application</span>
+        </div>
+        <div class="hero__meta-item">
+          <span class="hero__meta-label">Company</span>
+          <span class="hero__meta-value">Amazon / Audible</span>
+        </div>
       </div>
-      <div class="hero__carousel-slide">
-        <img src="../assets/images/audible-slide-3.png" alt="">
+
+      <nav class="hero__filmstrip" aria-label="Other case studies">
+        <a class="hero__filmstrip-item" href="project-1.html">
+          <span class="hero__filmstrip-thumb"><img src="../assets/images/dubclub-1.png" alt="" loading="lazy"></span>
+          <span class="hero__filmstrip-label">01 DubClub</span>
+        </a>
+        <span class="hero__filmstrip-item is-active" aria-current="page">
+          <span class="hero__filmstrip-thumb"><img src="../assets/images/audible-1.png" alt="" loading="lazy"></span>
+          <span class="hero__filmstrip-label">02 Audible</span>
+        </span>
+        <a class="hero__filmstrip-item" href="project-3.html">
+          <span class="hero__filmstrip-thumb"><img src="../assets/images/abi-logo.png" alt="" loading="lazy"></span>
+          <span class="hero__filmstrip-label">03 AB InBev</span>
+        </a>
+        <a class="hero__filmstrip-item" href="project-4.html">
+          <span class="hero__filmstrip-thumb"><img src="../assets/images/coned-slide-1.png" alt="" loading="lazy"></span>
+          <span class="hero__filmstrip-label">04 ConEdison</span>
+        </a>
+      </nav>
+
+    </div>
+
+    <div class="hero__panel-visual">
+      <div class="hero__visual-carousel">
+        <div class="hero__visual-slide is-active">
+          <img src="../assets/images/audible-carousel-1.png" alt="Audiobooks library list with metadata tags, and the Far Cry: Rise of the Revolution product detail page">
+        </div>
+        <div class="hero__visual-slide">
+          <img src="../assets/images/audible-carousel-2.png" alt="8 Rules of Love product detail page with Summary and Highlights metadata panel">
+        </div>
+        <div class="hero__visual-slide">
+          <img src="../assets/images/audible-carousel-3.png" alt="Highlights panel expanded to show the full genre, topic, and narrator tag taxonomy">
+        </div>
       </div>
-      <div class="hero__carousel-slide">
-        <img src="../assets/images/audible-slide-4.png" alt="">
+      <div class="hero__visual-dots" role="tablist" aria-label="Carousel image navigation">
+        <button class="hero__visual-dot is-active" type="button" aria-label="Show image 1" aria-selected="true"></button>
+        <button class="hero__visual-dot" type="button" aria-label="Show image 2" aria-selected="false"></button>
+        <button class="hero__visual-dot" type="button" aria-label="Show image 3" aria-selected="false"></button>
       </div>
     </div>
 
-    <div class="container grid">
-      <div class="col-8 tab-col-12">
-
-        <nav class="hero__breadcrumb" aria-label="Breadcrumb">
-          <a href="../index.html">Home</a>
-          <span class="hero__breadcrumb-sep">/</span>
-          <a href="../index.html#projects">Work</a>
-          <span class="hero__breadcrumb-sep">/</span>
-          <span>Audible</span>
-        </nav>
-
-        <div class="hero__tags" aria-label="Project disciplines">
-          <span class="hero__tag">/Enterprise Platform</span>
-          <span class="hero__tag">/Metadata Strategy</span>
-          <span class="hero__tag">/UAT</span>
-          <span class="hero__tag">/DSA Compliance</span>
-        </div>
-
-        <p class="hero__eyebrow" style="margin-top: var(--space-lg);">Case Study</p>
-        <h1 class="hero__title">Audible</h1>
-        <p class="hero__subtitle">
-          Intentionally displaying back-end metadata to meet the customer mindset,
-          aligning purpose and functionality across Audible's product detail page
-          for 500K+ titles worldwide.
-        </p>
-        <div class="hero__meta">
-          <div class="hero__meta-item">
-            <span class="hero__meta-label">Role</span>
-            <span class="hero__meta-value">UX Lead</span>
-          </div>
-          <div class="hero__meta-item">
-            <span class="hero__meta-label">Timeline</span>
-            <span class="hero__meta-value">Q2</span>
-          </div>
-          <div class="hero__meta-item">
-            <span class="hero__meta-label">Platform</span>
-            <span class="hero__meta-value">Mobile Application</span>
-          </div>
-          <div class="hero__meta-item">
-            <span class="hero__meta-label">Company</span>
-            <span class="hero__meta-value">Amazon / Audible</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
   </section>
 
   <!-- Tab strip — always light, sits between hero and content panels -->
@@ -1371,6 +1392,6 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=20260450"></script>
+  <script src="../js/main.js?v=20260452"></script>
 </body>
 </html>

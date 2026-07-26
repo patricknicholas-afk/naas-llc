@@ -1120,16 +1120,20 @@ body.theme--light .cs-stats-early__label {
   display: block;
 }
 
-.about-hero-carousel__slide.is-active {
-  transform: translate(0, 0);
-}
-
 /* Each slide's resting position is baked into its own direction — the
    side it enters from — so no dynamic pre-positioning is needed. */
 .about-hero-carousel__slide[data-direction="rtl"] { transform: translateX(100%); }
 .about-hero-carousel__slide[data-direction="ttb"] { transform: translateY(-100%); }
 .about-hero-carousel__slide[data-direction="btt"] { transform: translateY(100%); }
 .about-hero-carousel__slide[data-direction="ltr"] { transform: translateX(-100%); }
+
+/* Must come AFTER the [data-direction] resting-position rules above —
+   equal specificity (one class vs one attribute selector), so source
+   order decides the winner. Without this order, is-active never
+   actually wins and slides never reach center. */
+.about-hero-carousel__slide.is-active {
+  transform: translate(0, 0);
+}
 
 /* Exit transforms continue the incoming slide's direction (push effect) */
 .about-hero-carousel__slide.is-exit-rtl { transform: translateX(-100%); }

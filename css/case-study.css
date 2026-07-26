@@ -1063,6 +1063,7 @@ body.theme--light .cs-stats-early__label {
    gradient overlay and centered white copy on top.
    ================================================================ */
 .hero--about.hero--split {
+  position: relative;
   background-color: var(--color-bg);
   min-height: var(--hero-min-h-home);
   grid-template-columns: 1fr 1fr;
@@ -1176,6 +1177,16 @@ body.theme--light .cs-stats-early__label {
   .hero__panel-visual--about-portrait,
   .hero__panel-visual--about-carousel {
     min-height: 420px;
+  }
+
+  /* Stacked layout: the copy no longer spans "both panels" side by
+     side — instead scope it to just the carousel panel's own region
+     (the second stacked block) so it doesn't land on top of the
+     portrait photo above it. */
+  .hero__gradient-overlay,
+  .hero__about-copy {
+    top: 420px;
+    bottom: 0;
   }
 }
 

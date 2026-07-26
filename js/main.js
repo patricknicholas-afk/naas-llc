@@ -508,10 +508,6 @@ function initHeroVisualCarousel() {
       });
     });
 
-    // Pause while the pointer is over the panel, resume on leave
-    panel.addEventListener('mouseenter', () => clearInterval(timer));
-    panel.addEventListener('mouseleave', startAutoAdvance);
-
     // Initialize slide 0 / dot 0 directly (goTo bails out early when
     // index === current, so it can't perform the initial sync itself).
     slides[0].classList.add('is-active');

@@ -126,6 +126,10 @@
   --color-surface:        var(--p-neutral-800);
   --color-card:           var(--p-neutral-800);
   --color-overlay:        rgba(0, 0, 0, 0.7);
+  /* Intentionally dark surface regardless of page theme (e.g. a photo
+     panel that should never flip light) — unlike --color-bg-alt, this
+     doesn't change meaning between the default and theme--light tiers. */
+  --color-surface-inverted: var(--p-neutral-900);
 
   /* -- Color: Foreground / Text -- */
   --color-text-primary:   var(--p-neutral-50);
@@ -134,6 +138,10 @@
   --color-text-inverse:   var(--p-neutral-900);
   --color-text-inverse-secondary: rgba(26, 26, 26, 0.7);
   --color-text-inverse-tertiary:  rgba(26, 26, 26, 0.4);
+  /* Text meant to sit on an intentionally dark surface (e.g.
+     --color-surface-inverted) regardless of page theme — fixed white,
+     unlike --color-text-inverse which flips meaning per theme tier. */
+  --color-text-on-inverted: var(--p-neutral-0);
 
   /* -- Color: Border -- */
   --color-border:         rgba(255, 255, 255, 0.10);

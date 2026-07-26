@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroCarousel();
   initHeroVisualCarousel();
   initHomeHeroCarousel();
+  initAboutHeroCarousel();
   initCaseStudyProgress();
   initStatCounters();
   initVideoPlaceholders();
@@ -555,6 +556,57 @@ function initHomeHeroCarousel() {
   }
 
   restartTimer();
+}
+
+/* ---- About Hero Carousel — directional ambient background loop ----
+   Fully automatic, no manual controls. Each slide has a fixed
+   data-direction (rtl/ttb/btt/ltr) determining which edge it enters
+   from every time it becomes active; the outgoing slide exits along
+   that same direction for a continuous push effect. Cycles through
+   as many slides as exist, repeating the direction pattern. */
+function initAboutHeroCarousel() {
+  const root = document.querySelector('[data-about-carousel]');
+  if (!root) return;
+
+  const slides = Array.from(root.querySelectorAll('.about-hero-carousel__slide'));
+  if (slides.length < 2) return;
+
+  const DURATION = 800;
+  const INTERVAL = 4000;
+
+  let current = Math.max(0, slides.findIndex(s => s.classList.contains('is-active')));
+
+  function goTo(index) {
+    const outgoing = slides[current];
+    const incoming = slides[index];
+    const direction = incoming.dataset.direction;
+    const exitClass = 'is-exit-' + direction;
+
+    outgoing.classList.remove('is-active');
+    outgoing.classList.add(exitClass);
+    incoming.classList.add('is-active');
+
+    window.setTimeout(() => {
+      // Snap back to the resting position instantly — removing the
+      // exit class alone would fall back to the slide's own baked-in
+      // resting transform with the transition still enabled, animating
+      // it visibly back through the frame.
+      outgoing.classList.add('no-transition');
+      outgoing.classList.remove(exitClass);
+      void outgoing.offsetWidth; // force reflow so the snap applies before re-enabling the transition
+      outgoing.classList.remove('no-transition');
+    }, DURATION);
+
+    current = index;
+  }
+
+  setInterval(() => goTo((current + 1) % slides.length), INTERVAL);
+
+  // Belt-and-suspenders: ensure any video slides are actually playing
+  // (muted autoplay can be blocked in some contexts without this).
+  root.querySelectorAll('video').forEach(v => {
+    v.play().catch(() => {});
+  });
 }
 
 /* ---- Card Image Carousel ---- */

@@ -1053,3 +1053,134 @@ body.theme--light .cs-stats-early__label {
     right: var(--space-lg);
   }
 }
+
+/* ================================================================
+   HERO — ABOUT SPLIT VARIANT
+   Even 50/50 split. Left panel is an intentionally dark surface
+   (--color-surface-inverted, fixed regardless of page theme) holding
+   a smaller rounded portrait card. Right panel is an ambient,
+   continuously auto-advancing image/video carousel with a dark
+   gradient overlay and centered white copy on top.
+   ================================================================ */
+.hero--about.hero--split {
+  background-color: var(--color-bg);
+  min-height: var(--hero-min-h-home);
+  grid-template-columns: 1fr 1fr;
+}
+
+.hero__panel-visual--about-portrait {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface-inverted);
+}
+
+.hero__portrait-card {
+  width: min(320px, 55%);
+  aspect-ratio: 280 / 380;
+  border-radius: var(--p-radius-md);
+  overflow: hidden;
+  background-color: #111111;
+}
+
+.hero__portrait-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.hero__panel-visual--about-carousel {
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-surface-inverted);
+}
+
+.about-hero-carousel {
+  position: absolute;
+  inset: 0;
+}
+
+.about-hero-carousel__slide {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.about-hero-carousel__slide img,
+.about-hero-carousel__slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.about-hero-carousel__slide.is-active {
+  transform: translate(0, 0);
+}
+
+/* Each slide's resting position is baked into its own direction — the
+   side it enters from — so no dynamic pre-positioning is needed. */
+.about-hero-carousel__slide[data-direction="rtl"] { transform: translateX(100%); }
+.about-hero-carousel__slide[data-direction="ttb"] { transform: translateY(-100%); }
+.about-hero-carousel__slide[data-direction="btt"] { transform: translateY(100%); }
+.about-hero-carousel__slide[data-direction="ltr"] { transform: translateX(-100%); }
+
+/* Exit transforms continue the incoming slide's direction (push effect) */
+.about-hero-carousel__slide.is-exit-rtl { transform: translateX(-100%); }
+.about-hero-carousel__slide.is-exit-ttb { transform: translateY(100%); }
+.about-hero-carousel__slide.is-exit-btt { transform: translateY(-100%); }
+.about-hero-carousel__slide.is-exit-ltr { transform: translateX(100%); }
+
+.about-hero-carousel__slide.no-transition {
+  transition: none;
+}
+
+.hero__gradient-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.hero__about-copy {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 var(--space-2xl);
+}
+
+.hero__eyebrow--about,
+.hero__title--about,
+.hero__subtitle--about {
+  color: var(--color-text-on-inverted);
+}
+
+.hero__subtitle--about {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 1024px) {
+  .hero__panel-visual--about-portrait,
+  .hero__panel-visual--about-carousel {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__portrait-card {
+    width: min(280px, 65%);
+  }
+}

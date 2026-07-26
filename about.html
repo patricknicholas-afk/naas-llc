@@ -8,7 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css?v=20260443">
+  <link rel="stylesheet" href="css/main.css?v=20260445">
+  <link rel="stylesheet" href="css/case-study.css?v=20260463">
 </head>
 <body>
 
@@ -36,36 +37,59 @@
   <main id="main-content">
 
   <!-- Hero -->
-  <section class="hero">
-    <div class="container grid">
-      <div class="col-7 tab-col-12">
-        <p class="hero__eyebrow">About</p>
-        <h1 class="hero__title">10+ years &amp;<br>I still love the<br>work everyday.</h1>
-        <p class="hero__subtitle">
+  <section class="hero hero--about hero--split">
+
+    <div class="hero__panel-visual hero__panel-visual--about-portrait">
+      <div class="hero__portrait-card">
+        <img src="assets/images/patrick-headshot.png" alt="Patrick Nicholas" loading="lazy">
+      </div>
+    </div>
+
+    <div class="hero__panel-visual hero__panel-visual--about-carousel">
+      <!-- Ambient background carousel — decorative, continuous loop.
+           Each slide's entrance direction is fixed via data-direction
+           and cycles rtl -> ttb -> btt -> ltr as it repeats. -->
+      <div class="about-hero-carousel" data-about-carousel aria-hidden="true">
+        <div class="about-hero-carousel__slide is-active" data-direction="rtl">
+          <img src="assets/images/about-image-1.png" alt="" loading="lazy">
+        </div>
+        <div class="about-hero-carousel__slide" data-direction="ttb">
+          <img src="assets/images/about-image-2.png" alt="" loading="lazy">
+        </div>
+        <div class="about-hero-carousel__slide" data-direction="btt">
+          <video src="assets/images/about-video-4.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="about-hero-carousel__slide" data-direction="ltr">
+          <img src="assets/images/about-image-5.png" alt="" loading="lazy">
+        </div>
+      </div>
+
+      <div class="hero__gradient-overlay" aria-hidden="true"></div>
+
+      <div class="hero__about-copy">
+        <p class="hero__eyebrow hero__eyebrow--about">About</p>
+        <h1 class="hero__title hero__title--about">10+ years &amp;<br>I still love the<br>work everyday.</h1>
+        <p class="hero__subtitle hero__subtitle--about">
           I'm Patrick Nicholas — a product designer and strategist who's spent a decade building
           digital experiences across fintech, media, healthcare, and consumer tech. The work keeps
           changing. The obsession with getting it right hasn't.
         </p>
       </div>
     </div>
+
   </section>
 
   <!-- Bio Section -->
   <section class="section section--light-trigger">
     <div class="container grid">
-      <div class="col-3 tab-col-12">
-        <div class="hero__image about__photo" style="aspect-ratio: 4/5; overflow: hidden;">
-          <img src="assets/images/patrick-headshot.png" alt="Patrick Nicholas" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
-        </div>
-      </div>
-      <div class="col-7 col-start-5 tab-col-12 flex flex-col" style="padding-top: var(--space-sm); gap: var(--space-3xl);">
+      <div class="col-8 col-start-3 tab-col-12 flex flex-col" style="padding-top: var(--space-sm); gap: var(--space-3xl);">
         <h2 class="text-h3">My Story</h2>
         <div class="prose" style="--prose-p-gap: var(--space-lg);">
           <p style="margin-bottom: var(--space-xl);">
             I started in objects.
           </p>
           <p style="margin-bottom: var(--space-xl);">
-        A BFA in Industrial Design from SCAD taught me that good design isn't about the surface; it's about the logic underneath it. The systems and processes of a product lifecycle are fundamental in an evolving physical and digital environment that people are continually connected in. 
+        A BFA in Industrial Design from SCAD taught me that good design isn't about the surface; it's about the logic underneath it. The systems and processes of a product lifecycle are fundamental in an evolving physical and digital environment that people are continually connected in.
           </p>
           <p>
          That instinct for how things are made, and why they hold together, has grounded me through every phase of my career, from interaction design to design systems to the AI-augmented workflows I run today.
@@ -180,6 +204,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=20260452"></script>
+  <script src="js/main.js?v=20260456"></script>
 </body>
 </html>

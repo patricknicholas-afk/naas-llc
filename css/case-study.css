@@ -744,7 +744,11 @@ body.theme--light .cs-stats-early__label {
 .hero__visual-carousel--slide-btt .hero__visual-slide,
 .hero__visual-carousel--slide-rtl .hero__visual-slide {
   opacity: 1;
-  align-items: center;
+  /* align-items stays flex-end (inherited from the base rule) so the
+     image sits flush to the bottom edge, matching the documented
+     Project Hero spec (510x646 safe area, bottom + center aligned) —
+     this was accidentally overridden to "center" before, which split
+     the empty space evenly top/bottom instead. */
   transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
 }
 

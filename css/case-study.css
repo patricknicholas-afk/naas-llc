@@ -1134,8 +1134,18 @@ body.theme--light .cs-stats-early__label {
 }
 
 .about-hero-carousel {
+  border-radius: var(--p-radius-md);
+  overflow: hidden;
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  /* Set directly on this absolutely-positioned element rather than
+     as padding on the ancestor — the containing block for an
+     absolute child is the ancestor's padding box, so ancestor
+     padding doesn't reserve a visible gap; inset:0 would fill
+     straight through it. */
+  right: var(--space-lg);
 }
 
 .about-hero-carousel__slide {

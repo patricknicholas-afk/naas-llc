@@ -451,6 +451,7 @@ function initHeroVisualCarousel() {
     let direction = null;
     if (carousel && carousel.classList.contains('hero__visual-carousel--slide-btt')) direction = 'btt';
     else if (carousel && carousel.classList.contains('hero__visual-carousel--slide-rtl')) direction = 'rtl';
+    else if (carousel && carousel.classList.contains('hero__visual-carousel--slide-ttb')) direction = 'ttb';
 
     let current = 0;
     let timer = null;

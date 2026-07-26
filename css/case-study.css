@@ -731,6 +731,39 @@ body.theme--light .cs-stats-early__label {
   margin: 0 auto;
 }
 
+/* ================================================================
+   PROJECT HERO CAROUSEL — directional slide-in variant
+   Opt-in per project via a modifier class on .hero__visual-carousel
+   (e.g. --slide-btt, --slide-rtl). Replaces the default crossfade
+   with a transform-based push in a single fixed axis, while keeping
+   the same dot-click-to-jump + auto-advance behavior. Base rule sets
+   each direction's resting (off-screen) position; the combined
+   .is-active selector below has one extra class, so it always wins
+   regardless of source order.
+   ================================================================ */
+.hero__visual-carousel--slide-btt .hero__visual-slide,
+.hero__visual-carousel--slide-rtl .hero__visual-slide {
+  opacity: 1;
+  align-items: center;
+  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.hero__visual-carousel--slide-btt .hero__visual-slide { transform: translateY(100%); }
+.hero__visual-carousel--slide-rtl .hero__visual-slide { transform: translateX(100%); }
+
+.hero__visual-carousel--slide-btt .hero__visual-slide.is-active,
+.hero__visual-carousel--slide-rtl .hero__visual-slide.is-active {
+  transform: translate(0, 0);
+  z-index: 1;
+}
+
+.hero__visual-carousel--slide-btt .hero__visual-slide.is-exit-btt { transform: translateY(-100%); }
+.hero__visual-carousel--slide-rtl .hero__visual-slide.is-exit-rtl { transform: translateX(-100%); }
+
+.hero__visual-slide.no-transition {
+  transition: none;
+}
+
 .hero__visual-dots {
   position: absolute;
   right: var(--space-lg);

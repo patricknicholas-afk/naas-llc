@@ -438,18 +438,55 @@ function initHeroCarousel() {
    timer so it doesn't immediately jump away from the chosen slide. */
 function initHeroVisualCarousel() {
   const AUTO_ADVANCE_MS = 3000;
+  const SLIDE_DURATION_MS = 700;
 
   document.querySelectorAll('.hero__panel-visual').forEach(panel => {
+    const carousel = panel.querySelector('.hero__visual-carousel');
     const slides = Array.from(panel.querySelectorAll('.hero__visual-slide'));
     const dots = Array.from(panel.querySelectorAll('.hero__visual-dot'));
     if (slides.length < 2 || !dots.length) return;
 
+    // Opt-in directional slide, set per project via a modifier class
+    // on .hero__visual-carousel — otherwise falls back to crossfade.
+    let direction = null;
+    if (carousel && carousel.classList.contains('hero__visual-carousel--slide-btt')) direction = 'btt';
+    else if (carousel && carousel.classList.contains('hero__visual-carousel--slide-rtl')) direction = 'rtl';
+
     let current = 0;
     let timer = null;
+    let animating = false;
 
     function goTo(index) {
+      if (index === current) return;
+
+      if (direction) {
+        if (animating) return;
+        animating = true;
+
+        const outgoing = slides[current];
+        const incoming = slides[index];
+        const exitClass = 'is-exit-' + direction;
+
+        outgoing.classList.remove('is-active');
+        outgoing.classList.add(exitClass);
+        incoming.classList.add('is-active');
+
+        window.setTimeout(() => {
+          // Snap back to the resting position instantly — removing the
+          // exit class alone would fall back to the resting transform
+          // with the transition still enabled, animating the hidden
+          // slide visibly back through the frame.
+          outgoing.classList.add('no-transition');
+          outgoing.classList.remove(exitClass);
+          void outgoing.offsetWidth; // force reflow so the snap applies before re-enabling the transition
+          outgoing.classList.remove('no-transition');
+          animating = false;
+        }, SLIDE_DURATION_MS);
+      } else {
+        slides.forEach((s, i) => s.classList.toggle('is-active', i === index));
+      }
+
       current = index;
-      slides.forEach((s, i) => s.classList.toggle('is-active', i === index));
       dots.forEach((d, i) => {
         d.classList.toggle('is-active', i === index);
         d.setAttribute('aria-selected', String(i === index));
@@ -474,7 +511,12 @@ function initHeroVisualCarousel() {
     panel.addEventListener('mouseenter', () => clearInterval(timer));
     panel.addEventListener('mouseleave', startAutoAdvance);
 
-    goTo(0);
+    // Initialize slide 0 / dot 0 directly (goTo bails out early when
+    // index === current, so it can't perform the initial sync itself).
+    slides[0].classList.add('is-active');
+    dots[0].classList.add('is-active');
+    dots[0].setAttribute('aria-selected', 'true');
+
     startAutoAdvance();
   });
 }

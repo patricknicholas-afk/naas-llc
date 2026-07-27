@@ -454,6 +454,10 @@ body.theme--light .hero--project .hero__meta-value { color: var(--p-neutral-50);
   max-width: 600px;
 }
 
+.hero__subtitle--spaced {
+  margin-top: var(--space-md);
+}
+
 .hero__cta {
   margin-top: var(--space-2xl);
 }

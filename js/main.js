@@ -611,15 +611,56 @@ function initAboutHeroCarousel() {
   if (slides.length < 2) return;
 
   const DURATION = 800;
-  const INTERVAL = 5000;
+  const IMAGE_DWELL_MS = 4000;
+  // How far ahead of a video's natural end to trigger the transition,
+  // so it advances just before looping back to its own first frame.
+  const VIDEO_END_LEAD_MS = 100;
 
   let current = Math.max(0, slides.findIndex(s => s.classList.contains('is-active')));
+  let advanceTimer = null;
+
+  function mediaFor(slide) {
+    return slide.querySelector('img, video');
+  }
+
+  // Videos only play while their slide is the active one — no autoplay
+  // attribute in the markup, so a slide further down the carousel isn't
+  // silently burning through its runtime off-screen before its turn.
+  function scheduleAdvance(slide) {
+    clearTimeout(advanceTimer);
+    const media = mediaFor(slide);
+
+    if (!media || media.tagName === 'IMG') {
+      advanceTimer = setTimeout(() => goTo((current + 1) % slides.length), IMAGE_DWELL_MS);
+      return;
+    }
+
+    const video = media;
+    video.currentTime = 0;
+    video.play().catch(() => {});
+
+    function armFromDuration() {
+      const ms = Math.max(0, video.duration * 1000 - VIDEO_END_LEAD_MS);
+      advanceTimer = setTimeout(() => goTo((current + 1) % slides.length), ms);
+    }
+
+    if (video.readyState >= 1 && isFinite(video.duration)) {
+      armFromDuration();
+    } else {
+      video.addEventListener('loadedmetadata', armFromDuration, { once: true });
+    }
+  }
 
   function goTo(index) {
     const outgoing = slides[current];
     const incoming = slides[index];
     const direction = incoming.dataset.direction;
     const exitClass = 'is-exit-' + direction;
+
+    const outgoingMedia = mediaFor(outgoing);
+    if (outgoingMedia && outgoingMedia.tagName === 'VIDEO') {
+      outgoingMedia.pause();
+    }
 
     outgoing.classList.remove('is-active');
     outgoing.classList.add(exitClass);
@@ -637,15 +678,10 @@ function initAboutHeroCarousel() {
     }, DURATION);
 
     current = index;
+    scheduleAdvance(incoming);
   }
 
-  setInterval(() => goTo((current + 1) % slides.length), INTERVAL);
-
-  // Belt-and-suspenders: ensure any video slides are actually playing
-  // (muted autoplay can be blocked in some contexts without this).
-  root.querySelectorAll('video').forEach(v => {
-    v.play().catch(() => {});
-  });
+  scheduleAdvance(slides[current]);
 }
 
 /* ---- Card Image Carousel — manual nav only, no auto-advance ---- */

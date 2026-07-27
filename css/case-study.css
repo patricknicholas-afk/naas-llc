@@ -1267,19 +1267,11 @@ body.theme--light .cs-stats-early__label {
     min-height: 420px;
   }
 
-  /* Stacked layout: the copy no longer spans "both panels" side by
-     side — instead scope it to just the carousel panel's own region
-     (the second stacked block) so it doesn't land on top of the
-     portrait photo above it. */
-  .hero__gradient-overlay,
-  .hero__about-copy {
-    top: 420px;
-    bottom: 0;
-  }
-
-  /* flex-end (desktop's "closer to the bottom" positioning) overflows
-     upward into the portrait panel above once content is taller than
-     this height-constrained box — center instead to stay contained. */
+  /* Stacked layout: the overlay + copy still span the full section
+     (both the portrait block and the carousel block below it), same
+     as desktop — inset:0 from the base rules already covers this.
+     Center instead of desktop's flex-end so the copy doesn't overflow
+     upward past the top of a height-constrained stacked box. */
   .hero__about-copy {
     justify-content: center;
   }

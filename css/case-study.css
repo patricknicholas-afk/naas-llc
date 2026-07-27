@@ -1150,7 +1150,7 @@ body.theme--light .cs-stats-early__label {
 }
 
 .hero__portrait-card {
-  width: min(288px, 49.5%);
+  width: min(259px, 44.55%);
   aspect-ratio: 280 / 380;
   border-radius: var(--p-radius-md);
   overflow: hidden;
@@ -1287,6 +1287,6 @@ body.theme--light .cs-stats-early__label {
 
 @media (max-width: 640px) {
   .hero__portrait-card {
-    width: min(252px, 58.5%);
+    width: min(227px, 52.65%);
   }
 }

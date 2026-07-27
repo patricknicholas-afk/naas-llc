@@ -611,7 +611,7 @@ function initAboutHeroCarousel() {
   if (slides.length < 2) return;
 
   const DURATION = 800;
-  const INTERVAL = 4000;
+  const INTERVAL = 5000;
 
   let current = Math.max(0, slides.findIndex(s => s.classList.contains('is-active')));
 

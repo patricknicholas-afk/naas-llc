@@ -1096,6 +1096,16 @@ body.theme--light .cs-stats-early__label {
   }
 }
 
+/* Below 600px, left-align the eyebrow with the title/body copy instead
+   of keeping it right-anchored — matches .hero--split .hero__panel-text's
+   own left padding (--grid-margin) so it lines up with the text below it. */
+@media (max-width: 600px) {
+  .hero__eyebrow--home {
+    right: auto;
+    left: var(--grid-margin);
+  }
+}
+
 /* ================================================================
    HERO — ABOUT SPLIT VARIANT
    Even 50/50 split. Left panel is an intentionally dark surface

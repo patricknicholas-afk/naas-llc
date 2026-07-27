@@ -93,9 +93,6 @@ body.theme--light .nav__toggle span {
   display: block;
   height: 28px;
   width: auto;
-  /* Preserve crisp rendering of the geometric mark */
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
 }
 
 .nav__links {

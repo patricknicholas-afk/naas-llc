@@ -34,6 +34,7 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -47,6 +48,7 @@ body {
   line-height: var(--leading-body);
   color: var(--color-text-primary);
   background-color: var(--color-bg);
+  overflow-x: hidden;
   transition: background-color var(--duration-theme) cubic-bezier(0.4, 0, 0.2, 1),
               color var(--duration-theme) cubic-bezier(0.4, 0, 0.2, 1);
 }

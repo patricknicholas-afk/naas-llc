@@ -729,6 +729,7 @@ body.theme--light .cs-stats-early__label {
   object-position: center center;
   display: block;
   margin: 0 auto;
+  border-radius: 16px;
 }
 
 /* ================================================================
@@ -1119,7 +1120,7 @@ body.theme--light .cs-stats-early__label {
 }
 
 .hero__portrait-card {
-  width: min(320px, 55%);
+  width: min(288px, 49.5%);
   aspect-ratio: 280 / 380;
   border-radius: var(--p-radius-md);
   overflow: hidden;
@@ -1142,7 +1143,7 @@ body.theme--light .cs-stats-early__label {
 }
 
 .about-hero-carousel {
-  border-radius: var(--p-radius-md);
+  border-radius: 16px;
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -1256,6 +1257,6 @@ body.theme--light .cs-stats-early__label {
 
 @media (max-width: 640px) {
   .hero__portrait-card {
-    width: min(280px, 65%);
+    width: min(252px, 58.5%);
   }
 }

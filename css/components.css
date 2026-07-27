@@ -204,6 +204,20 @@ body.theme--light .nav__toggle span {
     font-size: var(--text-h4);
     font-weight: var(--fw-emphasis);
   }
+
+  /* The mobile dropdown is always a dark glass panel regardless of page
+     theme, so its link colors shouldn't follow the light-theme override
+     meant for the desktop pill nav on a light background (that mismatch
+     was making home's mobile menu dark-on-dark, unlike other pages). */
+  body.theme--light .nav__links .nav__link {
+    color: var(--nav-link-color);
+  }
+
+  body.theme--light .nav__links .nav__link:hover,
+  body.theme--light .nav__links .nav__link--active {
+    color: var(--nav-link-color-active);
+    background-color: rgba(255, 255, 255, 0.10);
+  }
 }
 
 /* ================================================================

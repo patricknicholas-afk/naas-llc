@@ -437,8 +437,8 @@ function initHeroCarousel() {
    via .hero__visual-dot clicks — clicking a dot restarts the auto-advance
    timer so it doesn't immediately jump away from the chosen slide. */
 function initHeroVisualCarousel() {
-  const AUTO_ADVANCE_MS = 3300;
-  const SLIDE_DURATION_MS = 700;
+  const AUTO_ADVANCE_MS = 3700;
+  const SLIDE_DURATION_MS = 840;
 
   document.querySelectorAll('.hero__panel-visual').forEach(panel => {
     const carousel = panel.querySelector('.hero__visual-carousel');

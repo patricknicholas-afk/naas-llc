@@ -854,6 +854,10 @@ body.theme--light .hero--project .hero__meta-value { color: var(--p-neutral-50);
   color: var(--card-tag-color);
 }
 
+.project-card__role {
+  font-weight: var(--p-fw-semibold);
+}
+
 .project-card__title {
   font-size: var(--card-title-size);
   font-weight: var(--card-title-weight);

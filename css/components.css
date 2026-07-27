@@ -711,6 +711,11 @@ body.theme--light .hero--project .hero__meta-value { color: var(--p-neutral-50);
   letter-spacing: var(--tracking-heading);
 }
 
+/* Tighter eyebrow-to-title gap for the "Selected Work" projects header */
+#projects .section__eyebrow {
+  margin-bottom: var(--space-xs);
+}
+
 .section__subtitle {
   font-size: var(--section-sub-size);
   color: var(--section-sub-color);

@@ -1094,6 +1094,26 @@ body.theme--light .cs-stats-early__label {
     left: var(--space-lg);
     right: var(--space-lg);
   }
+
+  /* The home hero copy is normally vertically centered (see the base
+     .hero--split .hero__panel-text rule), but centering combined with
+     the absolutely-positioned eyebrow can make the title collide with
+     it on short mobile viewports. Pin to the top instead and reserve
+     explicit clearance below the eyebrow so they never overlap. */
+  .hero--split .hero__panel-text--home {
+    justify-content: flex-start;
+    padding-top: calc(var(--nav-height-mobile) + var(--space-md) + 20px + var(--space-lg));
+  }
+
+  /* Consistent rhythm: title-to-subtitle and subtitle-to-CTA both use
+     the same gap as the reserved eyebrow clearance above. */
+  .hero--home .hero__subtitle {
+    font-size: 16px;
+  }
+
+  .hero--home .hero__cta {
+    margin-top: var(--space-lg);
+  }
 }
 
 /* Below 600px, left-align the eyebrow with the title/body copy instead

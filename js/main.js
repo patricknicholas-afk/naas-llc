@@ -648,14 +648,9 @@ function initAboutHeroCarousel() {
   });
 }
 
-/* ---- Card Image Carousel ---- */
+/* ---- Card Image Carousel — manual nav only, no auto-advance ---- */
 function initCardCarousels() {
-  // Per-card delays (ms): card 1 = 5s, card 2 = 3s, card 3 = 4s
-  const DELAYS = [5000, 3000, 4000, 3500];
-  // Stagger offsets so cards never fire in sync
-  const START_OFFSETS = [0, 1200, 2400, 800];
-
-  document.querySelectorAll('.card-carousel').forEach((carousel, idx) => {
+  document.querySelectorAll('.card-carousel').forEach(carousel => {
     const track  = carousel.querySelector('.card-carousel__track');
     const slides = carousel.querySelectorAll('.card-carousel__slide');
 
@@ -665,47 +660,25 @@ function initCardCarousels() {
 
     if (!track || !slides.length || !btnPrev || !btnNext) return;
 
-    const delay  = DELAYS[idx] ?? 4000;
-    const offset = START_OFFSETS[idx] ?? 0;
     const total  = slides.length;
     let current  = 0;
-    let timer    = null;
-    let paused   = false;
 
     function goTo(index) {
       current = (index + total) % total;
       track.style.transform = `translateX(-${current * 100}%)`;
     }
 
-    function startAuto() {
-      stopAuto();
-      if (!paused) timer = setInterval(() => goTo(current + 1), delay);
-    }
-
-    function stopAuto() {
-      if (timer) { clearInterval(timer); timer = null; }
-    }
-
     btnPrev.addEventListener('click', e => {
       e.preventDefault();
       e.stopPropagation();
       goTo(current - 1);
-      if (!paused) startAuto(); // reset timer on manual nav
     });
 
     btnNext.addEventListener('click', e => {
       e.preventDefault();
       e.stopPropagation();
       goTo(current + 1);
-      if (!paused) startAuto();
     });
-
-    // Pause on hover, resume on leave
-    card.addEventListener('mouseenter', () => { paused = true;  stopAuto(); });
-    card.addEventListener('mouseleave', () => { paused = false; startAuto(); });
-
-    // Staggered kick-off so cards don't scroll in sync
-    setTimeout(startAuto, offset);
   });
 }
 

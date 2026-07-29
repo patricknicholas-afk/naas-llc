@@ -205,8 +205,10 @@ function initProjectThemeScroll() {
       }
     });
   }, {
-    threshold: 0.08,
-    rootMargin: '0px 0px -8% 0px'
+    // Halved from 0.08/-8% so the dark->light swap needs half as much of
+    // the section scrolled into view to trigger — occurs ~50% earlier.
+    threshold: 0.04,
+    rootMargin: '0px 0px -4% 0px'
   });
 
   // Observer 2 — hero re-entering viewport → always go dark immediately.
@@ -237,7 +239,11 @@ function initScrollReveal() {
     '.image-grid__item', '.hero__image',
     '.section__header', '.section__eyebrow', '.section__title', '.section__subtitle',
     '.project-card', '.next-project',
-    '.contact'
+    '.contact',
+    // Case-study content section title leads + images — same token as
+    // '.prose h2' / '.image-grid__item' above, for pages (like ConEdison)
+    // whose sections use the cs-chapter/cs-split components instead.
+    '.cs-chapter__label', '.cs-split__image'
   ];
 
   const elements = document.querySelectorAll(selectors.join(', '));

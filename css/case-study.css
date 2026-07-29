@@ -54,23 +54,18 @@
   max-width: 600px;
 }
 
-/* Right: stacked meta list */
+/* Right: stacked meta list — horizontal cards instead of divider lines */
 .cs-intro__meta {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  padding-left: var(--space-2xl);
-  border-left: 1px solid var(--color-border);
 }
 
 .cs-intro__meta-item {
-  padding-bottom: var(--space-md);
-  border-bottom: 1px solid var(--color-border-light);
-}
-
-.cs-intro__meta-item:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
+  padding: var(--space-md) var(--space-lg);
+  border-radius: 16px;
+  background-color: var(--color-surface);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
 }
 
 .cs-intro__meta-label {
@@ -96,10 +91,6 @@
   }
 
   .cs-intro__meta {
-    padding-left: 0;
-    border-left: none;
-    padding-top: var(--space-2xl);
-    border-top: 1px solid var(--color-border);
     flex-direction: row;
     flex-wrap: wrap;
     gap: var(--space-md);
@@ -107,8 +98,6 @@
 
   .cs-intro__meta-item {
     flex: 1 1 calc(50% - var(--space-md));
-    border-bottom: none;
-    padding-bottom: 0;
   }
 }
 
@@ -178,14 +167,20 @@
 
 
 /* ================================================================
-   CS-QUOTE-FEATURE — Blue quote block + overlapping full-width image
-   The quote box and the image sit in normal flow one after another;
-   the image is pulled up via a negative top margin equal to 20% of
-   its OWN rendered height (not the container's) — percentage margins
-   resolve against the containing block's width, and since the image
-   is full-width with a fixed intrinsic aspect ratio, 20% of its
-   height converts to a fixed percentage of that same width, which is
-   why this stays correct at any viewport size without JS.
+   CS-QUOTE-FEATURE — Full-bleed blue quote block + overlapping image
+   The quote box breaks out to full viewport width (100vw technique)
+   regardless of its .container ancestor's max-width/padding — safe
+   because html/body carry overflow-x:hidden site-wide.
+
+   The image sits in normal flow directly after the quote box, at 50%
+   width centered; it's pulled up via a negative top margin equal to
+   20% of its OWN rendered height (not the container's) — percentage
+   margins resolve against the containing block's width, and since
+   the image has a fixed intrinsic aspect ratio, 20% of its height
+   converts to a fixed percentage of that same width, so this stays
+   correct at any viewport size without JS. Halving the image's width
+   also halves its rendered height, so the margin is half of what a
+   full-width image would need for the same 20% overlap.
    ================================================================ */
 .cs-quote-feature {
   margin: var(--space-4xl) 0;
@@ -196,12 +191,15 @@
   color: #ffffff;
   padding: 72px;
   text-align: center;
-  border-radius: var(--radius-card);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  border-radius: 0;
 }
 
 .cs-quote-feature__text {
   font-family: var(--font-heading);
-  font-size: var(--text-display);
+  font-size: 54px;
   font-weight: 700;
   font-style: italic;
   line-height: var(--leading-display);
@@ -217,11 +215,13 @@
 
 .cs-quote-feature__image-wrap {
   position: relative;
-  width: 100%;
-  /* -20% of the image's own rendered height, expressed as a
-     percentage of width (the containing block for margin %) —
-     see block comment above. coned-slide-1.png is 1400x1574. */
-  margin-top: -22.49%;
+  width: 50%;
+  /* -20% of the image's own rendered height (at its new 50% width),
+     expressed as a percentage of the containing block's width — see
+     block comment above. coned-slide-1.png is 1400x1574. */
+  margin-top: -11.245%;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: var(--radius-card);
   overflow: hidden;
 }
@@ -235,6 +235,11 @@
 @media (max-width: 768px) {
   .cs-quote-feature__quote {
     padding: var(--space-xl);
+  }
+
+  .cs-quote-feature__image-wrap {
+    width: 80%;
+    margin-top: -17.99%;
   }
 }
 

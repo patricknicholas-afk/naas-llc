@@ -181,50 +181,19 @@ function initProjectThemeScroll() {
   const heroEl = document.querySelector('.hero--project');
   if (!heroEl) return;
 
-  // Target the first section *inside* the active tab panel so that both the
-  // tabs-strip and the content sections are on-screen simultaneously when the
-  // observer fires — giving a uniform dark→light transition across both areas.
-  const panel = document.querySelector('.hero--project ~ .tab-panel');
-  const firstSection =
-    (panel ? panel.querySelector('section') : null) ||
-    document.querySelector('.hero--project ~ .tabs-strip') ||
-    document.querySelector('.hero--project + * + *, .hero--project ~ .section');
-  if (!firstSection) return;
+  // Precise pixel trigger instead of an IntersectionObserver percentage/
+  // rootMargin — switches to light exactly once the hero has scrolled
+  // TRIGGER_OFFSET px past the top of the viewport, and back to dark the
+  // moment the user scrolls back up past that same point.
+  const TRIGGER_OFFSET = 100;
 
-  // Observer 1 — content section entering viewport → go light.
-  // The exit-from-bottom path (top > 0) handles slow upward scrolls where
-  // the section fully clears the viewport bottom before the hero reappears.
-  const contentObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        document.body.classList.add('theme--light');
-      } else {
-        if (entry.boundingClientRect.top > 0) {
-          document.body.classList.remove('theme--light');
-        }
-      }
-    });
-  }, {
-    // Halved from 0.08/-8% so the dark->light swap needs half as much of
-    // the section scrolled into view to trigger — occurs ~50% earlier.
-    threshold: 0.04,
-    rootMargin: '0px 0px -4% 0px'
-  });
+  function update() {
+    const heroBottom = heroEl.getBoundingClientRect().bottom;
+    document.body.classList.toggle('theme--light', heroBottom <= -TRIGGER_OFFSET);
+  }
 
-  // Observer 2 — hero re-entering viewport → always go dark immediately.
-  // This catches the case where the first content section is still partially
-  // in the viewport when the user scrolls back into the hero, which would
-  // prevent Observer 1's exit-from-bottom path from ever firing.
-  const heroObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        document.body.classList.remove('theme--light');
-      }
-    });
-  }, { threshold: 0.01 });
-
-  contentObserver.observe(firstSection);
-  heroObserver.observe(heroEl);
+  update();
+  window.addEventListener('scroll', update, { passive: true });
 }
 
 /* ---- Scroll Reveal — IntersectionObserver ---- */

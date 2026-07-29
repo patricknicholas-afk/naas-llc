@@ -62,9 +62,13 @@
 }
 
 .cs-intro__meta-item {
-  padding: var(--space-md) var(--space-lg);
-  border-radius: 16px;
-  background-color: var(--color-surface);
+  padding: 8px 16px;
+  border-radius: 8px;
+  /* --color-card directly, not the --card-bg alias — --card-bg doesn't
+     correctly pick up body.theme--light's override when the class is
+     toggled at runtime (confirmed: --color-card resolves correctly,
+     --card-bg does not), so it's bypassed here. */
+  background-color: var(--color-card);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
 }
 
@@ -174,13 +178,19 @@
 
    The image sits in normal flow directly after the quote box, at 50%
    width centered; it's pulled up via a negative top margin equal to
-   20% of its OWN rendered height (not the container's) — percentage
+   40% of its OWN rendered height (not the container's) — percentage
    margins resolve against the containing block's width, and since
-   the image has a fixed intrinsic aspect ratio, 20% of its height
+   the image has a fixed intrinsic aspect ratio, 40% of its height
    converts to a fixed percentage of that same width, so this stays
    correct at any viewport size without JS. Halving the image's width
    also halves its rendered height, so the margin is half of what a
-   full-width image would need for the same 20% overlap.
+   full-width image would need for the same 40% overlap.
+
+   The quote box's own bottom padding gets that same percentage added
+   on top of its normal 72px — without it, the box's height is purely
+   content-driven (text + padding) and doesn't actually grow to
+   contain the overlap, so a large overlap % just pushes the image up
+   past the TOP of the box instead of showing more blue behind it.
    ================================================================ */
 .cs-quote-feature {
   margin: var(--space-4xl) 0;
@@ -189,7 +199,7 @@
 .cs-quote-feature__quote {
   background-color: #0078CF;
   color: #ffffff;
-  padding: 72px;
+  padding: 72px 72px calc(72px + 22.49%);
   text-align: center;
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -216,10 +226,10 @@
 .cs-quote-feature__image-wrap {
   position: relative;
   width: 50%;
-  /* -20% of the image's own rendered height (at its new 50% width),
+  /* -40% of the image's own rendered height (at its new 50% width),
      expressed as a percentage of the containing block's width — see
      block comment above. coned-slide-1.png is 1400x1574. */
-  margin-top: -11.245%;
+  margin-top: -22.49%;
   margin-left: auto;
   margin-right: auto;
   border-radius: var(--radius-card);
@@ -234,12 +244,12 @@
 
 @media (max-width: 768px) {
   .cs-quote-feature__quote {
-    padding: var(--space-xl);
+    padding: var(--space-xl) var(--space-xl) calc(var(--space-xl) + 35.98%);
   }
 
   .cs-quote-feature__image-wrap {
     width: 80%;
-    margin-top: -17.99%;
+    margin-top: -35.98%;
   }
 }
 

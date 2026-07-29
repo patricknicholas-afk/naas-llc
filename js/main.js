@@ -181,15 +181,15 @@ function initProjectThemeScroll() {
   const heroEl = document.querySelector('.hero--project');
   if (!heroEl) return;
 
-  // Precise pixel trigger instead of an IntersectionObserver percentage/
-  // rootMargin — switches to light exactly once the hero has scrolled
-  // TRIGGER_OFFSET px past the top of the viewport, and back to dark the
-  // moment the user scrolls back up past that same point.
-  const TRIGGER_OFFSET = 100;
+  // Same "as soon as the user scrolls" feel as the About page's
+  // .section--light-trigger — fires on the very first bit of scroll
+  // rather than waiting for the hero (or 100px past it) to clear the
+  // viewport. Body-level toggle (not per-section is-light like About)
+  // because project-page CSS is built around body.theme--light.
+  const TRIGGER_OFFSET = 10;
 
   function update() {
-    const heroBottom = heroEl.getBoundingClientRect().bottom;
-    document.body.classList.toggle('theme--light', heroBottom <= -TRIGGER_OFFSET);
+    document.body.classList.toggle('theme--light', window.scrollY > TRIGGER_OFFSET);
   }
 
   update();

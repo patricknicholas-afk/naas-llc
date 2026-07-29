@@ -62,7 +62,7 @@
 }
 
 .cs-intro__meta-item {
-  padding: 8px 16px;
+  padding: 16px 16px;
   border-radius: 8px;
   /* --color-card directly, not the --card-bg alias — --card-bg doesn't
      correctly pick up body.theme--light's override when the class is

@@ -758,6 +758,11 @@ body.theme--light .hero--project .hero__meta-value { color: var(--p-neutral-50);
   border-radius: var(--radius-card);
 }
 
+/* ConEdison home card only — light drop shadow behind the carousel images */
+.project-card--coned .card-carousel__viewport {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+}
+
 .card-carousel__track {
   display: flex;
   width: 100%;

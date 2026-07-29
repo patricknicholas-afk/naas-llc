@@ -266,7 +266,7 @@ function initScrollReveal() {
     rootMargin: '0px 0px -40px 0px'
   });
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal, .reveal-slide').forEach(el => observer.observe(el));
 }
 
 /* ---- Project Grid / List View Toggle ---- */

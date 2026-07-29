@@ -178,6 +178,68 @@
 
 
 /* ================================================================
+   CS-QUOTE-FEATURE — Blue quote block + overlapping full-width image
+   The quote box and the image sit in normal flow one after another;
+   the image is pulled up via a negative top margin equal to 20% of
+   its OWN rendered height (not the container's) — percentage margins
+   resolve against the containing block's width, and since the image
+   is full-width with a fixed intrinsic aspect ratio, 20% of its
+   height converts to a fixed percentage of that same width, which is
+   why this stays correct at any viewport size without JS.
+   ================================================================ */
+.cs-quote-feature {
+  margin: var(--space-4xl) 0;
+}
+
+.cs-quote-feature__quote {
+  background-color: #0078CF;
+  color: #ffffff;
+  padding: 72px;
+  text-align: center;
+  border-radius: var(--radius-card);
+}
+
+.cs-quote-feature__text {
+  font-family: var(--font-heading);
+  font-size: var(--text-display);
+  font-weight: 700;
+  font-style: italic;
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-heading);
+  color: inherit;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cs-quote-feature__text em {
+  font-style: normal;
+}
+
+.cs-quote-feature__image-wrap {
+  position: relative;
+  width: 100%;
+  /* -20% of the image's own rendered height, expressed as a
+     percentage of width (the containing block for margin %) —
+     see block comment above. coned-slide-1.png is 1400x1574. */
+  margin-top: -22.49%;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.cs-quote-feature__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .cs-quote-feature__quote {
+    padding: var(--space-xl);
+  }
+}
+
+
+/* ================================================================
    CS-CHAPTER — Section divider with number + label
    ================================================================ */
 .cs-chapter {

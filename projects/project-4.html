@@ -17,8 +17,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/main.css?v=20260451">
-  <link rel="stylesheet" href="../css/case-study.css?v=20260480">
+  <link rel="stylesheet" href="../css/main.css?v=20260452">
+  <link rel="stylesheet" href="../css/case-study.css?v=20260481">
 </head>
 <body>
 
@@ -157,25 +157,23 @@
       </div>
     </section>
 
-    <!-- Opening Statement -->
-    <section class="cs-statement">
+    <!-- Opening Statement + Portal Image — combined feature block.
+         Blue quote box slides up from the bottom (no fade); the image
+         sits static, overlapping the bottom 20% of the quote box. -->
+    <section class="cs-quote-feature">
       <div class="container">
-        <p class="cs-statement__text">
-          The question wasn't whether AI would change how designers work.
-          It was whether design would <em>lead that change</em> — or wait for engineering to.
-        </p>
-      </div>
-    </section>
-
-    <!-- Hero full-bleed image -->
-    <div class="container">
-      <div class="cs-full-bleed">
-        <div class="cs-full-bleed__frame">
-          <img src="../assets/images/coned-slide-1.png" alt="ConEdison customer billing portal — managing multiple accounts, payment flows, and account snapshot modules">
+        <div class="cs-quote-feature__quote reveal-slide">
+          <p class="cs-quote-feature__text">
+            The question wasn't whether AI would change how designers work.
+            It was whether design would <em>lead that change</em> — or wait for engineering to.
+          </p>
+        </div>
+        <div class="cs-quote-feature__image-wrap">
+          <img src="../assets/images/coned-slide-1.png" alt="ConEdison customer billing portal — managing multiple accounts, payment flows, and account snapshot modules" class="cs-quote-feature__image">
         </div>
         <p class="cs-full-bleed__caption">ConEdison customer portal — Customer Billing pod. Multi-account management, payment flows, and account snapshot modules.</p>
       </div>
-    </div>
+    </section>
 
 
     <!-- ============================================================
@@ -544,6 +542,6 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=20260464"></script>
+  <script src="../js/main.js?v=20260465"></script>
 </body>
 </html>

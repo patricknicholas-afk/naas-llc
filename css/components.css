@@ -1509,7 +1509,7 @@ body.theme--light .projects-grid--list .next-project__divider {
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-md);
   margin: var(--space-2xl) auto var(--space-3xl);
-  max-width: 640px;
+  max-width: 900px;
 }
 
 .logo-grid__item {
@@ -1519,7 +1519,7 @@ body.theme--light .projects-grid--list .next-project__divider {
   aspect-ratio: 2 / 1;
   padding: var(--space-md);
   background-color: #ffffff;
-  border-radius: var(--radius-card);
+  border-radius: var(--p-radius-md);
 }
 
 .logo-grid__item img {

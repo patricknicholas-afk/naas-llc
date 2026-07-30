@@ -1508,7 +1508,8 @@ body.theme--light .projects-grid--list .next-project__divider {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-md);
-  margin: var(--space-2xl) 0 var(--space-3xl);
+  margin: var(--space-2xl) auto var(--space-3xl);
+  max-width: 640px;
 }
 
 .logo-grid__item {
@@ -1516,8 +1517,8 @@ body.theme--light .projects-grid--list .next-project__divider {
   align-items: center;
   justify-content: center;
   aspect-ratio: 2 / 1;
-  padding: var(--space-lg);
-  background-color: var(--color-surface);
+  padding: var(--space-md);
+  background-color: #ffffff;
   border-radius: var(--radius-card);
 }
 

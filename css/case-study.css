@@ -1363,3 +1363,265 @@ body.theme--light .cs-stats-early__label {
     width: min(227px, 52.65%);
   }
 }
+
+/* ================================================================
+   PDP BREAKDOWN — interactive hover diagram (Audible)
+   Left: simplified PDP mockup. Right: labeled breakdown zones, each
+   grouped set sharing one hover target (.pdp-zone-group) so hovering
+   any row in the group reveals one overlay covering the whole group —
+   green ("opportunity") with pros, or grey ("neutral") without.
+   ================================================================ */
+.pdp-breakdown__eyebrow {
+  font-size: var(--text-caption);
+  font-weight: var(--fw-emphasis);
+  letter-spacing: var(--tracking-overline);
+  text-transform: uppercase;
+  color: var(--cs-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.pdp-breakdown__title {
+  font-size: var(--prose-h2-size);
+  font-weight: var(--fw-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--prose-heading-color);
+  margin-bottom: var(--space-2xl);
+}
+
+.pdp-breakdown {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+/* ---- Simplified phone mockup ---- */
+.pdp-mockup {
+  background-color: var(--p-neutral-100);
+  border-radius: var(--radius-card);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pdp-mockup__cover {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--p-radius-md);
+  background-color: var(--p-neutral-300);
+  margin-bottom: var(--space-sm);
+}
+
+.pdp-mockup__title {
+  font-size: var(--text-body-lg);
+  font-weight: var(--fw-heading);
+  color: var(--p-neutral-900);
+  line-height: 1.3;
+}
+
+.pdp-mockup__subtitle {
+  font-size: var(--text-label);
+  color: var(--p-neutral-500);
+}
+
+.pdp-mockup__author {
+  font-size: var(--text-label);
+  color: var(--p-neutral-700);
+  font-weight: var(--fw-emphasis);
+  margin-bottom: 4px;
+}
+
+.pdp-mockup__stars {
+  font-size: var(--text-caption);
+  color: var(--p-neutral-500);
+  margin-bottom: var(--space-sm);
+}
+
+.pdp-mockup__stars span {
+  color: var(--p-neutral-500);
+}
+
+.pdp-mockup__meta {
+  font-size: var(--text-caption);
+  color: var(--p-neutral-500);
+}
+
+.pdp-mockup__meta--link {
+  text-decoration: underline;
+}
+
+.pdp-mockup__btn {
+  text-align: center;
+  font-size: var(--text-label);
+  font-weight: var(--fw-emphasis);
+  border-radius: 100px;
+  padding: 10px var(--space-md);
+  margin-top: 6px;
+}
+
+.pdp-mockup__btn--primary {
+  background-color: var(--p-neutral-300);
+  color: var(--p-neutral-800);
+}
+
+.pdp-mockup__btn--link {
+  color: var(--p-neutral-700);
+  text-decoration: underline;
+}
+
+.pdp-mockup__label {
+  font-size: var(--text-caption);
+  font-weight: var(--fw-emphasis);
+  color: var(--p-neutral-800);
+  margin-top: var(--space-md);
+}
+
+.pdp-mockup__tags {
+  font-size: var(--text-caption);
+  color: var(--p-neutral-500);
+}
+
+.pdp-mockup__line {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background-color: var(--p-neutral-300);
+}
+
+.pdp-mockup__line--short {
+  width: 65%;
+}
+
+.pdp-mockup__block {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  border-radius: var(--p-radius-md);
+  background-color: var(--p-neutral-300);
+  margin-top: var(--space-sm);
+}
+
+/* ---- Labeled zones ---- */
+.pdp-zones {
+  display: flex;
+  flex-direction: column;
+}
+
+.pdp-zone-group {
+  position: relative;
+  border-left: 2px solid var(--color-border);
+  padding: var(--space-md) 0 var(--space-md) var(--space-lg);
+  cursor: default;
+}
+
+.pdp-zone__body {
+  padding-bottom: var(--space-md);
+}
+
+.pdp-zone__body:last-of-type {
+  padding-bottom: 0;
+}
+
+.pdp-zone__label {
+  font-size: var(--text-body-lg);
+  font-weight: var(--fw-heading);
+  color: var(--prose-heading-color);
+  margin-bottom: 4px;
+}
+
+.pdp-zone__desc {
+  font-size: var(--text-label);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-body);
+}
+
+.pdp-zone__ref {
+  font-size: var(--text-caption);
+  color: var(--color-text-tertiary);
+  margin-top: 4px;
+}
+
+/* ---- Hover-reveal overlay ---- */
+.pdp-zone__overlay {
+  position: absolute;
+  inset: 0;
+  left: calc(-1 * var(--space-lg) - 2px);
+  border-radius: var(--p-radius-md);
+  padding: var(--space-lg);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px);
+  transition: opacity var(--duration-normal) var(--ease-default),
+              transform var(--duration-normal) var(--ease-default);
+  z-index: 2;
+}
+
+.pdp-zone-group:hover .pdp-zone__overlay,
+.pdp-zone-group:focus-within .pdp-zone__overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pdp-zone__overlay--opportunity {
+  background-color: #2E7D46;
+  border: 1px solid #245C35;
+}
+
+.pdp-zone__overlay--neutral {
+  background-color: var(--p-neutral-300);
+  border: 1px solid var(--p-neutral-400);
+}
+
+.pdp-zone__overlay-title {
+  font-size: var(--text-body-lg);
+  font-weight: var(--fw-heading);
+}
+
+.pdp-zone__overlay--opportunity .pdp-zone__overlay-title {
+  color: #ffffff;
+}
+
+.pdp-zone__overlay--neutral .pdp-zone__overlay-title {
+  color: var(--p-neutral-700);
+}
+
+.pdp-zone__overlay-kicker {
+  font-size: var(--text-caption);
+  font-weight: var(--fw-emphasis);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-overline);
+  margin-top: var(--space-sm);
+  margin-bottom: 4px;
+}
+
+.pdp-zone__overlay--opportunity .pdp-zone__overlay-kicker {
+  color: #C7F0D3;
+}
+
+.pdp-zone__overlay--opportunity ul {
+  padding-left: 18px;
+}
+
+.pdp-zone__overlay--opportunity li {
+  font-size: var(--text-label);
+  color: #ffffff;
+  line-height: 1.5;
+}
+
+.pdp-zone__overlay-note {
+  font-size: var(--text-label);
+  color: var(--p-neutral-500);
+  font-style: italic;
+  margin-top: var(--space-sm);
+}
+
+@media (max-width: 900px) {
+  .pdp-breakdown {
+    grid-template-columns: 1fr;
+  }
+
+  .pdp-mockup {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+}

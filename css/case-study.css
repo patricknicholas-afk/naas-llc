@@ -1366,9 +1366,10 @@ body.theme--light .cs-stats-early__label {
 
 /* ================================================================
    PDP BREAKDOWN — interactive hover diagram (Audible)
-   Left: simplified PDP mockup. Right: labeled breakdown zones, each
-   grouped set sharing one hover target (.pdp-zone-group) so hovering
-   any row in the group reveals one overlay covering the whole group —
+   A single centered PDP mockup. Each .pdp-wire-zone wraps a cluster of
+   wireframe rows and is itself the hover/focus target — the overlay
+   is absolutely positioned to exactly cover that same cluster, so the
+   wireframe section turns into its opportunity callout in place —
    green ("opportunity") with pros, or grey ("neutral") without.
    ================================================================ */
 .pdp-breakdown__eyebrow {
@@ -1389,14 +1390,15 @@ body.theme--light .cs-stats-early__label {
 }
 
 .pdp-breakdown {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: var(--space-3xl);
-  align-items: start;
+  display: flex;
+  justify-content: center;
 }
 
 /* ---- Simplified phone mockup ---- */
 .pdp-mockup {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
   background-color: var(--p-neutral-100);
   border-radius: var(--radius-card);
   padding: var(--space-lg);
@@ -1501,65 +1503,35 @@ body.theme--light .cs-stats-early__label {
   margin-top: var(--space-sm);
 }
 
-/* ---- Labeled zones ---- */
-.pdp-zones {
-  display: flex;
-  flex-direction: column;
-}
-
-.pdp-zone-group {
+/* ---- Wire zones — each is its own hover/focus target ---- */
+.pdp-wire-zone {
   position: relative;
-  border-left: 2px solid var(--color-border);
-  padding: var(--space-md) 0 var(--space-md) var(--space-lg);
-  cursor: default;
+  border-radius: var(--p-radius-md);
+  cursor: pointer;
 }
 
-.pdp-zone__body {
-  padding-bottom: var(--space-md);
-}
-
-.pdp-zone__body:last-of-type {
-  padding-bottom: 0;
-}
-
-.pdp-zone__label {
-  font-size: var(--text-body-lg);
-  font-weight: var(--fw-heading);
-  color: var(--prose-heading-color);
-  margin-bottom: 4px;
-}
-
-.pdp-zone__desc {
-  font-size: var(--text-label);
-  color: var(--color-text-secondary);
-  line-height: var(--leading-body);
-}
-
-.pdp-zone__ref {
-  font-size: var(--text-caption);
-  color: var(--color-text-tertiary);
-  margin-top: 4px;
-}
-
-/* ---- Hover-reveal overlay ---- */
+/* ---- Hover-reveal overlay, sized to exactly cover its own zone ---- */
 .pdp-zone__overlay {
   position: absolute;
   inset: 0;
-  left: calc(-1 * var(--space-lg) - 2px);
   border-radius: var(--p-radius-md);
-  padding: var(--space-lg);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(6px);
+  transform: scale(0.98);
   transition: opacity var(--duration-normal) var(--ease-default),
               transform var(--duration-normal) var(--ease-default);
   z-index: 2;
 }
 
-.pdp-zone-group:hover .pdp-zone__overlay,
-.pdp-zone-group:focus-within .pdp-zone__overlay {
+.pdp-wire-zone:hover .pdp-zone__overlay,
+.pdp-wire-zone:focus-within .pdp-zone__overlay {
   opacity: 1;
-  transform: translateY(0);
+  transform: scale(1);
 }
 
 .pdp-zone__overlay--opportunity {
@@ -1573,7 +1545,7 @@ body.theme--light .cs-stats-early__label {
 }
 
 .pdp-zone__overlay-title {
-  font-size: var(--text-body-lg);
+  font-size: var(--text-label);
   font-weight: var(--fw-heading);
 }
 
@@ -1603,25 +1575,14 @@ body.theme--light .cs-stats-early__label {
 }
 
 .pdp-zone__overlay--opportunity li {
-  font-size: var(--text-label);
+  font-size: var(--text-caption);
   color: #ffffff;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .pdp-zone__overlay-note {
-  font-size: var(--text-label);
+  font-size: var(--text-caption);
   color: var(--p-neutral-500);
   font-style: italic;
   margin-top: var(--space-sm);
-}
-
-@media (max-width: 900px) {
-  .pdp-breakdown {
-    grid-template-columns: 1fr;
-  }
-
-  .pdp-mockup {
-    max-width: 260px;
-    margin: 0 auto;
-  }
 }

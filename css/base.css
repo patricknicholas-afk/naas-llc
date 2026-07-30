@@ -228,6 +228,10 @@ ul, ol {
 .reveal-stagger > .reveal:nth-child(2) { transition-delay: 100ms; }
 .reveal-stagger > .reveal:nth-child(3) { transition-delay: 200ms; }
 .reveal-stagger > .reveal:nth-child(4) { transition-delay: 300ms; }
+.reveal-stagger > .reveal:nth-child(5) { transition-delay: 400ms; }
+.reveal-stagger > .reveal:nth-child(6) { transition-delay: 500ms; }
+.reveal-stagger > .reveal:nth-child(7) { transition-delay: 600ms; }
+.reveal-stagger > .reveal:nth-child(8) { transition-delay: 700ms; }
 
 /* ================================================================
    SKELETON PULSE — Animated placeholder for image slots

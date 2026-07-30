@@ -205,7 +205,7 @@ function initScrollReveal() {
   const selectors = [
     '.prose h2', '.prose h3', '.prose p', '.prose ul',
     '.hero__meta', '.hero__subtitle',
-    '.image-grid__item', '.hero__image',
+    '.image-grid__item', '.logo-grid__item', '.hero__image',
     '.section__header', '.section__eyebrow', '.section__title', '.section__subtitle',
     '.project-card', '.next-project',
     '.contact',

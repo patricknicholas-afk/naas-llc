@@ -1502,6 +1502,38 @@ body.theme--light .projects-grid--list .next-project__divider {
 }
 
 /* ================================================================
+   LOGO GRID (competitor/analogous-brand logo walls)
+   ================================================================ */
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin: var(--space-2xl) 0 var(--space-3xl);
+}
+
+.logo-grid__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 2 / 1;
+  padding: var(--space-lg);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-card);
+}
+
+.logo-grid__item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ================================================================
    FORM SUCCESS / ERROR STATES
    ================================================================ */
 .form-message {

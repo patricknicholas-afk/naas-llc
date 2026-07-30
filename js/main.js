@@ -659,24 +659,60 @@ function initAboutHeroCarousel() {
   scheduleAdvance(slides[current]);
 }
 
-/* ---- Card Image Carousel — manual nav only, no auto-advance ---- */
+/* ---- Card Image Carousel — manual nav, true infinite loop ---- */
 function initCardCarousels() {
+  // Applies to every .card-carousel on the page — current project cards
+  // and any added later — so none of them visibly snap backward across
+  // the whole track when stepping past the first/last slide.
   document.querySelectorAll('.card-carousel').forEach(carousel => {
     const track  = carousel.querySelector('.card-carousel__track');
-    const slides = carousel.querySelectorAll('.card-carousel__slide');
+    const slides = Array.from(carousel.querySelectorAll('.card-carousel__slide'));
 
     const card    = carousel.closest('.project-card');
     const btnPrev = card ? card.querySelector('.card-carousel__btn--prev') : null;
     const btnNext = card ? card.querySelector('.card-carousel__btn--next') : null;
 
-    if (!track || !slides.length || !btnPrev || !btnNext) return;
+    if (!track || slides.length < 2 || !btnPrev || !btnNext) return;
 
-    const total  = slides.length;
-    let current  = 0;
+    // Clone the last slide to the front and the first slide to the back:
+    // [lastClone, ...real, firstClone]. Stepping past either end lands on
+    // a clone that looks identical to the real slide it's snapping to, so
+    // the instant (transition-free) jump back to the real slide is invisible.
+    const total = slides.length;
+    const firstClone = slides[0].cloneNode(true);
+    const lastClone = slides[total - 1].cloneNode(true);
+    firstClone.setAttribute('aria-hidden', 'true');
+    lastClone.setAttribute('aria-hidden', 'true');
+    track.insertBefore(lastClone, slides[0]);
+    track.appendChild(firstClone);
+
+    let current = 1; // 1..total = real slides; 0 and total+1 = the clones
+
+    function setPosition(index, instant) {
+      if (instant) track.style.transition = 'none';
+      track.style.transform = `translateX(-${index * 100}%)`;
+      if (instant) {
+        void track.offsetWidth; // force reflow so the jump applies before re-enabling the transition
+        track.style.transition = '';
+      }
+    }
+
+    setPosition(current, true);
+
+    track.addEventListener('transitionend', e => {
+      if (e.propertyName !== 'transform') return;
+      if (current === 0) {
+        current = total;
+        setPosition(current, true);
+      } else if (current === total + 1) {
+        current = 1;
+        setPosition(current, true);
+      }
+    });
 
     function goTo(index) {
-      current = (index + total) % total;
-      track.style.transform = `translateX(-${current * 100}%)`;
+      current = index;
+      setPosition(current, false);
     }
 
     btnPrev.addEventListener('click', e => {

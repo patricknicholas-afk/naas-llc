@@ -327,7 +327,12 @@
   /* -- Form -- */
   --form-label-size:      var(--text-label);
   --form-label-weight:    var(--fw-emphasis);
-  --form-label-color:     var(--p-neutral-50);
+  /* No --form-label-color token: it aliased --color-text-primary, which
+     froze to :root's value and stayed invisible against --color-bg-alt
+     in light theme (an alias declared at :root doesn't pick up
+     body.theme--light's override on inheritance — same class of bug as
+     --card-bg elsewhere). .form-group__label references
+     --color-text-primary directly instead. */
   --form-input-px:        var(--space-md);
   --form-input-py:        var(--space-sm);
   --form-input-size:      var(--text-body);

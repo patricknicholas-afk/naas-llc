@@ -1134,6 +1134,7 @@ body.theme--light .projects-grid--list .next-project__divider {
 
 .contact .section__title {
   font-family: var(--font-heading);
+  line-height: var(--leading-heading);
 }
 
 .contact .section__subtitle {
@@ -1155,7 +1156,11 @@ body.theme--light .projects-grid--list .next-project__divider {
 .form-group__label {
   font-size: var(--form-label-size);
   font-weight: var(--form-label-weight);
-  color: var(--form-label-color);
+  /* --color-text-primary referenced directly (not via the --form-label-color
+     alias) — an alias declared once at :root freezes to :root's value and
+     won't pick up body.theme--light's override on inheritance. Same fix
+     pattern as --card-bg elsewhere in this file. */
+  color: var(--color-text-primary);
 }
 
 .form-group__input,

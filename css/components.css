@@ -1125,6 +1125,21 @@ body.theme--light .projects-grid--list .next-project__divider {
   padding-bottom: var(--section-py);
 }
 
+/* Contact text block — hero-style serif title, tight 4px rhythm between
+   eyebrow / title / body copy. Scoped to .contact so the shared
+   .section__* classes elsewhere on the site are unaffected. */
+.contact .section__eyebrow {
+  margin-bottom: 4px;
+}
+
+.contact .section__title {
+  font-family: var(--font-heading);
+}
+
+.contact .section__subtitle {
+  margin-top: 4px;
+}
+
 .contact__form {
   display: flex;
   flex-direction: column;

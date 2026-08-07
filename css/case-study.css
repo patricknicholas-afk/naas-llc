@@ -1561,3 +1561,26 @@ body.theme--light .cs-duo-figure__item {
   border-color: var(--p-neutral-200);
 }
 
+
+/* ================================================================
+   CS-ACCENT-MUTED — opt-in modifier (set on <main>) for pages that
+   want the cs-* component structure — chapter dividers, split
+   eyebrows, mission headings, list markers — without the per-project
+   --cs-accent color splashed across them. Falls back to the same
+   neutral grey (--color-text-tertiary / --color-border) already used
+   by .section__eyebrow and other dividers elsewhere on the site.
+   ================================================================ */
+.cs-accent-muted .cs-chapter {
+  border-top-color: var(--color-border);
+}
+
+.cs-accent-muted .cs-chapter__number,
+.cs-accent-muted .cs-split__eyebrow,
+.cs-accent-muted .cs-mission__item-heading {
+  color: var(--color-text-tertiary);
+}
+
+.cs-accent-muted .cs-split__body li::marker {
+  color: var(--color-text-tertiary);
+}
+

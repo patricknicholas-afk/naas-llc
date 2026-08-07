@@ -338,7 +338,9 @@
   --form-input-color:     var(--p-neutral-900);
   --form-placeholder:     var(--p-neutral-400);
   --form-textarea-min-h:  160px;
-  --form-gap:             var(--space-md);
+  /* 16px desktop, automatically 8px at the ≤640px breakpoint via the
+     --space-sm -> --p-space-2 responsive scale (see bottom of this file) */
+  --form-gap:             var(--space-sm);
 
   /* -- Footer — always dark regardless of page theme -- */
   --footer-py:            var(--space-3xl);

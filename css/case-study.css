@@ -1515,6 +1515,10 @@ body.theme--light .cs-stats-early__label {
 
 .cs-mission__item--left .cs-mission__item-content {
   grid-column: 1;
+  /* Wireframe insets the left-column item an extra 124px past the
+     row's own left edge (on top of just occupying column 1) — closest
+     token match is --space-6xl (128px). */
+  padding-left: var(--space-6xl);
 }
 
 .cs-mission__item-title {
@@ -1550,6 +1554,7 @@ body.theme--light .cs-stats-early__label {
   .cs-mission__item--left .cs-mission__item-content {
     grid-column: 1;
     max-width: none;
+    padding-left: 0;
   }
 }
 

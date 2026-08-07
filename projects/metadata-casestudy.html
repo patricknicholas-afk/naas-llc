@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/main.css?v=20260463">
-  <link rel="stylesheet" href="../css/case-study.css?v=20260493">
+  <link rel="stylesheet" href="../css/case-study.css?v=20260494">
 </head>
 <body>
 
@@ -139,18 +139,20 @@
           <strong>These customers miss out on the depth of Audible's unparalleled catalog because they have no meaningful way to browse and discover new content based on their current interests and needs.</strong>
         </p>
       </div>
-      <div class="cs-story-lead__image">
-        <img src="../assets/images/audible-1.png" alt="Audible product detail page for A Court of Thorns and Roses, with Sample, Buy, and Wish List actions">
-      </div>
     </div>
   </section>
 
   <!-- ============================================================
-       Business Context
+       Business Context — image + copy inset with a large left margin
+       (wireframe: this block starts ~25% in from the row's own left
+       edge, unlike the full-width duo-figure that follows it)
        ============================================================ -->
-  <section class="section">
+  <section class="section" style="padding-bottom: 0;">
     <div class="container grid">
-      <div class="col-8 tab-col-12">
+      <div class="col-9 col-start-4 tab-col-12">
+        <div class="cs-story-lead__image" style="margin-top: 0; margin-bottom: var(--space-2xl);">
+          <img src="../assets/images/audible-1.png" alt="Audible product detail page for A Court of Thorns and Roses, with Sample, Buy, and Wish List actions">
+        </div>
         <div class="prose">
           <p>
             The opportunity was twofold. Audible had rich back-end metadata that wasn't
@@ -169,7 +171,9 @@
         </div>
       </div>
     </div>
+  </section>
 
+  <section class="section" style="padding-top: var(--space-3xl);">
     <div class="container">
       <div class="cs-duo-figure">
         <div class="cs-duo-figure__item cs-duo-figure__item--lg">

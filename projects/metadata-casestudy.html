@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/main.css?v=20260463">
-  <link rel="stylesheet" href="../css/case-study.css?v=20260489">
+  <link rel="stylesheet" href="../css/case-study.css?v=20260490">
 </head>
 <body>
 
@@ -126,15 +126,32 @@
   </section>
 
   <!-- ============================================================
-       2. PROBLEM — Business Context & User Pain Points
+       2. THE SCENARIO — Story lead-in
+       Layout translated from Figma wireframe (node 133:51269, a
+       repurposed frog.co template). Big opening statement + image.
+       ============================================================ -->
+  <section class="cs-story-lead">
+    <div class="container">
+      <div class="cs-story-lead__row">
+        <span class="cs-story-lead__label">The Scenario</span>
+        <p class="cs-story-lead__statement">
+          Audible listeners often rely on external sources to figure out what to listen to next.
+          <strong>These customers miss out on the depth of Audible's unparalleled catalog because they have no meaningful way to browse and discover new content based on their current interests and needs.</strong>
+        </p>
+      </div>
+      <div class="cs-story-lead__image">
+        <img src="../assets/images/audible-1.png" alt="Audible product detail page for A Court of Thorns and Roses, with Sample, Buy, and Wish List actions">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Business Context
        ============================================================ -->
   <section class="section">
     <div class="container grid">
       <div class="col-8 tab-col-12">
         <div class="prose">
-          <h2>The Scenario</h2>
-
-          <h3>Business</h3>
           <p>
             The opportunity was twofold. Audible had rich back-end metadata that wasn't
             being leveraged strategically in how it surfaced to customers — there was
@@ -153,27 +170,112 @@
       </div>
     </div>
 
-    <div class="container" style="margin-top: var(--space-2xl);">
-      <img src="../assets/images/audible-painpoint-synthesis.png" alt="Pain Point Synthesis — Audible metadata taxonomy" class="reveal" style="width:100%;height:auto;display:block;border-radius:var(--radius-panel);">
-      <p style="font-size:12px;color:var(--color-text-secondary);line-height:var(--leading-body);margin:var(--space-md) 0 var(--space-lg);">Audible's existing tag taxonomy contains ~400 pre-defined labels with little room for vertical datasets to cross-communicate with each other, so content discovery from the Product Detail Page of Creativity & Business could lead down an unintended discovery path of Intimacy & Relationships.</p>
+    <div class="container">
+      <div class="cs-duo-figure">
+        <div class="cs-duo-figure__item cs-duo-figure__item--lg">
+          <img src="../assets/images/audible-insight.png" alt="An Audible Original title screen, a pull-quote on the PDP as a navigational touchpoint, and the expanded Highlights panel">
+        </div>
+        <div class="cs-duo-figure__item cs-duo-figure__item--sm">
+          <img src="../assets/images/audible-project-hero-2.png" alt="All Highlights panel expanded to show the full tag taxonomy, and a curated Supernatural genre collection">
+        </div>
+      </div>
     </div>
 
+    <!-- Back-End Improvements -->
+    <div class="container grid" style="margin-top: var(--space-3xl);">
+      <div class="col-10 tab-col-12">
+        <h2 class="section__title" style="margin-bottom: var(--space-2xl);">Back-End Improvements to Drive Front-End Results</h2>
+      </div>
+    </div>
     <div class="container grid">
-      <div class="col-8 tab-col-12">
+      <div class="col-6 tab-col-12">
         <div class="prose">
-          <h3 style="margin-top:0;">Customer</h3>
           <p>
-            The summary section on Audible's PDP was limited to five tags. Those five
-            items didn't always represent the best qualities of a given audiobook —
-            customers consistently found them too unrelated to the title they were
-            viewing, and that disconnect disrupted their continued browsing experience.
+            Our customers often times, utilize the product detail page of a specific
+            title they are interested in, as a means to launch what we call
+            <strong>"continued discovery" or content wayfinding.</strong>
           </p>
+        </div>
+      </div>
+      <div class="col-6 tab-col-12">
+        <div class="prose">
           <p>
-            A UX audit surfaced a critical behavioral insight: customers would arrive
-            on a PDP, scroll through the description, reach the summary section, and
-            use the tags there as a continued browsing tool — tapping to find a more
-            relevant title rather than committing to the one in front of them. The tags
-            weren't anchoring decisions. They were driving people away.
+            In this live title example, we can cross reference the book tags being
+            showcased, with how it is structured within our back-end database (World
+            Tree). Our back-end database functions linearly, when it comes to
+            sub-titles or sub-genres (L2, L3) — <strong>this can drive customers down
+            an audiobook genre they didn't originally intend or desire</strong>,
+            disrupting a quality browsing experience.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pain-point figure -->
+    <div class="container" style="margin-top: var(--space-3xl);">
+      <div class="cs-full-bleed">
+        <div class="cs-full-bleed__frame">
+          <img src="../assets/images/audible-painpoint-synthesis.png" alt="Pain Point Synthesis — Audible metadata taxonomy">
+        </div>
+        <p class="cs-full-bleed__caption">Audible's existing tag taxonomy contains ~400 pre-defined labels with little room for vertical datasets to cross-communicate with each other, so content discovery from the Product Detail Page of Creativity &amp; Business could lead down an unintended discovery path of Intimacy &amp; Relationships.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       The Mission — Challenge / Opportunity / Outcome
+       ============================================================ -->
+  <section class="cs-mission">
+    <div class="container">
+      <h2 class="cs-mission__heading">The Mission</h2>
+      <p class="cs-mission__subtitle">Project Highlights</p>
+
+      <div class="cs-mission__item">
+        <span class="cs-mission__item-label">Challenge</span>
+        <div>
+          <p class="cs-mission__item-heading">Metric Driven Foundational Insight</p>
+          <p class="cs-mission__item-body">
+            Audible's PDP was limited to five tags. Those five items didn't always
+            represent the best qualities of a given audiobook — customers consistently
+            found them too unrelated to the title they were viewing, and that
+            disconnect disrupted their continued browsing experience. A UX audit
+            surfaced a critical behavioral insight: customers would arrive on a PDP,
+            scroll through the description, reach the summary section, and use the
+            tags there as a continued browsing tool — tapping to find a more relevant
+            title rather than committing to the one in front of them. The tags weren't
+            anchoring decisions. They were driving people away.
+          </p>
+        </div>
+      </div>
+
+      <div class="cs-mission__item">
+        <span class="cs-mission__item-label">Opportunity</span>
+        <div>
+          <p class="cs-mission__item-heading">Discovery of Existing Experiences</p>
+          <p class="cs-mission__item-body">
+            The competitive research focused on analogous digital spaces — platforms
+            outside of audiobooks that use tags and metadata in ways already familiar
+            to customers, including Netflix, Spotify, Hulu, Pandora, Chirp, StoryGraph,
+            Barnes &amp; Noble, and Waterstones. The landscape teardown surfaced
+            actionable insights on how the summary section could be restructured to
+            better serve how customers naturally interact with tags during a browsing
+            session.
+          </p>
+        </div>
+      </div>
+
+      <div class="cs-mission__item">
+        <span class="cs-mission__item-label">Outcome</span>
+        <div>
+          <p class="cs-mission__item-heading">A System for Relevant, Personalized Discovery</p>
+          <p class="cs-mission__item-body">
+            Two parallel tracks — back-end metadata strategies and front-end UX
+            redesigns — converged into a system for how tags are categorized on the
+            PDP and how customers interact with them to continue browsing. The result:
+            six high-fidelity P13N prototypes, a ten-concept wireframe backlog
+            extending the strategy across high-traffic flows, and a blue-sky LLM
+            proposal to deduplicate and diversify tags at the source — increasing
+            conversion through more accurate, relevant, and personalized tag displays.
           </p>
         </div>
       </div>
@@ -181,18 +283,23 @@
   </section>
 
   <!-- ============================================================
-       3. RESEARCH — Methodology & Key Findings
+       CHAPTER 01 — Research
        ============================================================ -->
-  <section class="section section--alt">
+  <div class="container">
+    <div class="cs-chapter">
+      <span class="cs-chapter__number">01</span>
+      <h2 class="cs-chapter__label">Research</h2>
+    </div>
+  </div>
+
+  <section class="section--alt" style="padding-bottom: var(--space-3xl);">
     <div class="container grid">
       <div class="col-8 tab-col-12">
         <div class="prose">
-          <h2>Research</h2>
           <p>
             Two research tracks ran in parallel: a competitive landscape analysis
             and a focused UX audit of Audible's existing PDP experience.
           </p>
-
           <h3>Competitive Landscape</h3>
           <p>
             I focused the competitive research on analogous digital spaces — platforms
@@ -217,27 +324,32 @@
         <div class="logo-grid__item"><img src="../assets/images/waterstones-logo.png" alt="Waterstones"></div>
       </div>
     </div>
+  </section>
 
-    <div class="container grid">
-      <div class="col-6 tab-col-12">
-        <div class="prose">
-          <h3>PDP Structural Framework</h3>
+  <section class="cs-split">
+    <div class="container" style="display:contents;">
+      <div class="cs-split__text">
+        <p class="cs-split__eyebrow">Structure</p>
+        <h3 class="cs-split__heading">PDP Structural Framework</h3>
+        <div class="cs-split__body">
           <p>
             As part of the UX analysis, I broke the PDP down into three distinct sections —
             a structural framework that gave the entire design team a focused and intentional
             lens for proposing solutions or changes to specific areas of the page. This
             structure was shared out across the design organization at the end-of-sprint demo.
           </p>
-        </div>
-      </div>
-      <div class="col-6 tab-col-12">
-        <div class="prose">
-          <h3>Risks &amp; Constraints</h3>
+          <p><strong style="color: var(--color-text-primary);">Risks &amp; Constraints</strong></p>
           <ul>
             <li>Tag over-saturation: surfacing too many items creates cognitive overload rather than useful orientation</li>
             <li>Tag duplication: overlapping labels from different back-end sources produce redundancy without adding browsing value</li>
           </ul>
         </div>
+      </div>
+      <div class="cs-split__visual">
+        <div class="cs-split__image">
+          <img src="../assets/images/audible-slide-1.png" alt="Highlights tags expanded by genre, topic, mood, and narrator, plus a related-title recommendation carousel">
+        </div>
+        <p class="cs-split__image-caption">The three-section PDP framework in practice — tag taxonomy and the recommendation carousel it feeds.</p>
       </div>
     </div>
   </section>
@@ -250,19 +362,24 @@
   </section>
 
   <!-- ============================================================
-       4. PROCESS — Design Exploration & Iteration
+       CHAPTER 02 — Concept Development
        ============================================================ -->
-  <section class="section">
+  <div class="container">
+    <div class="cs-chapter">
+      <span class="cs-chapter__number">02</span>
+      <h2 class="cs-chapter__label">Concept Development</h2>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top: 0;">
     <div class="container grid">
       <div class="col-8 tab-col-12">
         <div class="prose">
-          <h2>Concept Development</h2>
           <p>
             Grounded in the UX analysis, mental model mapping, and the three-section
             PDP framework, concept development ran across two parallel tracks: back-end
             metadata strategies and front-end customer experience redesigns.
           </p>
-
           <h3>Back-End Metadata Strategies</h3>
           <p>
             I developed a set of strategies for how back-end data should be structured
@@ -270,8 +387,17 @@
             ensure the tags displayed on a PDP represented the most relevant qualities
             of that specific title — not just what the system happened to have available.
           </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <h3>P13N Strategies</h3>
+  <section class="cs-split cs-split--flip">
+    <div class="container" style="display:contents;">
+      <div class="cs-split__text">
+        <p class="cs-split__eyebrow">Personalization</p>
+        <h3 class="cs-split__heading">P13N Strategies</h3>
+        <div class="cs-split__body">
           <p>
             Personalization strategies adapt the tag display to the individual listener's
             context: browsing history, genre affinities, and listening patterns inform
@@ -279,7 +405,21 @@
             browses by narrator sees narrator prominence; a listener driven by theme
             sees thematic tags lead. The page meets the customer where they already are.
           </p>
+        </div>
+      </div>
+      <div class="cs-split__visual">
+        <div class="cs-split__image">
+          <img src="../assets/images/audible-tag-prioritization-diagram.png" alt="Three-layer tag prioritization system: Relevancy Layer, P13N Layer, and Ranked Layer">
+        </div>
+        <p class="cs-split__image-caption">Relevancy, P13N, and Ranked layers determine which tags surface for a given listener.</p>
+      </div>
+    </div>
+  </section>
 
+  <section class="section" style="padding-top: 0;">
+    <div class="container grid">
+      <div class="col-8 tab-col-12">
+        <div class="prose">
           <h3>Expected Outcome</h3>
           <p>
             A system for how tags are categorized on the PDP and how customers can
@@ -291,29 +431,20 @@
     </div>
   </section>
 
-  <!-- Process Image Grid -->
+  <!-- ============================================================
+       CHAPTER 03 — The Solution
+       ============================================================ -->
   <div class="container">
-    <div class="image-grid image-grid--3">
-      <div class="image-grid__item">
-        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:var(--text-sm);">Unified Title View</div>
-      </div>
-      <div class="image-grid__item">
-        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:var(--text-sm);">Validation Engine</div>
-      </div>
-      <div class="image-grid__item">
-        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:var(--text-sm);">Batch Editor</div>
-      </div>
+    <div class="cs-chapter">
+      <span class="cs-chapter__number">03</span>
+      <h2 class="cs-chapter__label">The Solution</h2>
     </div>
   </div>
 
-  <!-- ============================================================
-       5. SOLUTION — Final Designs & Rationale
-       ============================================================ -->
-  <section class="section section--alt">
+  <section class="section section--alt" style="padding-top: 0;">
     <div class="container grid">
       <div class="col-8 tab-col-12">
         <div class="prose">
-          <h2>The Solution</h2>
           <p>
             Two parallel tracks — back-end metadata strategies and front-end UX
             redesigns — converged into a system for how tags are categorized on the
@@ -361,25 +492,31 @@
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Solution Full-Width Image -->
-  <section style="padding-bottom: var(--space-10);">
-    <div class="container">
-      <div class="hero__image" style="aspect-ratio: 16/9;">
-        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:var(--text-sm);">Final Design — Pipeline Dashboard & Title View</div>
+    <div class="container" style="margin-top: var(--space-3xl);">
+      <div class="cs-full-bleed">
+        <div class="cs-full-bleed__frame">
+          <img src="../assets/images/audible-slide-4.png" alt="Discovery and browsing screens across Titles, Search, series detail, and title detail pages">
+        </div>
+        <p class="cs-full-bleed__caption">Final design touchpoints — discovery, search, and title detail carrying the new tag strategy across the app.</p>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       6. VALIDATION — Testing & Iteration
+       CHAPTER 04 — Validation
        ============================================================ -->
-  <section class="section">
+  <div class="container">
+    <div class="cs-chapter">
+      <span class="cs-chapter__number">04</span>
+      <h2 class="cs-chapter__label">Validation</h2>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top: 0;">
     <div class="container grid">
       <div class="col-8 tab-col-12">
         <div class="prose">
-          <h2>Validation</h2>
           <p>
             Six high-fidelity prototypes provided the basis for a structured
             user testing plan designed to validate the core P13N concepts before
@@ -420,8 +557,31 @@
   </section>
 
   <!-- ============================================================
-       7. IMPACT — Contributions
+       IMPACT — Stats + Contributions
        ============================================================ -->
+  <section class="cs-stats">
+    <div class="container">
+      <div class="cs-stats__grid">
+        <div class="cs-stat">
+          <p class="cs-stat__number">500K+</p>
+          <p class="cs-stat__label">Audiobook titles covered by the new tag strategy</p>
+        </div>
+        <div class="cs-stat">
+          <p class="cs-stat__number">6</p>
+          <p class="cs-stat__label">High-fidelity P13N prototypes shipped</p>
+        </div>
+        <div class="cs-stat">
+          <p class="cs-stat__number">10</p>
+          <p class="cs-stat__label">Wireframe concepts in the discovery backlog</p>
+        </div>
+        <div class="cs-stat">
+          <p class="cs-stat__number">1</p>
+          <p class="cs-stat__label">Blue-sky LLM future-state proposal</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section section--alt">
     <div class="container grid">
       <div class="col-8 tab-col-12">
@@ -569,6 +729,6 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=20260471"></script>
+  <script src="../js/main.js?v=20260472"></script>
 </body>
 </html>

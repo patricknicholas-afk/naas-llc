@@ -211,7 +211,11 @@ function initScrollReveal() {
     // Case-study content section title leads + images — same token as
     // '.prose h2' / '.image-grid__item' above, for pages (like ConEdison)
     // whose sections use the cs-chapter/cs-split components instead.
-    '.cs-chapter__label', '.cs-split__image'
+    '.cs-chapter__label', '.cs-split__image',
+    // Story-format components (Audible) — opening statement, duo
+    // figures, and mission triptych rows.
+    '.cs-story-lead__statement', '.cs-story-lead__image',
+    '.cs-duo-figure__item', '.cs-mission__item'
   ];
 
   const elements = document.querySelectorAll(selectors.join(', '));

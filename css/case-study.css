@@ -1491,22 +1491,38 @@ body.theme--light .cs-stats-early__label {
   margin-bottom: var(--space-3xl);
 }
 
+/* Two-column grid, content block anchored to the right column by
+   default — the wireframe alternates which column each item's content
+   sits in (Challenge: right, Opportunity: left, Outcome: right), so
+   the whole group zigzags down the page rather than stacking in a
+   fixed label/body row. Add .cs-mission__item--left to flip a row. */
 .cs-mission__item {
-  padding: var(--space-2xl) 0;
+  padding: var(--space-3xl) 0;
   border-top: 1px solid var(--color-border);
   display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: var(--space-3xl);
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
 }
 
 .cs-mission__item:last-child {
   border-bottom: 1px solid var(--color-border);
 }
 
-.cs-mission__item-label {
-  font-size: var(--text-h4);
+.cs-mission__item-content {
+  grid-column: 2;
+  max-width: 480px;
+}
+
+.cs-mission__item--left .cs-mission__item-content {
+  grid-column: 1;
+}
+
+.cs-mission__item-title {
+  font-size: var(--text-h3);
   font-weight: var(--fw-body);
-  color: var(--color-text-tertiary);
+  line-height: var(--leading-heading);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
 }
 
 .cs-mission__item-heading {
@@ -1522,13 +1538,18 @@ body.theme--light .cs-stats-early__label {
   font-size: var(--text-body);
   line-height: var(--leading-prose);
   color: var(--color-text-secondary);
-  max-width: 640px;
 }
 
 @media (max-width: 768px) {
   .cs-mission__item {
     grid-template-columns: 1fr;
     gap: var(--space-sm);
+  }
+
+  .cs-mission__item-content,
+  .cs-mission__item--left .cs-mission__item-content {
+    grid-column: 1;
+    max-width: none;
   }
 }
 
